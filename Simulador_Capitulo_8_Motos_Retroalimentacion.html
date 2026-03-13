@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Examen Teórico - Capítulo 8 y Motocicletas</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f4f6f7; color: #333; line-height: 1.6; padding: 15px; margin: 0; }
+        h1 { text-align: center; color: #34495e; font-size: 1.6rem; margin-bottom: 5px; }
+        h2 { text-align: center; color: #7f8c8d; font-size: 1rem; margin-top: 0; margin-bottom: 25px; }
+        .quiz-container { width: 100%; max-width: 800px; margin: 0 auto; background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); box-sizing: border-box; border-top: 5px solid #2c3e50; }
+        .question-block { margin-bottom: 25px; border-bottom: 1px solid #eee; padding-bottom: 20px; }
+        .question { font-weight: bold; font-size: 1.15rem; margin-bottom: 15px; color: #2c3e50; }
+        .options { list-style-type: none; padding: 0; margin: 0; }
+        .options li { margin-bottom: 12px; }
+        label { cursor: pointer; display: flex; align-items: flex-start; padding: 12px; border-radius: 8px; background: #fdfdfd; border: 1px solid #d5d8dc; -webkit-tap-highlight-color: transparent; touch-action: manipulation; transition: background 0.2s; }
+        label:active { background: #ebedef; }
+        input[type="radio"] { margin-right: 12px; margin-top: 4px; transform: scale(1.3); }
+        .btn { display: block; width: 100%; padding: 18px; background-color: #34495e; color: white; border: none; font-size: 1.2rem; font-weight: bold; border-radius: 10px; cursor: pointer; margin-top: 30px; -webkit-appearance: none; box-shadow: 0 4px 6px rgba(44, 62, 80, 0.3); transition: background 0.3s; }
+        .btn:active { background-color: #212f3d; }
+        #result { display: none; margin-top: 30px; padding: 20px; border-radius: 10px; text-align: center; font-size: 1.3rem; font-weight: bold; }
+        .correct-answer { color: #27ae60; font-weight: bold; }
+        .wrong-answer { color: #e74c3c; text-decoration: line-through; }
+        .feedback { margin-top: 15px; font-size: 1rem; padding: 12px; background: #fff; border: 1px solid #eee; border-radius: 6px; }
+        .explanation-box { margin-top: 15px; padding: 15px; background-color: #ebedef; border-left: 5px solid #2c3e50; border-radius: 6px; font-size: 0.95rem; color: #212f3c; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+    </style>
+</head>
+<body>
+
+<div class="quiz-container">
+    <h1>Simulador Examen - Capítulo Final</h1>
+    <h2>La Conducción en Motocicleta (iOS)</h2>
+    <p style="text-align:center; font-size: 0.95rem; color: #666; margin-bottom: 25px;">10 preguntas vitales. Aunque vayas por licencia de carro, te evaluarán sobre motos para que sepas cómo convivir con ellas en la calle.</p>
+    <div id="quizForm">
+        <div class="question-block" id="block_0">
+            <div class="question">1. ¿Qué se considera equipo de protección pasiva indispensable y de uso OBLIGATORIO por ley para el conductor de motocicleta y su acompañante?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q0" value="0"> <span>Rodilleras y coderas de plástico</span></label></li>
+                <li><label><input type="radio" name="q0" value="1"> <span>Casco de seguridad debidamente abrochado y prendas de vestir retrorreflectivas (chaleco o cintas)</span></label></li>
+                <li><label><input type="radio" name="q0" value="2"> <span>Solo lentes oscuros y guantes</span></label></li>
+                <li><label><input type="radio" name="q0" value="3"> <span>Botas con punta de acero</span></label></li>
+            </ul>
+            <div id="feedback_0" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_0" style="display:none;">La Ley de Tránsito exige estrictamente dos cosas al viajar en moto: el casco siempre asegurado bajo la barbilla y algún elemento retrorreflectivo para ser visto de noche.</div>
+        </div>
+        <div class="question-block" id="block_1">
+            <div class="question">2. ¿Cuál es la función principal del casco de seguridad en un accidente de motocicleta?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q1" value="0"> <span>Evitar que el conductor se despeine</span></label></li>
+                <li><label><input type="radio" name="q1" value="1"> <span>Proteger el rostro del viento</span></label></li>
+                <li><label><input type="radio" name="q1" value="2"> <span>Absorber y disipar la energía del impacto para proteger el cráneo y el cerebro de lesiones mortales</span></label></li>
+                <li><label><input type="radio" name="q1" value="3"> <span>Servir de soporte para la cámara (GoPro)</span></label></li>
+            </ul>
+            <div id="feedback_1" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_1" style="display:none;">El casco cuenta con una coraza dura exterior y espuma interior (EPS) que se deforma al chocar, evitando que la fuerza del golpe rompa el cráneo.</div>
+        </div>
+        <div class="question-block" id="block_2">
+            <div class="question">3. Al transportar a un acompañante (pasajero) en la motocicleta, el conductor debe indicarle previamente que:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q2" value="0"> <span>Se mueva en sentido contrario a la curva para mantener el equilibrio</span></label></li>
+                <li><label><input type="radio" name="q2" value="1"> <span>Se agarre de los hombros del conductor</span></label></li>
+                <li><label><input type="radio" name="q2" value="2"> <span>Acompañe suavemente los movimientos e inclinaciones del conductor y mantenga los pies siempre en los estribos (apoyapiés)</span></label></li>
+                <li><label><input type="radio" name="q2" value="3"> <span>Vaya viendo su celular</span></label></li>
+            </ul>
+            <div id="feedback_2" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_2" style="display:none;">El pasajero de la moto debe ser como una 'sombra' del piloto. Si el piloto se inclina a la derecha en una curva, el pasajero debe seguirlo suavemente; si hace fuerza en contra, la moto se volcará.</div>
+        </div>
+        <div class="question-block" id="block_3">
+            <div class="question">4. ¿Cuál es una de las principales causas de accidentes graves en motocicleta originada por la actitud del conductor?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q3" value="0"> <span>Frenar con ambas ruedas</span></label></li>
+                <li><label><input type="radio" name="q3" value="1"> <span>Circular siempre por el centro del carril</span></label></li>
+                <li><label><input type="radio" name="q3" value="2"> <span>El 'falso adelantamiento' zigzagueando entre los vehículos en movimiento ('rayar en medio') y ubicarse en los puntos ciegos</span></label></li>
+                <li><label><input type="radio" name="q3" value="3"> <span>Andar con las luces encendidas de día</span></label></li>
+            </ul>
+            <div id="feedback_3" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_3" style="display:none;">El 'filtreo' o rayar entre dos carriles de carros en movimiento a alta velocidad es ilegal y mortal. Cualquier carro que cambie de carril aplastará al motociclista porque este está en su punto ciego.</div>
+        </div>
+        <div class="question-block" id="block_4">
+            <div class="question">5. Por disposición legal y de seguridad, la luz principal (foco delantero) de una motocicleta debe estar:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q4" value="0"> <span>Encendida solamente de noche (de 6 pm a 6 am)</span></label></li>
+                <li><label><input type="radio" name="q4" value="1"> <span>Encendida únicamente cuando esté lloviendo o haya neblina</span></label></li>
+                <li><label><input type="radio" name="q4" value="2"> <span>Encendida de forma PERMANENTE, tanto de día como de noche, mientras el vehículo esté en marcha</span></label></li>
+                <li><label><input type="radio" name="q4" value="3"> <span>Apagada durante el día para ahorrar batería</span></label></li>
+            </ul>
+            <div id="feedback_4" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_4" style="display:none;">Debido al pequeño tamaño de la moto, es muy difícil verla en los espejos de los carros de día. La luz encendida permanente es una ley obligatoria para aumentar la visibilidad.</div>
+        </div>
+        <div class="question-block" id="block_5">
+            <div class="question">6. ¿Qué técnica de frenado es la más efectiva y segura en una motocicleta sobre piso SECO y en recta?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q5" value="0"> <span>Usar solamente el freno trasero para no irse de boca</span></label></li>
+                <li><label><input type="radio" name="q5" value="1"> <span>Usar solamente el freno delantero</span></label></li>
+                <li><label><input type="radio" name="q5" value="2"> <span>Aplicar ambos frenos (delantero y trasero) de manera simultánea y progresiva, aplicando mayor presión en el delantero (aprox. 70/30)</span></label></li>
+                <li><label><input type="radio" name="q5" value="3"> <span>Frenar bloqueando la llanta trasera (derrapando)</span></label></li>
+            </ul>
+            <div id="feedback_5" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_5" style="display:none;">En una moto, el peso se transfiere al frente al frenar. El freno delantero hace casi todo el trabajo (70%), mientras el trasero sirve para estabilizar (30%). Usar solo el trasero causa un derrape.</div>
+        </div>
+        <div class="question-block" id="block_6">
+            <div class="question">7. Cuando llueve y la carretera está mojada, la técnica de frenado en la motocicleta cambia. ¿Qué se recomienda?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q6" value="0"> <span>Frenar bruscamente con el delantero</span></label></li>
+                <li><label><input type="radio" name="q6" value="1"> <span>Aumentar la distancia de seguridad, evitar el freno delantero fuerte y apoyarse más en el freno de motor y el freno trasero progresivo</span></label></li>
+                <li><label><input type="radio" name="q6" value="2"> <span>Acelerar más para secar las llantas</span></label></li>
+                <li><label><input type="radio" name="q6" value="3"> <span>Poner punto neutro</span></label></li>
+            </ul>
+            <div id="feedback_6" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_6" style="display:none;">En asfalto mojado, tocar fuerte el freno delantero bloquea la llanta de inmediato, provocando una caída instantánea. Se debe usar mucha distancia, bajar marchas y frenar muy suave.</div>
+        </div>
+        <div class="question-block" id="block_7">
+            <div class="question">8. La Ley de Tránsito establece regulaciones para los niños pasajeros en motocicleta. ¿Cuál es la regla?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q7" value="0"> <span>Pueden ir en el tanque de gasolina</span></label></li>
+                <li><label><input type="radio" name="q7" value="1"> <span>No hay edad mínima, siempre que lleven casco</span></label></li>
+                <li><label><input type="radio" name="q7" value="2"> <span>Se prohíbe transportar niños menores de 5 años; si es mayor de 5 debe alcanzar los estribos, llevar casco y ropa reflectiva</span></label></li>
+                <li><label><input type="radio" name="q7" value="3"> <span>Pueden ir entre el conductor y otro pasajero</span></label></li>
+            </ul>
+            <div id="feedback_7" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_7" style="display:none;">Llevar bebés o niños menores de 5 años en moto es una falta gravísima. El niño debe tener edad para comprender, sujetarse y, sobre todo, que sus pies lleguen firmes a los estribos para no caerse.</div>
+        </div>
+        <div class="question-block" id="block_8">
+            <div class="question">9. En Costa Rica, cuando se transportan bultos o carga en una motocicleta, ¿qué condición se debe cumplir?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q8" value="0"> <span>Se pueden llevar en las piernas del conductor</span></label></li>
+                <li><label><input type="radio" name="q8" value="1"> <span>Pueden sobrepasar el ancho del manubrio</span></label></li>
+                <li><label><input type="radio" name="q8" value="2"> <span>La carga no debe sobresalir de los costados ni de la parte trasera de la moto de forma que desequilibre el vehículo, y debe ir firmemente sujeta</span></label></li>
+                <li><label><input type="radio" name="q8" value="3"> <span>La carga puede tapar la luz de freno</span></label></li>
+            </ul>
+            <div id="feedback_8" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_8" style="display:none;">La moto funciona con el equilibrio central. Si llevas carga suelta o que sobresale más allá del ancho del manubrio, el viento o el peso te botarán al asfalto en una curva.</div>
+        </div>
+        <div class="question-block" id="block_9">
+            <div class="question">10. Al conducir detrás de un vehículo grande (camión, furgón o autobús), el motociclista debe evitar ubicarse en el 'punto ciego'. Para asegurarse de que el chofer lo ve, el motociclista debe:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q9" value="0"> <span>Acelerar rápidamente por la derecha</span></label></li>
+                <li><label><input type="radio" name="q9" value="1"> <span>Acercarse a un metro de la carreta del camión</span></label></li>
+                <li><label><input type="radio" name="q9" value="2"> <span>Ubicarse a una distancia donde él mismo pueda ver la cara del chofer a través de los espejos laterales del camión</span></label></li>
+                <li><label><input type="radio" name="q9" value="3"> <span>Ir siempre tocando el pito</span></label></li>
+            </ul>
+            <div id="feedback_9" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_9" style="display:none;">La regla de oro: si desde tu moto no ves la cara del trailero en el espejo de su puerta, tú eres invisible para él. Si él frena, tú chocarás por detrás.</div>
+        </div>
+
+        <button id="submitBtn" class="btn">Calificar Módulo de Motos</button>
+    </div>
+    <div id="result"></div>
+</div>
+
+<script>
+    document.getElementById('submitBtn').addEventListener('click', function(e) {
+        e.preventDefault(); 
+        try {
+            let score = 0;
+            const total = 10;
+            const puntajePorPregunta = 100 / total; 
+
+            for (let i = 0; i < total; i++) {
+                const radios = document.getElementsByName('q' + i);
+                const feedbackDiv = document.getElementById('feedback_' + i);
+                const explanationText = document.getElementById('explanation_' + i).innerText;
+                const correctIndex = parseInt(feedbackDiv.getAttribute('data-correct'));
+
+                let selectedValue = -1;
+                let correctLabelText = "";
+                let selectedLabelDiv = null;
+
+                for (let j = 0; j < radios.length; j++) {
+                    if (radios[j].checked) {
+                        selectedValue = parseInt(radios[j].value);
+                        selectedLabelDiv = radios[j].nextElementSibling; 
+                    }
+                    if (parseInt(radios[j].value) === correctIndex) {
+                        correctLabelText = radios[j].nextElementSibling.innerText;
+                    }
+                }
+
+                feedbackDiv.style.display = 'block';
+
+                let answerResultHTML = "";
+
+                if (selectedValue === correctIndex) {
+                    score++;
+                    answerResultHTML = '✅ <span style="color:#27ae60;">¡Correcto!</span>';
+                    if(selectedLabelDiv) selectedLabelDiv.style.color = '#27ae60';
+                } else {
+                    let errorMsg = '❌ Incorrecto. ';
+                    if (selectedValue === -1) {
+                        errorMsg += 'No respondiste esta pregunta.';
+                    } else {
+                        if(selectedLabelDiv) selectedLabelDiv.style.color = '#e74c3c';
+                    }
+                    answerResultHTML = errorMsg + '<br>La correcta era: <strong style="color:#27ae60;">' + correctLabelText + '</strong>';
+                }
+
+                feedbackDiv.innerHTML = answerResultHTML + 
+                    '<div class="explanation-box">🏍️ <strong>Seguridad en 2 ruedas:</strong> ' + explanationText + '</div>';
+            }
+
+            const finalScore = Math.round(score * puntajePorPregunta);
+            const resultDiv = document.getElementById('result');
+            resultDiv.style.display = 'block';
+
+            if (finalScore >= 80) {
+                resultDiv.innerHTML = '¡Prueba Superada! Aprobaste con: ' + finalScore + '/100 🏆';
+                resultDiv.style.backgroundColor = '#d4edda';
+                resultDiv.style.color = '#155724';
+            } else {
+                resultDiv.innerHTML = 'Puntaje: ' + finalScore + '/100. Necesitas al menos 80. ¡Lee bien sobre la técnica de frenado! 📚';
+                resultDiv.style.backgroundColor = '#f8d7da';
+                resultDiv.style.color = '#721c24';
+            }
+
+            alert("Tu nota en el módulo de Motocicletas es: " + finalScore + "/100. Sube en la página para ver las explicaciones.");
+            window.scrollTo(0, 0); 
+
+        } catch (error) {
+            alert("Hubo un error calculando: " + error.message);
+        }
+    });
+</script>
+</body>
+</html>

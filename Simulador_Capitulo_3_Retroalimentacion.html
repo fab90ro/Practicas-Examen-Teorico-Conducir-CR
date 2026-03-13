@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Examen Teórico - Capítulo 3 con Retroalimentación</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f5f5f5; color: #333; line-height: 1.6; padding: 15px; margin: 0; }
+        h1 { text-align: center; color: #2980b9; font-size: 1.6rem; margin-bottom: 5px; }
+        h2 { text-align: center; color: #7f8c8d; font-size: 1rem; margin-top: 0; margin-bottom: 25px; }
+        .quiz-container { width: 100%; max-width: 800px; margin: 0 auto; background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); box-sizing: border-box; }
+        .question-block { margin-bottom: 25px; border-bottom: 1px solid #eee; padding-bottom: 20px; }
+        .question { font-weight: bold; font-size: 1.15rem; margin-bottom: 15px; color: #2c3e50; }
+        .options { list-style-type: none; padding: 0; margin: 0; }
+        .options li { margin-bottom: 12px; }
+        label { cursor: pointer; display: flex; align-items: flex-start; padding: 12px; border-radius: 8px; background: #fafafa; border: 1px solid #ddd; -webkit-tap-highlight-color: transparent; touch-action: manipulation; transition: background 0.2s; }
+        label:active { background: #ebf5fb; }
+        input[type="radio"] { margin-right: 12px; margin-top: 4px; transform: scale(1.3); }
+        .btn { display: block; width: 100%; padding: 18px; background-color: #2980b9; color: white; border: none; font-size: 1.2rem; font-weight: bold; border-radius: 10px; cursor: pointer; margin-top: 30px; -webkit-appearance: none; box-shadow: 0 4px 6px rgba(41, 128, 185, 0.3); transition: background 0.3s; }
+        .btn:active { background-color: #1f618d; }
+        #result { display: none; margin-top: 30px; padding: 20px; border-radius: 10px; text-align: center; font-size: 1.3rem; font-weight: bold; }
+        .correct-answer { color: #27ae60; font-weight: bold; }
+        .wrong-answer { color: #e74c3c; text-decoration: line-through; }
+        .feedback { margin-top: 15px; font-size: 1rem; padding: 12px; background: #fff; border: 1px solid #eee; border-radius: 6px; }
+        .explanation-box { margin-top: 15px; padding: 15px; background-color: #ebf5fb; border-left: 5px solid #3498db; border-radius: 6px; font-size: 0.95rem; color: #2c3e50; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+    </style>
+</head>
+<body>
+
+<div class="quiz-container">
+    <h1>Simulador Examen - Capítulo 3</h1>
+    <h2>Vías y Señalamiento Vial (iOS)</h2>
+    <p style="text-align:center; font-size: 0.95rem; color: #666; margin-bottom: 25px;">30 preguntas sobre colores, líneas, semáforos y oficiales. ¡Con explicaciones detalladas!</p>
+    <div id="quizForm">
+        <div class="question-block" id="block_0">
+            <div class="question">1. ¿Qué es el señalamiento vial?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q0" value="0"> <span>El proceso de pintar las calles con asfalto</span></label></li>
+                <li><label><input type="radio" name="q0" value="1"> <span>El sistema de comunicación que transmite advertencias, obligaciones o información a los usuarios de la vía</span></label></li>
+                <li><label><input type="radio" name="q0" value="2"> <span>Los semáforos peatonales exclusivamente</span></label></li>
+                <li><label><input type="radio" name="q0" value="3"> <span>El diseño de las curvas en una carretera</span></label></li>
+            </ul>
+            <div id="feedback_0" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_0" style="display:none;">El señalamiento vial actúa como un lenguaje o sistema de comunicación visual, auditivo y físico que guía, advierte y regula a conductores y peatones.</div>
+        </div>
+        <div class="question-block" id="block_1">
+            <div class="question">2. El señalamiento vial se clasifica principalmente en:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q1" value="0"> <span>Moderno y Antiguo</span></label></li>
+                <li><label><input type="radio" name="q1" value="1"> <span>Diurno y Nocturno</span></label></li>
+                <li><label><input type="radio" name="q1" value="2"> <span>Vertical, Horizontal, Luminoso, Sonoro y Manual</span></label></li>
+                <li><label><input type="radio" name="q1" value="3"> <span>Preventivo, Reglamentario e Informativo únicamente</span></label></li>
+            </ul>
+            <div id="feedback_1" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_1" style="display:none;">Por su naturaleza física, el señalamiento se divide en 5 grandes grupos: Vertical (rótulos), Horizontal (pintura en calle), Luminoso (semáforos), Sonoro (sirenas) y Manual (oficiales).</div>
+        </div>
+        <div class="question-block" id="block_2">
+            <div class="question">3. Las señales verticales se dividen en tres grandes grupos, que son:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q2" value="0"> <span>Rojas, Amarillas y Verdes</span></label></li>
+                <li><label><input type="radio" name="q2" value="1"> <span>Grandes, Medianas y Pequeñas</span></label></li>
+                <li><label><input type="radio" name="q2" value="2"> <span>Reglamentarias, Preventivas e Informativas</span></label></li>
+                <li><label><input type="radio" name="q2" value="3"> <span>Obligatorias, Opcionales y Sugeridas</span></label></li>
+            </ul>
+            <div id="feedback_2" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_2" style="display:none;">Según el propósito del rótulo (señal vertical), estas se subdividen en Reglamentarias (leyes), Preventivas (peligros) e Informativas (guías y servicios).</div>
+        </div>
+        <div class="question-block" id="block_3">
+            <div class="question">4. Las señales Reglamentarias tienen como objetivo principal:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q3" value="0"> <span>Sugerir rutas alternativas</span></label></li>
+                <li><label><input type="radio" name="q3" value="1"> <span>Indicar al usuario las obligaciones, prohibiciones o restricciones (cuyo incumplimiento es una multa)</span></label></li>
+                <li><label><input type="radio" name="q3" value="2"> <span>Advertir sobre animales en la vía</span></label></li>
+                <li><label><input type="radio" name="q3" value="3"> <span>Informar sobre la proximidad de un hospital</span></label></li>
+            </ul>
+            <div id="feedback_3" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_3" style="display:none;">Una señal reglamentaria dicta una ley de tránsito. Irrespetar una señal de ALTO o de Límite de Velocidad constituye una infracción inmediata.</div>
+        </div>
+        <div class="question-block" id="block_4">
+            <div class="question">5. ¿Cuál es la forma y color típicos de la señal reglamentaria de ALTO?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q4" value="0"> <span>Círculo rojo con letras blancas</span></label></li>
+                <li><label><input type="radio" name="q4" value="1"> <span>Octágono rojo con letras blancas</span></label></li>
+                <li><label><input type="radio" name="q4" value="2"> <span>Triángulo invertido rojo y blanco</span></label></li>
+                <li><label><input type="radio" name="q4" value="3"> <span>Rombo amarillo con letras negras</span></label></li>
+            </ul>
+            <div id="feedback_4" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_4" style="display:none;">El ALTO es la única señal de tránsito con forma octagonal (8 lados) en fondo rojo para que sea reconocida fácilmente desde cualquier ángulo.</div>
+        </div>
+        <div class="question-block" id="block_5">
+            <div class="question">6. La señal reglamentaria de CEDA (Ceda el Paso) tiene forma de:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q5" value="0"> <span>Triángulo equilátero invertido (con la punta hacia abajo)</span></label></li>
+                <li><label><input type="radio" name="q5" value="1"> <span>Círculo</span></label></li>
+                <li><label><input type="radio" name="q5" value="2"> <span>Rectángulo</span></label></li>
+                <li><label><input type="radio" name="q5" value="3"> <span>Octágono</span></label></li>
+            </ul>
+            <div id="feedback_5" class="feedback" style="display:none;" data-correct="0"></div>
+            <div id="explanation_5" style="display:none;">El CEDA es un triángulo con la punta hacia abajo. Indica que se debe reducir la velocidad y dar prioridad al vehículo que circula por la vía principal.</div>
+        </div>
+        <div class="question-block" id="block_6">
+            <div class="question">7. ¿De qué color suelen ser las señales Preventivas?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q6" value="0"> <span>Fondo blanco, símbolos negros y anillo rojo</span></label></li>
+                <li><label><input type="radio" name="q6" value="1"> <span>Fondo azul, símbolos blancos</span></label></li>
+                <li><label><input type="radio" name="q6" value="2"> <span>Fondo verde, símbolos blancos</span></label></li>
+                <li><label><input type="radio" name="q6" value="3"> <span>Fondo amarillo, símbolos y bordes negros</span></label></li>
+            </ul>
+            <div id="feedback_6" class="feedback" style="display:none;" data-correct="3"></div>
+            <div id="explanation_6" style="display:none;">Las señales preventivas (que avisan de curvas, derrumbes, escuelas) son rombos de color amarillo con dibujos en negro para captar la atención preventiva.</div>
+        </div>
+        <div class="question-block" id="block_7">
+            <div class="question">8. Si una señal preventiva tiene un color de fondo ANARANJADO en lugar de amarillo, significa que:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q7" value="0"> <span>Es una zona de hospitales</span></label></li>
+                <li><label><input type="radio" name="q7" value="1"> <span>Es una advertencia de condiciones peligrosas temporales por construcción o mantenimiento de la vía</span></label></li>
+                <li><label><input type="radio" name="q7" value="2"> <span>Indica que es de noche</span></label></li>
+                <li><label><input type="radio" name="q7" value="3"> <span>Es una señal exclusiva para maquinaria agrícola</span></label></li>
+            </ul>
+            <div id="feedback_7" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_7" style="display:none;">El color anaranjado se reserva exclusivamente para prevención de Obras en la Vía (construcciones, bacheo, hombres trabajando), indicando que el peligro es temporal.</div>
+        </div>
+        <div class="question-block" id="block_8">
+            <div class="question">9. Las señales Informativas se dividen en varios tipos (identificación, destino, servicios). ¿De qué color son generalmente las que indican servicios o turismo (como hospitales o gasolineras)?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q8" value="0"> <span>Rojas</span></label></li>
+                <li><label><input type="radio" name="q8" value="1"> <span>Amarillas</span></label></li>
+                <li><label><input type="radio" name="q8" value="2"> <span>Azules o Cafés (turismo)</span></label></li>
+                <li><label><input type="radio" name="q8" value="3"> <span>Verdes</span></label></li>
+            </ul>
+            <div id="feedback_8" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_8" style="display:none;">Las señales de servicios (teléfonos, hospitales, gasolineras) son azules. Las de interés turístico, arqueológico o recreativo suelen ser de color café o marrón.</div>
+        </div>
+        <div class="question-block" id="block_9">
+            <div class="question">10. ¿Qué color tienen las señales Informativas de Destino y Distancia (las que te guían hacia ciudades o pueblos)?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q9" value="0"> <span>Fondo Azul</span></label></li>
+                <li><label><input type="radio" name="q9" value="1"> <span>Fondo Verde con letras blancas</span></label></li>
+                <li><label><input type="radio" name="q9" value="2"> <span>Fondo Amarillo</span></label></li>
+                <li><label><input type="radio" name="q9" value="3"> <span>Fondo Blanco</span></label></li>
+            </ul>
+            <div id="feedback_9" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_9" style="display:none;">Los grandes rótulos que indican hacia dónde queda una ciudad y a cuántos kilómetros está, utilizan fondo verde reflectivo con texto blanco.</div>
+        </div>
+        <div class="question-block" id="block_10">
+            <div class="question">11. El Señalamiento Horizontal se refiere a:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q10" value="0"> <span>Los semáforos colocados horizontalmente</span></label></li>
+                <li><label><input type="radio" name="q10" value="1"> <span>Las señales de tránsito caídas en el suelo</span></label></li>
+                <li><label><input type="radio" name="q10" value="2"> <span>Las marcas, líneas y símbolos pintados directamente sobre la calzada o calle</span></label></li>
+                <li><label><input type="radio" name="q10" value="3"> <span>Las señales puestas en los puentes</span></label></li>
+            </ul>
+            <div id="feedback_10" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_10" style="display:none;">El señalamiento horizontal es la pintura amarilla, blanca o de otros colores trazada sobre el asfalto (líneas divisorias, pasos peatonales, flechas direccionales).</div>
+        </div>
+        <div class="question-block" id="block_11">
+            <div class="question">12. ¿Qué indica una LÍNEA AMARILLA en el centro de la vía?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q11" value="0"> <span>Que ambos carriles van en la misma dirección</span></label></li>
+                <li><label><input type="radio" name="q11" value="1"> <span>Que es una vía de un solo sentido</span></label></li>
+                <li><label><input type="radio" name="q11" value="2"> <span>Que separa carriles con sentidos opuestos de circulación</span></label></li>
+                <li><label><input type="radio" name="q11" value="3"> <span>Que es zona de estacionamiento</span></label></li>
+            </ul>
+            <div id="feedback_11" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_11" style="display:none;">La pintura amarilla se usa para dividir flujos de tránsito opuestos (los carros de tu izquierda vienen de frente hacia ti).</div>
+        </div>
+        <div class="question-block" id="block_12">
+            <div class="question">13. ¿Qué significa una línea amarilla CONTINUA (sólida) en el centro de la calle?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q12" value="0"> <span>Que se puede adelantar con precaución</span></label></li>
+                <li><label><input type="radio" name="q12" value="1"> <span>Que el adelantamiento está estrictamente prohibido para ambos sentidos</span></label></li>
+                <li><label><input type="radio" name="q12" value="2"> <span>Que solo pueden circular camiones</span></label></li>
+                <li><label><input type="radio" name="q12" value="3"> <span>Que es un paso peatonal</span></label></li>
+            </ul>
+            <div id="feedback_12" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_12" style="display:none;">Una línea continua es como un muro imaginario: prohíbe cruzarse al carril contrario para adelantar, generalmente porque hay un peligro (curva, puente o cima).</div>
+        </div>
+        <div class="question-block" id="block_13">
+            <div class="question">14. ¿Qué significa una línea amarilla DISCONTINUA (fragmentada) en el centro de la vía?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q13" value="0"> <span>Prohibición total de adelantamiento</span></label></li>
+                <li><label><input type="radio" name="q13" value="1"> <span>Permite el adelantamiento siempre que haya visibilidad y el carril contrario esté libre</span></label></li>
+                <li><label><input type="radio" name="q13" value="2"> <span>Límite de velocidad máxima 40 km/h</span></label></li>
+                <li><label><input type="radio" name="q13" value="3"> <span>Exclusivo para ciclistas</span></label></li>
+            </ul>
+            <div id="feedback_13" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_13" style="display:none;">La línea discontinua o punteada indica que es un tramo recto y con visibilidad segura para realizar la maniobra de adelantamiento.</div>
+        </div>
+        <div class="question-block" id="block_14">
+            <div class="question">15. Si en el centro de la calle hay DOS líneas amarillas, una continua y otra discontinua a su lado, ¿quién puede adelantar?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q14" value="0"> <span>Nadie, está prohibido para ambos</span></label></li>
+                <li><label><input type="radio" name="q14" value="1"> <span>Solo el vehículo que tiene la línea discontinua del lado de su carril</span></label></li>
+                <li><label><input type="radio" name="q14" value="2"> <span>Solo el vehículo que tiene la línea continua del lado de su carril</span></label></li>
+                <li><label><input type="radio" name="q14" value="3"> <span>Cualquiera si usa las direccionales</span></label></li>
+            </ul>
+            <div id="feedback_14" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_14" style="display:none;">Esta es una línea de barrera mixta. Si la línea de 'puntos' (discontinua) está pegada a tu carril, tú puedes adelantar; el que viene de frente no.</div>
+        </div>
+        <div class="question-block" id="block_15">
+            <div class="question">16. ¿Qué función tienen las LÍNEAS BLANCAS pintadas a lo largo de la calle?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q15" value="0"> <span>Separar carriles con sentidos de circulación opuestos</span></label></li>
+                <li><label><input type="radio" name="q15" value="1"> <span>Delimitar el ancho del vehículo</span></label></li>
+                <li><label><input type="radio" name="q15" value="2"> <span>Separar carriles que van en un mismo sentido de circulación, y demarcar las orillas (línea de borde)</span></label></li>
+                <li><label><input type="radio" name="q15" value="3"> <span>Indicar zona de no parqueo</span></label></li>
+            </ul>
+            <div id="feedback_15" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_15" style="display:none;">Las líneas blancas se usan en autopistas o vías de un solo sentido para dividir los carriles que van hacia el mismo destino, y también para marcar el borde derecho de la calzada.</div>
+        </div>
+        <div class="question-block" id="block_16">
+            <div class="question">17. El semáforo vehicular es el dispositivo luminoso más común. ¿Qué indica exactamente la LUZ AMARILLA FIJA?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q16" value="0"> <span>Acelerar para pasar rápido antes de la roja</span></label></li>
+                <li><label><input type="radio" name="q16" value="1"> <span>Frenar bruscamente en cualquier punto</span></label></li>
+                <li><label><input type="radio" name="q16" value="2"> <span>Precaución y detenerse (a menos que se esté tan cerca del cruce que una frenada provoque un accidente)</span></label></li>
+                <li><label><input type="radio" name="q16" value="3"> <span>Vía libre con precaución</span></label></li>
+            </ul>
+            <div id="feedback_16" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_16" style="display:none;">La luz amarilla no significa 'acelere'. Indica que está a punto de cambiar a rojo y usted debe detenerse, usando su criterio para no frenar en seco si ya cruzó la línea de parada.</div>
+        </div>
+        <div class="question-block" id="block_17">
+            <div class="question">18. ¿Qué debe hacer un conductor si se topa un semáforo con la luz ROJA INTERMITENTE (parpadeando)?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q17" value="0"> <span>Pasar rápido porque está dañado</span></label></li>
+                <li><label><input type="radio" name="q17" value="1"> <span>Funciona igual que un CEDA; pasar reduciendo la velocidad</span></label></li>
+                <li><label><input type="radio" name="q17" value="2"> <span>Funciona igual que una señal de ALTO; debe hacer parada total antes de cruzar</span></label></li>
+                <li><label><input type="radio" name="q17" value="3"> <span>Dar vuelta en U</span></label></li>
+            </ul>
+            <div id="feedback_17" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_17" style="display:none;">Un semáforo en rojo intermitente (usado a veces de noche o por fallas) tiene valor legal de ALTO. Usted DEBE detener su vehículo por completo.</div>
+        </div>
+        <div class="question-block" id="block_18">
+            <div class="question">19. ¿Qué debe hacer un conductor ante un semáforo con luz AMARILLA INTERMITENTE?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q18" value="0"> <span>Detenerse por completo</span></label></li>
+                <li><label><input type="radio" name="q18" value="1"> <span>Funciona igual que un CEDA; reduzca la velocidad y pase con mucha precaución</span></label></li>
+                <li><label><input type="radio" name="q18" value="2"> <span>Ignorarlo y mantener la velocidad límite</span></label></li>
+                <li><label><input type="radio" name="q18" value="3"> <span>Acelerar porque tiene el derecho de vía absoluto</span></label></li>
+            </ul>
+            <div id="feedback_18" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_18" style="display:none;">El amarillo parpadeante significa precaución extrema o ceda el paso; usted debe disminuir la velocidad y estar alerta a cruces de peatones o vehículos.</div>
+        </div>
+        <div class="question-block" id="block_19">
+            <div class="question">20. En el Señalamiento Sonoro, ¿qué vehículo tiene SIEMPRE el derecho de paso incondicional cuando lleva su sirena de emergencia activada?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q19" value="0"> <span>Un camión recolector de basura</span></label></li>
+                <li><label><input type="radio" name="q19" value="1"> <span>Un autobús escolar</span></label></li>
+                <li><label><input type="radio" name="q19" value="2"> <span>Vehículos de emergencia (Bomberos, Cruz Roja, Policía, Tránsito)</span></label></li>
+                <li><label><input type="radio" name="q19" value="3"> <span>Un taxi tocando la bocina</span></label></li>
+            </ul>
+            <div id="feedback_19" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_19" style="display:none;">Al escuchar la sirena de un vehículo oficial de emergencia, todos los conductores deben orillarse y detenerse inmediatamente para cederles el paso.</div>
+        </div>
+        <div class="question-block" id="block_20">
+            <div class="question">21. En cuanto al uso de la bocina (pito), la Ley de Tránsito establece que:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q20" value="0"> <span>Se puede usar para saludar a conocidos en la vía</span></label></li>
+                <li><label><input type="radio" name="q20" value="1"> <span>Debe usarse para apurar al conductor de adelante en un semáforo</span></label></li>
+                <li><label><input type="radio" name="q20" value="2"> <span>Solo debe utilizarse para prevenir accidentes y está prohibida cerca de hospitales o escuelas</span></label></li>
+                <li><label><input type="radio" name="q20" value="3"> <span>Se prohíbe su uso de día</span></label></li>
+            </ul>
+            <div id="feedback_20" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_20" style="display:none;">El claxon no es un instrumento de queja o saludo, es estrictamente una señal de advertencia acústica para evitar atropellos o colisiones inminentes.</div>
+        </div>
+        <div class="question-block" id="block_21">
+            <div class="question">22. El Señalamiento Manual es realizado por:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q21" value="0"> <span>El Inspector o Policía de Tránsito</span></label></li>
+                <li><label><input type="radio" name="q21" value="1"> <span>Los peatones</span></label></li>
+                <li><label><input type="radio" name="q21" value="2"> <span>Las cámaras de seguridad</span></label></li>
+                <li><label><input type="radio" name="q21" value="3"> <span>Los cuidacarros (guachimanes)</span></label></li>
+            </ul>
+            <div id="feedback_21" class="feedback" style="display:none;" data-correct="0"></div>
+            <div id="explanation_21" style="display:none;">El señalamiento manual oficial es el que ejecutan los oficiales de la Policía de Tránsito con sus manos y silbato para regular intersecciones.</div>
+        </div>
+        <div class="question-block" id="block_22">
+            <div class="question">23. Si usted llega a una intersección donde el semáforo está en LUZ VERDE, pero un Oficial de Tránsito en medio de la calle le indica que se DETENGA, ¿qué debe hacer?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q22" value="0"> <span>Obedecer al semáforo porque la máquina no se equivoca</span></label></li>
+                <li><label><input type="radio" name="q22" value="1"> <span>Obedecer al oficial de tránsito, ya que su indicación prevalece sobre cualquier otra señal</span></label></li>
+                <li><label><input type="radio" name="q22" value="2"> <span>Pitarle al oficial para que se quite</span></label></li>
+                <li><label><input type="radio" name="q22" value="3"> <span>Pasar muy despacio</span></label></li>
+            </ul>
+            <div id="feedback_22" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_22" style="display:none;">Según la jerarquía de la ley, las órdenes en vivo dictadas por un Oficial de Tránsito están por encima de los semáforos y rótulos.</div>
+        </div>
+        <div class="question-block" id="block_23">
+            <div class="question">24. La pintura roja aplicada en el cordón del caño (acera) significa:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q23" value="0"> <span>Zona de carga y descarga</span></label></li>
+                <li><label><input type="radio" name="q23" value="1"> <span>Zona de parqueo para taxis</span></label></li>
+                <li><label><input type="radio" name="q23" value="2"> <span>Prohibición absoluta de estacionamiento</span></label></li>
+                <li><label><input type="radio" name="q23" value="3"> <span>Zona de parqueo con parquímetro</span></label></li>
+            </ul>
+            <div id="feedback_23" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_23" style="display:none;">El cordón de caño pintado de rojo (o con líneas amarillas en el borde) indica que está totalmente prohibido estacionarse en esa zona.</div>
+        </div>
+        <div class="question-block" id="block_24">
+            <div class="question">25. El paso peatonal pintado con anchas franjas blancas paralelas a la dirección de la calle (conocido popularmente como paso de cebra) es:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q24" value="0"> <span>Un paso peatonal regulado (tiene semáforo o está en intersección)</span></label></li>
+                <li><label><input type="radio" name="q24" value="1"> <span>Un paso peatonal no regulado</span></label></li>
+                <li><label><input type="radio" name="q24" value="2"> <span>Una zona de parqueo para motos</span></label></li>
+                <li><label><input type="radio" name="q24" value="3"> <span>Una advertencia de escuela</span></label></li>
+            </ul>
+            <div id="feedback_24" class="feedback" style="display:none;" data-correct="0"></div>
+            <div id="explanation_24" style="display:none;">Las franjas gruesas paralelas (paso de cebra) siempre se utilizan en intersecciones donde hay semáforos, señales de alto o ceda.</div>
+        </div>
+        <div class="question-block" id="block_25">
+            <div class="question">26. Un cruce peatonal marcado únicamente con dos líneas blancas transversales (una al inicio y otra al final de la zona de cruce) indica:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q25" value="0"> <span>Un paso peatonal no regulado (a mitad de cuadra)</span></label></li>
+                <li><label><input type="radio" name="q25" value="1"> <span>Límite de velocidad de 25 km/h</span></label></li>
+                <li><label><input type="radio" name="q25" value="2"> <span>Zona de giro en U</span></label></li>
+                <li><label><input type="radio" name="q25" value="3"> <span>Zona de adelantamiento permitido</span></label></li>
+            </ul>
+            <div id="feedback_25" class="feedback" style="display:none;" data-correct="0"></div>
+            <div id="explanation_25" style="display:none;">Estas dos líneas se usan para pasos a desnivel (zonas escolares o a mitad de una cuadra recta) donde el peatón NO tiene semáforo.</div>
+        </div>
+        <div class="question-block" id="block_26">
+            <div class="question">27. ¿Qué son los 'Captaluces' (conocidos coloquialmente como 'ojos de gato')?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q26" value="0"> <span>Las luces altas de los carros</span></label></li>
+                <li><label><input type="radio" name="q26" value="1"> <span>Dispositivos reflectantes colocados en la calzada (piso) para mejorar la visibilidad de los carriles y orillas de noche o con lluvia</span></label></li>
+                <li><label><input type="radio" name="q26" value="2"> <span>Las luces de los semáforos</span></label></li>
+                <li><label><input type="radio" name="q26" value="3"> <span>Cámaras de fotomultas</span></label></li>
+            </ul>
+            <div id="feedback_26" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_26" style="display:none;">Los captaluces son aditamentos físicos y reflectantes instalados sobre las líneas amarillas o blancas en el pavimento que brillan al ser iluminados por el carro.</div>
+        </div>
+        <div class="question-block" id="block_27">
+            <div class="question">28. Si ve captaluces reflectando luz ROJA en la vía por la que circula, esto indica:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q27" value="0"> <span>Que está lloviendo</span></label></li>
+                <li><label><input type="radio" name="q27" value="1"> <span>El borde derecho de su carril</span></label></li>
+                <li><label><input type="radio" name="q27" value="2"> <span>Que usted está circulando en sentido contrario al permitido (vía equivocada)</span></label></li>
+                <li><label><input type="radio" name="q27" value="3"> <span>Que viene una curva peligrosa</span></label></li>
+            </ul>
+            <div id="feedback_27" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_27" style="display:none;">Si un captaluz brilla de color rojo hacia ti, es una advertencia grave de que entraste a un carril o calle en sentido prohibido o 'contra vía'.</div>
+        </div>
+        <div class="question-block" id="block_28">
+            <div class="question">29. En el pavimento se pinta a veces una caja o rectángulo de líneas amarillas cruzadas en diagonal (tipo malla). ¿Qué significa?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q28" value="0"> <span>Zona para reparar vehículos</span></label></li>
+                <li><label><input type="radio" name="q28" value="1"> <span>Parada de autobuses</span></label></li>
+                <li><label><input type="radio" name="q28" value="2"> <span>Cruce antibloqueo o zona de no bloqueo: prohíbe quedar detenido sobre esa malla para no obstaculizar la intersección</span></label></li>
+                <li><label><input type="radio" name="q28" value="3"> <span>Zona segura para peatones</span></label></li>
+            </ul>
+            <div id="feedback_28" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_28" style="display:none;">Las líneas canalizadoras amarillas cruzadas se ubican en cruces con mucho tráfico. No puedes avanzar si vas a quedar atrapado encima de ellas bloqueando el paso cruzado.</div>
+        </div>
+        <div class="question-block" id="block_29">
+            <div class="question">30. ¿Qué indica un captaluz que refleja luz AMARILLA?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q29" value="0"> <span>Separa carriles del mismo sentido</span></label></li>
+                <li><label><input type="radio" name="q29" value="1"> <span>Separa carriles con sentidos de circulación contrarios (va sobre la línea amarilla del centro)</span></label></li>
+                <li><label><input type="radio" name="q29" value="2"> <span>Indica el espaldón derecho</span></label></li>
+                <li><label><input type="radio" name="q29" value="3"> <span>Marca una señal de ALTO en el piso</span></label></li>
+            </ul>
+            <div id="feedback_29" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_29" style="display:none;">Al igual que la pintura, los captaluces amarillos se instalan en el centro de la vía para dividir los carriles de doble sentido.</div>
+        </div>
+
+        <button id="submitBtn" class="btn">Calificar Señalamiento</button>
+    </div>
+    <div id="result"></div>
+</div>
+
+<script>
+    document.getElementById('submitBtn').addEventListener('click', function(e) {
+        e.preventDefault(); 
+        try {
+            let score = 0;
+            const total = 30;
+            const puntajePorPregunta = 100 / total;
+
+            for (let i = 0; i < total; i++) {
+                const radios = document.getElementsByName('q' + i);
+                const feedbackDiv = document.getElementById('feedback_' + i);
+                const explanationText = document.getElementById('explanation_' + i).innerText;
+                const correctIndex = parseInt(feedbackDiv.getAttribute('data-correct'));
+
+                let selectedValue = -1;
+                let correctLabelText = "";
+                let selectedLabelDiv = null;
+
+                for (let j = 0; j < radios.length; j++) {
+                    if (radios[j].checked) {
+                        selectedValue = parseInt(radios[j].value);
+                        selectedLabelDiv = radios[j].nextElementSibling; 
+                    }
+                    if (parseInt(radios[j].value) === correctIndex) {
+                        correctLabelText = radios[j].nextElementSibling.innerText;
+                    }
+                }
+
+                feedbackDiv.style.display = 'block';
+
+                let answerResultHTML = "";
+
+                if (selectedValue === correctIndex) {
+                    score++;
+                    answerResultHTML = '✅ <span style="color:#27ae60;">¡Correcto!</span>';
+                    if(selectedLabelDiv) selectedLabelDiv.style.color = '#27ae60';
+                } else {
+                    let errorMsg = '❌ Incorrecto. ';
+                    if (selectedValue === -1) {
+                        errorMsg += 'No respondiste esta pregunta.';
+                    } else {
+                        if(selectedLabelDiv) selectedLabelDiv.style.color = '#e74c3c';
+                    }
+                    answerResultHTML = errorMsg + '<br>La correcta era: <strong style="color:#27ae60;">' + correctLabelText + '</strong>';
+                }
+
+                feedbackDiv.innerHTML = answerResultHTML + 
+                    '<div class="explanation-box">🚦 <strong>Análisis:</strong> ' + explanationText + '</div>';
+            }
+
+            const finalScore = Math.round(score * puntajePorPregunta);
+            const resultDiv = document.getElementById('result');
+            resultDiv.style.display = 'block';
+
+            if (finalScore >= 80) {
+                resultDiv.innerHTML = '¡Gran trabajo! Aprobaste con: ' + finalScore + '/100 🏆';
+                resultDiv.style.backgroundColor = '#d4edda';
+                resultDiv.style.color = '#155724';
+            } else {
+                resultDiv.innerHTML = 'Puntaje: ' + finalScore + '/100. Necesitas al menos 80. ¡Repasa el significado de las líneas y rótulos! 📚';
+                resultDiv.style.backgroundColor = '#f8d7da';
+                resultDiv.style.color = '#721c24';
+            }
+
+            alert("Tu nota en Señalamiento Vial es: " + finalScore + "/100. Desliza hacia arriba para ver tus aciertos y errores explicados.");
+            window.scrollTo(0, 0); 
+
+        } catch (error) {
+            alert("Hubo un error calculando: " + error.message);
+        }
+    });
+</script>
+</body>
+</html>

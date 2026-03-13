@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Examen Teórico - Capítulo 2 con Retroalimentación</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f4f6f9; color: #2c3e50; line-height: 1.6; padding: 15px; margin: 0; }
+        h1 { text-align: center; color: #c0392b; font-size: 1.6rem; margin-bottom: 5px; }
+        h2 { text-align: center; color: #7f8c8d; font-size: 1rem; margin-top: 0; margin-bottom: 25px; }
+        .quiz-container { width: 100%; max-width: 800px; margin: 0 auto; background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); box-sizing: border-box; }
+        .question-block { margin-bottom: 25px; border-bottom: 1px solid #e1e8ed; padding-bottom: 20px; }
+        .question { font-weight: bold; font-size: 1.15rem; margin-bottom: 15px; color: #2c3e50; }
+        .options { list-style-type: none; padding: 0; margin: 0; }
+        .options li { margin-bottom: 12px; }
+        label { cursor: pointer; display: flex; align-items: flex-start; padding: 12px; border-radius: 8px; background: #f8f9fa; border: 1px solid #dcdde1; -webkit-tap-highlight-color: transparent; touch-action: manipulation; transition: background 0.2s; }
+        label:active { background: #fdf2e9; }
+        input[type="radio"] { margin-right: 12px; margin-top: 4px; transform: scale(1.3); }
+        .btn { display: block; width: 100%; padding: 18px; background-color: #c0392b; color: white; border: none; font-size: 1.2rem; font-weight: bold; border-radius: 10px; cursor: pointer; margin-top: 30px; -webkit-appearance: none; box-shadow: 0 4px 6px rgba(192, 57, 43, 0.3); transition: background 0.3s; }
+        .btn:active { background-color: #922b21; }
+        #result { display: none; margin-top: 30px; padding: 20px; border-radius: 10px; text-align: center; font-size: 1.3rem; font-weight: bold; }
+        .correct-answer { color: #27ae60; font-weight: bold; }
+        .wrong-answer { color: #e74c3c; text-decoration: line-through; }
+        .feedback { margin-top: 15px; font-size: 1rem; padding: 12px; background: #fdfefe; border: 1px solid #eee; border-radius: 6px; }
+        .explanation-box { margin-top: 15px; padding: 15px; background-color: #fef9e7; border-left: 5px solid #d35400; border-radius: 6px; font-size: 0.95rem; color: #333; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+    </style>
+</head>
+<body>
+
+<div class="quiz-container">
+    <h1>Simulador Examen - Capítulo 2</h1>
+    <h2>Legislación de Tránsito y Licencias (iOS)</h2>
+    <p style="text-align:center; font-size: 0.95rem; color: #555; margin-bottom: 25px;">30 preguntas sobre licencias, puntos, multas y leyes. ¡Responde y lee la justificación de cada respuesta!</p>
+    <div id="quizForm">
+        <div class="question-block" id="block_0">
+            <div class="question">1. ¿Qué tipo de vehículos permite conducir la licencia Tipo B1?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q0" value="0"> <span>Vehículos articulados y pesados</span></label></li>
+                <li><label><input type="radio" name="q0" value="1"> <span>Vehículos livianos de hasta 4.000 kg de peso bruto (incluyendo cuadraciclos y UTV)</span></label></li>
+                <li><label><input type="radio" name="q0" value="2"> <span>Solamente motocicletas de cualquier cilindraje</span></label></li>
+                <li><label><input type="radio" name="q0" value="3"> <span>Autobuses y microbuses</span></label></li>
+            </ul>
+            <div id="feedback_0" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_0" style="display:none;">La licencia B1 es la más común y autoriza conducir automóviles, pickups y vehículos livianos de hasta 4.000 kg, además de cuadraciclos y UTV.</div>
+        </div>
+        <div class="question-block" id="block_1">
+            <div class="question">2. La licencia Tipo A3 autoriza la conducción de:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q1" value="0"> <span>Motos de hasta 125 cc</span></label></li>
+                <li><label><input type="radio" name="q1" value="1"> <span>Motos de hasta 500 cc</span></label></li>
+                <li><label><input type="radio" name="q1" value="2"> <span>Motocicletas de cualquier cilindraje</span></label></li>
+                <li><label><input type="radio" name="q1" value="3"> <span>Bicicletas con motor exclusivamente</span></label></li>
+            </ul>
+            <div id="feedback_1" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_1" style="display:none;">La categoría A es para motocicletas. A1 es hasta 125cc, A2 hasta 500cc y la A3 no tiene límite de cilindraje.</div>
+        </div>
+        <div class="question-block" id="block_2">
+            <div class="question">3. ¿Qué categoría de licencia se requiere para conducir vehículos pesados articulados (furgones o tráilers)?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q2" value="0"> <span>B2</span></label></li>
+                <li><label><input type="radio" name="q2" value="1"> <span>B3</span></label></li>
+                <li><label><input type="radio" name="q2" value="2"> <span>B4</span></label></li>
+                <li><label><input type="radio" name="q2" value="3"> <span>E1</span></label></li>
+            </ul>
+            <div id="feedback_2" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_2" style="display:none;">La licencia B4 es la categoría específica para conducir vehículos pesados articulados.</div>
+        </div>
+        <div class="question-block" id="block_3">
+            <div class="question">4. Las licencias Tipo C (C1 y C2) son exclusivas para:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q3" value="0"> <span>Transporte de materiales peligrosos</span></label></li>
+                <li><label><input type="radio" name="q3" value="1"> <span>Transporte público (taxis, autobuses, busetas)</span></label></li>
+                <li><label><input type="radio" name="q3" value="2"> <span>Equipo agrícola (tractores)</span></label></li>
+                <li><label><input type="radio" name="q3" value="3"> <span>Vehículos de emergencia (ambulancias)</span></label></li>
+            </ul>
+            <div id="feedback_3" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_3" style="display:none;">La clase C está destinada al transporte público remunerado de personas. C1 es para modalidad taxi y C2 para autobuses/busetas.</div>
+        </div>
+        <div class="question-block" id="block_4">
+            <div class="question">5. Para conducir equipo especial (como un tractor, retroexcavadora o montacargas), se necesita la licencia tipo:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q4" value="0"> <span>D</span></label></li>
+                <li><label><input type="radio" name="q4" value="1"> <span>E</span></label></li>
+                <li><label><input type="radio" name="q4" value="2"> <span>B3</span></label></li>
+                <li><label><input type="radio" name="q4" value="3"> <span>A2</span></label></li>
+            </ul>
+            <div id="feedback_4" class="feedback" style="display:none;" data-correct="0"></div>
+            <div id="explanation_4" style="display:none;">La categoría D está diseñada específicamente para operar equipo especial y maquinaria (agrícola o de construcción).</div>
+        </div>
+        <div class="question-block" id="block_5">
+            <div class="question">6. ¿Cuál es uno de los requisitos obligatorios del acompañante para el Permiso Temporal de Aprendizaje?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q5" value="0"> <span>Debe ser familiar directo del aprendiz</span></label></li>
+                <li><label><input type="radio" name="q5" value="1"> <span>Debe tener al menos 5 años de haber obtenido la misma licencia y no tenerla suspendida</span></label></li>
+                <li><label><input type="radio" name="q5" value="2"> <span>Puede ser cualquier persona mayor de edad</span></label></li>
+                <li><label><input type="radio" name="q5" value="3"> <span>Debe ser oficial de tránsito</span></label></li>
+            </ul>
+            <div id="feedback_5" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_5" style="display:none;">El acompañante debe garantizar experiencia, por ello la ley exige que tenga la misma licencia que se está aprendiendo con al menos 5 años de expedición.</div>
+        </div>
+        <div class="question-block" id="block_6">
+            <div class="question">7. Un conductor se considera 'novato' si:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q6" value="0"> <span>Tiene menos de 25 años</span></label></li>
+                <li><label><input type="radio" name="q6" value="1"> <span>Maneja un vehículo último modelo</span></label></li>
+                <li><label><input type="radio" name="q6" value="2"> <span>Obtiene su licencia por primera vez y durante sus primeros 3 años de vigencia</span></label></li>
+                <li><label><input type="radio" name="q6" value="3"> <span>Acaba de llegar al país</span></label></li>
+            </ul>
+            <div id="feedback_6" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_6" style="display:none;">El conductor novato es aquel que obtiene su licencia por primera vez; esta condición dura los primeros 3 años (vigencia de su primera licencia).</div>
+        </div>
+        <div class="question-block" id="block_7">
+            <div class="question">8. Bajo el sistema de acumulación de puntos, ¿con cuántos puntos pierde (se le suspende) la licencia a un conductor NOVATO?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q7" value="0"> <span>12 puntos</span></label></li>
+                <li><label><input type="radio" name="q7" value="1"> <span>6 puntos</span></label></li>
+                <li><label><input type="radio" name="q7" value="2"> <span>4 puntos</span></label></li>
+                <li><label><input type="radio" name="q7" value="3"> <span>10 puntos</span></label></li>
+            </ul>
+            <div id="feedback_7" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_7" style="display:none;">Un conductor novato tiene un margen menor de error; si acumula 6 puntos (por ejemplo, con una sola infracción Tipo A), se le suspende la licencia.</div>
+        </div>
+        <div class="question-block" id="block_8">
+            <div class="question">9. ¿Con cuántos puntos se le suspende la licencia a un conductor REGULAR o PROFESIONAL (no novato)?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q8" value="0"> <span>6 puntos</span></label></li>
+                <li><label><input type="radio" name="q8" value="1"> <span>10 puntos</span></label></li>
+                <li><label><input type="radio" name="q8" value="2"> <span>12 puntos</span></label></li>
+                <li><label><input type="radio" name="q8" value="3"> <span>15 puntos</span></label></li>
+            </ul>
+            <div id="feedback_8" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_8" style="display:none;">A un conductor experimentado se le suspende la licencia si llega a acumular 12 puntos en el sistema.</div>
+        </div>
+        <div class="question-block" id="block_9">
+            <div class="question">10. ¿Cuántos puntos acumula un conductor por cometer una infracción Categoría A (las más graves)?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q9" value="0"> <span>2 puntos</span></label></li>
+                <li><label><input type="radio" name="q9" value="1"> <span>4 puntos</span></label></li>
+                <li><label><input type="radio" name="q9" value="2"> <span>6 puntos</span></label></li>
+                <li><label><input type="radio" name="q9" value="3"> <span>0 puntos, solo multa de dinero</span></label></li>
+            </ul>
+            <div id="feedback_9" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_9" style="display:none;">Las multas Tipo A (como conducir ebrio o a más de 120 km/h) sancionan con el máximo: 6 puntos, lo que suspende automáticamente a un novato.</div>
+        </div>
+        <div class="question-block" id="block_10">
+            <div class="question">11. Pasarse un semáforo en rojo o una señal de ALTO corresponde a una infracción:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q10" value="0"> <span>Categoría A</span></label></li>
+                <li><label><input type="radio" name="q10" value="1"> <span>Categoría B (acumula 4 puntos)</span></label></li>
+                <li><label><input type="radio" name="q10" value="2"> <span>Categoría C</span></label></li>
+                <li><label><input type="radio" name="q10" value="3"> <span>Categoría E</span></label></li>
+            </ul>
+            <div id="feedback_10" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_10" style="display:none;">Irrespetar la luz roja o el ALTO es una falta Tipo B, castigada con una multa alta y la acumulación de 4 puntos.</div>
+        </div>
+        <div class="question-block" id="block_11">
+            <div class="question">12. ¿Qué categoría de infracción aplica por NO utilizar el cinturón de seguridad o llevar niños sin la silla adecuada?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q11" value="0"> <span>Categoría A</span></label></li>
+                <li><label><input type="radio" name="q11" value="1"> <span>Categoría B</span></label></li>
+                <li><label><input type="radio" name="q11" value="2"> <span>Categoría C</span></label></li>
+                <li><label><input type="radio" name="q11" value="3"> <span>No es infracción</span></label></li>
+            </ul>
+            <div id="feedback_11" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_11" style="display:none;">No usar los dispositivos de seguridad (cinturón o silla infantil) se castiga severamente como una infracción Tipo B (acumula 4 puntos).</div>
+        </div>
+        <div class="question-block" id="block_12">
+            <div class="question">13. Utilizar el teléfono celular sin dispositivo de manos libres al conducir es una infracción de categoría:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q12" value="0"> <span>A (6 puntos)</span></label></li>
+                <li><label><input type="radio" name="q12" value="1"> <span>B (4 puntos)</span></label></li>
+                <li><label><input type="radio" name="q12" value="2"> <span>C (0 puntos, solo multa económica)</span></label></li>
+                <li><label><input type="radio" name="q12" value="3"> <span>D</span></label></li>
+            </ul>
+            <div id="feedback_12" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_12" style="display:none;">Aunque es peligroso, actualmente la ley lo tipifica como infracción Tipo C, la cual impone una multa económica pero NO acumula puntos.</div>
+        </div>
+        <div class="question-block" id="block_13">
+            <div class="question">14. Si un conductor es sorprendido conduciendo bajo los efectos del alcohol (sobre los límites legales), se le aplica una multa:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q13" value="0"> <span>Categoría A</span></label></li>
+                <li><label><input type="radio" name="q13" value="1"> <span>Categoría B</span></label></li>
+                <li><label><input type="radio" name="q13" value="2"> <span>Categoría C</span></label></li>
+                <li><label><input type="radio" name="q13" value="3"> <span>Categoría D</span></label></li>
+            </ul>
+            <div id="feedback_13" class="feedback" style="display:none;" data-correct="0"></div>
+            <div id="explanation_13" style="display:none;">La conducción temeraria por alcohol es de las faltas más graves, clasificada como Categoría A (6 puntos y proceso legal).</div>
+        </div>
+        <div class="question-block" id="block_14">
+            <div class="question">15. ¿Cuál es el límite máximo de alcohol en sangre permitido para un conductor profesional (taxis, buses, carga) o novato?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q14" value="0"> <span>0.00 g/l</span></label></li>
+                <li><label><input type="radio" name="q14" value="1"> <span>0.20 g/l</span></label></li>
+                <li><label><input type="radio" name="q14" value="2"> <span>0.50 g/l</span></label></li>
+                <li><label><input type="radio" name="q14" value="3"> <span>0.75 g/l</span></label></li>
+            </ul>
+            <div id="feedback_14" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_14" style="display:none;">Para novatos y profesionales, la ley es más estricta: se sanciona cualquier nivel superior a 0.20 gramos de alcohol por litro de sangre.</div>
+        </div>
+        <div class="question-block" id="block_15">
+            <div class="question">16. ¿Cuál es el límite de alcohol en sangre sancionable para un conductor con licencia regular (que no es novato ni profesional)?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q15" value="0"> <span>Mayor a 0.20 g/l</span></label></li>
+                <li><label><input type="radio" name="q15" value="1"> <span>Mayor a 0.50 g/l (multa) y 0.75 g/l (delito penal)</span></label></li>
+                <li><label><input type="radio" name="q15" value="2"> <span>Mayor a 1.00 g/l</span></label></li>
+                <li><label><input type="radio" name="q15" value="3"> <span>No hay límite</span></label></li>
+            </ul>
+            <div id="feedback_15" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_15" style="display:none;">Para un conductor común, si supera los 0.50 g/l recibe multa A. Si supera 0.75 g/l, pasa de ser multa a ser un delito penal (cárcel).</div>
+        </div>
+        <div class="question-block" id="block_16">
+            <div class="question">17. ¿Qué sucede si un conductor se niega a realizarse la prueba de alcoholemia oficial en carretera?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q16" value="0"> <span>El oficial debe dejarlo ir</span></label></li>
+                <li><label><input type="radio" name="q16" value="1"> <span>Recibe una infracción Tipo A por presunción de ebriedad</span></label></li>
+                <li><label><input type="radio" name="q16" value="2"> <span>Se le hace una multa de Categoría C</span></label></li>
+                <li><label><input type="radio" name="q16" value="3"> <span>Solo se le decomisan las placas</span></label></li>
+            </ul>
+            <div id="feedback_16" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_16" style="display:none;">Negarse a la prueba conlleva automáticamente la sanción más alta (Categoría A, 6 puntos) al asumir la presunción de que está ebrio.</div>
+        </div>
+        <div class="question-block" id="block_17">
+            <div class="question">18. Al renovar la licencia, ¿cuál es el beneficio si el conductor NO acumuló ningún punto (0 puntos) durante su vigencia?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q17" value="0"> <span>No tiene que hacer fila</span></label></li>
+                <li><label><input type="radio" name="q17" value="1"> <span>Le regalan el marchamo</span></label></li>
+                <li><label><input type="radio" name="q17" value="2"> <span>La puede renovar por 6 años y paga solo el 50% del valor</span></label></li>
+                <li><label><input type="radio" name="q17" value="3"> <span>Se la renuevan de por vida</span></label></li>
+            </ul>
+            <div id="feedback_17" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_17" style="display:none;">Como incentivo al buen conductor, si su expediente está limpio de puntos, renueva por 6 años a mitad de precio.</div>
+        </div>
+        <div class="question-block" id="block_18">
+            <div class="question">19. Si un conductor perdió 4 puntos (por ejemplo, se saltó un semáforo) durante la vigencia de su licencia, ¿por cuánto tiempo podrá renovarla?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q18" value="0"> <span>Por 6 años</span></label></li>
+                <li><label><input type="radio" name="q18" value="1"> <span>Por 4 años (y paga valor completo)</span></label></li>
+                <li><label><input type="radio" name="q18" value="2"> <span>Por 3 años</span></label></li>
+                <li><label><input type="radio" name="q18" value="3"> <span>No la puede renovar</span></label></li>
+            </ul>
+            <div id="feedback_18" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_18" style="display:none;">Si acumuló de 1 a 4 puntos, pierde el beneficio de los 6 años y solo podrá renovar por 4 años pagando la tarifa completa.</div>
+        </div>
+        <div class="question-block" id="block_19">
+            <div class="question">20. Para renovar la licencia o hacer la prueba práctica, el Dictamen Médico tiene una validez máxima de:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q19" value="0"> <span>1 mes</span></label></li>
+                <li><label><input type="radio" name="q19" value="1"> <span>6 meses</span></label></li>
+                <li><label><input type="radio" name="q19" value="2"> <span>1 año</span></label></li>
+                <li><label><input type="radio" name="q19" value="3"> <span>No vence</span></label></li>
+            </ul>
+            <div id="feedback_19" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_19" style="display:none;">El dictamen médico digital emitido por el Colegio de Médicos tiene una vida útil de exactamente 6 meses (180 días) desde su emisión.</div>
+        </div>
+        <div class="question-block" id="block_20">
+            <div class="question">21. ¿Cuáles son los tres documentos MÍNIMOS que debe portar un conductor para no ser multado al circular?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q20" value="0"> <span>Cédula, pasaporte y recibo de agua</span></label></li>
+                <li><label><input type="radio" name="q20" value="1"> <span>Licencia al día, derecho de circulación (marchamo) y tarjeta de revisión técnica (RTV)</span></label></li>
+                <li><label><input type="radio" name="q20" value="2"> <span>Seguro del INS, póliza de vida y cédula</span></label></li>
+                <li><label><input type="radio" name="q20" value="3"> <span>Solo la licencia</span></label></li>
+            </ul>
+            <div id="feedback_20" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_20" style="display:none;">Los 3 requisitos obligatorios y al día son: Licencia (apta para el vehículo), Marchamo (en el parabrisas) y Revisión Técnica aprobada.</div>
+        </div>
+        <div class="question-block" id="block_21">
+            <div class="question">22. ¿Qué elementos de seguridad son obligatorios llevar en el vehículo según la ley?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q21" value="0"> <span>Radio, llanta de repuesto y cobija</span></label></li>
+                <li><label><input type="radio" name="q21" value="1"> <span>Triángulos reflectivos, extintor, llanta de repuesto, herramientas y chaleco reflectivo</span></label></li>
+                <li><label><input type="radio" name="q21" value="2"> <span>Agua, comida y botiquín médico</span></label></li>
+                <li><label><input type="radio" name="q21" value="3"> <span>Cinta adhesiva y linterna</span></label></li>
+            </ul>
+            <div id="feedback_21" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_21" style="display:none;">La ley exige portar equipo preventivo: 2 triángulos o conos, extintor vigente, llanta, equipo para cambiarla (gata, llave) y chaleco.</div>
+        </div>
+        <div class="question-block" id="block_22">
+            <div class="question">23. Adelantar en lugares prohibidos (curvas, puentes, línea continua) es catalogado como una infracción:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q22" value="0"> <span>Tipo A</span></label></li>
+                <li><label><input type="radio" name="q22" value="1"> <span>Tipo B (4 puntos)</span></label></li>
+                <li><label><input type="radio" name="q22" value="2"> <span>Tipo C</span></label></li>
+                <li><label><input type="radio" name="q22" value="3"> <span>Tipo E</span></label></li>
+            </ul>
+            <div id="feedback_22" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_22" style="display:none;">El falso adelantamiento es sumamente riesgoso y se penaliza como Tipo B, lo que te quita 4 puntos de la licencia.</div>
+        </div>
+        <div class="question-block" id="block_23">
+            <div class="question">24. Girar en 'U' o a la izquierda en una zona donde hay demarcación que lo prohíbe es una infracción de Tipo:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q23" value="0"> <span>A (6 puntos)</span></label></li>
+                <li><label><input type="radio" name="q23" value="1"> <span>B (4 puntos)</span></label></li>
+                <li><label><input type="radio" name="q23" value="2"> <span>C (solo dinero)</span></label></li>
+                <li><label><input type="radio" name="q23" value="3"> <span>D</span></label></li>
+            </ul>
+            <div id="feedback_23" class="feedback" style="display:none;" data-correct="0"></div>
+            <div id="explanation_23" style="display:none;">¡Cuidado! Girar en U donde es prohibido es una falta Categoría A (6 puntos) por el alto riesgo de choque frontal que representa.</div>
+        </div>
+        <div class="question-block" id="block_24">
+            <div class="question">25. ¿Cuál es la sanción por alterar el velocímetro del vehículo, o producir ruido/gases por encima de lo permitido?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q24" value="0"> <span>Solo le llaman la atención</span></label></li>
+                <li><label><input type="radio" name="q24" value="1"> <span>Multa Categoría C</span></label></li>
+                <li><label><input type="radio" name="q24" value="2"> <span>Infracción de Tránsito (Multa y posible retiro de placas)</span></label></li>
+                <li><label><input type="radio" name="q24" value="3"> <span>Decomiso permanente del vehículo</span></label></li>
+            </ul>
+            <div id="feedback_24" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_24" style="display:none;">Circular produciendo contaminación sónica o ambiental excesiva, o tener los sistemas alterados, es causal de multa y retiro de placas.</div>
+        </div>
+        <div class="question-block" id="block_25">
+            <div class="question">26. Los conductores de motocicletas y sus acompañantes tienen la obligación legal de:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q25" value="0"> <span>Utilizar casco abrochado y ropa reflectiva</span></label></li>
+                <li><label><input type="radio" name="q25" value="1"> <span>Llevar rodilleras de acero</span></label></li>
+                <li><label><input type="radio" name="q25" value="2"> <span>Conducir solo por el espaldón</span></label></li>
+                <li><label><input type="radio" name="q25" value="3"> <span>Usar luces altas todo el día</span></label></li>
+            </ul>
+            <div id="feedback_25" class="feedback" style="display:none;" data-correct="0"></div>
+            <div id="explanation_25" style="display:none;">La Ley de Tránsito obliga a los motociclistas a usar el casco debidamente ajustado y prendas reflectivas (chalecos/cintas) para hacerse visibles.</div>
+        </div>
+        <div class="question-block" id="block_26">
+            <div class="question">27. Conducir a una velocidad superior a los 120 km/h en cualquier carretera se clasifica como:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q26" value="0"> <span>Normal si hay prisa</span></label></li>
+                <li><label><input type="radio" name="q26" value="1"> <span>Infracción Tipo B</span></label></li>
+                <li><label><input type="radio" name="q26" value="2"> <span>Conducción Temeraria (Infracción Tipo A, 6 puntos y delito)</span></label></li>
+                <li><label><input type="radio" name="q26" value="3"> <span>Infracción Tipo D</span></label></li>
+            </ul>
+            <div id="feedback_26" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_26" style="display:none;">Superar los 120 km/h es Conducción Temeraria. Acumula 6 puntos, multa Tipo A y se reporta como delito a los tribunales.</div>
+        </div>
+        <div class="question-block" id="block_27">
+            <div class="question">28. ¿Qué debe hacer un conductor sancionado que llega a los 12 puntos y se le suspende la licencia?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q27" value="0"> <span>Pagar solo la multa</span></label></li>
+                <li><label><input type="radio" name="q27" value="1"> <span>Llevar y aprobar un curso de reeducación vial (sensibilización) para poder recuperarla</span></label></li>
+                <li><label><input type="radio" name="q27" value="2"> <span>Sacar una licencia de otro país</span></label></li>
+                <li><label><input type="radio" name="q27" value="3"> <span>Esperar un mes en su casa</span></label></li>
+            </ul>
+            <div id="feedback_27" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_27" style="display:none;">Para recuperar el derecho a manejar tras una suspensión por puntos, el infractor debe matricular y aprobar el curso de reeducación del COSEVI.</div>
+        </div>
+        <div class="question-block" id="block_28">
+            <div class="question">29. Conducir con la licencia suspendida conlleva:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q28" value="0"> <span>Una nueva advertencia</span></label></li>
+                <li><label><input type="radio" name="q28" value="1"> <span>Multa Categoría A</span></label></li>
+                <li><label><input type="radio" name="q28" value="2"> <span>Multa Categoría C</span></label></li>
+                <li><label><input type="radio" name="q28" value="3"> <span>Ninguna sanción si conduce despacio</span></label></li>
+            </ul>
+            <div id="feedback_28" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_28" style="display:none;">Desacatar la suspensión y ser sorprendido manejando es una falta gravísima Tipo A (máxima sanción económica).</div>
+        </div>
+        <div class="question-block" id="block_29">
+            <div class="question">30. Si usted cambia el motor o el color de su vehículo, ¿qué trámite es obligatorio?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q29" value="0"> <span>Ninguno</span></label></li>
+                <li><label><input type="radio" name="q29" value="1"> <span>Avisar a la Municipalidad</span></label></li>
+                <li><label><input type="radio" name="q29" value="2"> <span>Notificar y actualizar las características en el Registro Nacional</span></label></li>
+                <li><label><input type="radio" name="q29" value="3"> <span>Solo poner un sticker que indique el cambio</span></label></li>
+            </ul>
+            <div id="feedback_29" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_29" style="display:none;">Cualquier cambio a las características básicas de fábrica (color, motor, chasis) debe registrarse legalmente para que coincida con el título de propiedad.</div>
+        </div>
+
+        <button id="submitBtn" class="btn">Calificar y Ver Explicaciones de Leyes</button>
+    </div>
+    <div id="result"></div>
+</div>
+
+<script>
+    document.getElementById('submitBtn').addEventListener('click', function(e) {
+        e.preventDefault(); 
+        try {
+            let score = 0;
+            const total = 30;
+            const puntajePorPregunta = 100 / total;
+
+            for (let i = 0; i < total; i++) {
+                const radios = document.getElementsByName('q' + i);
+                const feedbackDiv = document.getElementById('feedback_' + i);
+                const explanationText = document.getElementById('explanation_' + i).innerText;
+                const correctIndex = parseInt(feedbackDiv.getAttribute('data-correct'));
+
+                let selectedValue = -1;
+                let correctLabelText = "";
+                let selectedLabelDiv = null;
+
+                for (let j = 0; j < radios.length; j++) {
+                    if (radios[j].checked) {
+                        selectedValue = parseInt(radios[j].value);
+                        selectedLabelDiv = radios[j].nextElementSibling; 
+                    }
+                    if (parseInt(radios[j].value) === correctIndex) {
+                        correctLabelText = radios[j].nextElementSibling.innerText;
+                    }
+                }
+
+                feedbackDiv.style.display = 'block';
+
+                let answerResultHTML = "";
+
+                if (selectedValue === correctIndex) {
+                    score++;
+                    answerResultHTML = '✅ <span style="color:#27ae60;">¡Correcto!</span>';
+                    if(selectedLabelDiv) selectedLabelDiv.style.color = '#27ae60';
+                } else {
+                    let errorMsg = '❌ Incorrecto. ';
+                    if (selectedValue === -1) {
+                        errorMsg += 'No respondiste esta pregunta.';
+                    } else {
+                        if(selectedLabelDiv) selectedLabelDiv.style.color = '#e74c3c';
+                    }
+                    answerResultHTML = errorMsg + '<br>La correcta era: <strong style="color:#27ae60;">' + correctLabelText + '</strong>';
+                }
+
+                feedbackDiv.innerHTML = answerResultHTML + 
+                    '<div class="explanation-box">⚖️ <strong>La Ley dice:</strong> ' + explanationText + '</div>';
+            }
+
+            const finalScore = Math.round(score * puntajePorPregunta);
+            const resultDiv = document.getElementById('result');
+            resultDiv.style.display = 'block';
+
+            if (finalScore >= 80) {
+                resultDiv.innerHTML = '¡Excelente! Aprobaste con: ' + finalScore + '/100 🏆';
+                resultDiv.style.backgroundColor = '#d4edda';
+                resultDiv.style.color = '#155724';
+            } else {
+                resultDiv.innerHTML = 'Puntaje: ' + finalScore + '/100. Necesitas al menos 80. ¡Repasa bien las multas y vuelve a intentar! 📚';
+                resultDiv.style.backgroundColor = '#f8d7da';
+                resultDiv.style.color = '#721c24';
+            }
+
+            alert("Tu puntaje del Capítulo 2 es: " + finalScore + "/100. Revisa la pantalla para leer las justificaciones de la Ley.");
+            window.scrollTo(0, 0); 
+
+        } catch (error) {
+            alert("Hubo un error calculando: " + error.message);
+        }
+    });
+</script>
+</body>
+</html>

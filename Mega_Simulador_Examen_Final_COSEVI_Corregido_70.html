@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Mega Simulador - Examen Teórico Final (Nota Oficial 70)</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f0f2f5; color: #2c3e50; line-height: 1.6; padding: 15px; margin: 0; }
+        .header-container { background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); color: white; padding: 25px 15px; border-radius: 12px; margin-bottom: 25px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.15); }
+        h1 { margin: 0; font-size: 1.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
+        h2 { margin: 10px 0 0 0; font-size: 1.1rem; font-weight: 400; opacity: 0.9; }
+        .quiz-container { width: 100%; max-width: 850px; margin: 0 auto; background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); box-sizing: border-box; }
+        .info-box { background-color: #e8f4f8; border-left: 4px solid #3498db; padding: 15px; margin-bottom: 25px; border-radius: 0 8px 8px 0; font-size: 0.95rem; }
+        .question-block { margin-bottom: 30px; border-bottom: 1px solid #e1e8ed; padding-bottom: 20px; }
+        .q-number { display: inline-block; background-color: #34495e; color: white; width: 30px; height: 30px; text-align: center; line-height: 30px; border-radius: 50%; font-weight: bold; margin-right: 10px; font-size: 0.9rem; }
+        .question { font-weight: bold; font-size: 1.2rem; margin-bottom: 15px; color: #1a252f; display: flex; align-items: flex-start; }
+        .options { list-style-type: none; padding: 0; margin: 0; width: 100%; }
+        .options li { margin-bottom: 12px; }
+        label { cursor: pointer; display: flex; align-items: flex-start; padding: 14px; border-radius: 8px; background: #f8f9fa; border: 1px solid #dcdde1; -webkit-tap-highlight-color: transparent; touch-action: manipulation; transition: all 0.2s ease; }
+        label:active { background: #e8f4f8; transform: scale(0.99); }
+        input[type="radio"] { margin-right: 15px; margin-top: 5px; transform: scale(1.4); cursor: pointer; }
+        .option-text { flex: 1; font-size: 1.05rem; }
+        .btn { display: block; width: 100%; padding: 20px; background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%); color: white; border: none; font-size: 1.4rem; font-weight: bold; border-radius: 12px; cursor: pointer; margin-top: 40px; -webkit-appearance: none; box-shadow: 0 6px 15px rgba(46, 204, 113, 0.4); text-transform: uppercase; letter-spacing: 1px; transition: transform 0.1s; }
+        .btn:active { transform: scale(0.98); background: #27ae60; }
+        #result { display: none; margin-top: 30px; padding: 25px; border-radius: 12px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .score-circle { display: inline-block; width: 120px; height: 120px; border-radius: 50%; background: white; line-height: 120px; font-size: 3rem; font-weight: 900; margin: 15px 0; border: 8px solid currentColor; }
+        .correct-answer { color: #27ae60; font-weight: bold; }
+        .wrong-answer { color: #e74c3c; text-decoration: line-through; }
+        .feedback { margin-top: 15px; font-size: 1.05rem; padding: 15px; background: #fdfefe; border: 1px solid #ecf0f1; border-radius: 8px; }
+        .explanation-box { margin-top: 15px; padding: 15px; background-color: #f0f3f4; border-left: 5px solid #7f8c8d; border-radius: 6px; font-size: 0.95rem; color: #34495e; box-shadow: 0 2px 5px rgba(0,0,0,0.05); font-style: italic; }
+    </style>
+</head>
+<body>
+
+<div class="quiz-container">
+    <div class="header-container">
+        <h1>Examen Teórico Oficial</h1>
+        <h2>Simulación Final COSEVI - Costa Rica</h2>
+    </div>
+
+    <div class="info-box">
+        <strong>📋 Instrucciones de la prueba real:</strong><br>
+        - Consta exactamente de <strong>40 preguntas</strong> de selección múltiple.<br>
+        - Valor: Cada pregunta vale 2.5 puntos. Puntaje total 100.<br>
+        - Para <strong>APROBAR</strong> necesitas la nota oficial mínima de <strong>70 puntos</strong>.<br>
+        - Tienes permitido fallar un máximo de <strong>12 preguntas</strong> (debes acertar al menos 28).<br>
+        - ¡Concéntrate, responde con calma y vamos por ese 100!
+    </div>
+
+    <div id="quizForm">
+        <div class="question-block" id="block_0">
+            <div class="question"><span class="q-number">1</span> <span>¿Cuál es el gas más peligroso, tóxico e invisible que emite el escape y que causa la muerte en recintos cerrados?</span></div>
+            <ul class="options">
+                <li><label><input type="radio" name="q0" value="0"> <span class="option-text">Oxígeno</span></label></li>
+                <li><label><input type="radio" name="q0" value="1"> <span class="option-text">Dióxido de Carbono (CO2)</span></label></li>
+                <li><label><input type="radio" name="q0" value="2"> <span class="option-text">Monóxido de Carbono (CO)</span></label></li>
+                <li><label><input type="radio" name="q0" value="3"> <span class="option-text">Nitrógeno</span></label></li>
+            </ul>
+            <div id="feedback_0" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_0" style="display:none;">El Monóxido de Carbono no huele ni se ve, pero asfixia rápidamente en un garaje cerrado.</div>
+        </div>
+        <div class="question-block" id="block_1">
+            <div class="question"><span class="q-number">2</span> <span>La pintura roja aplicada en el cordón del caño (acera) significa:</span></div>
+            <ul class="options">
+                <li><label><input type="radio" name="q1" value="0"> <span class="option-text">Zona de carga</span></label></li>
+                <li><label><input type="radio" name="q1" value="1"> <span class="option-text">Parqueo taxis</span></label></li>
+                <li><label><input type="radio" name="q1" value="2"> <span class="option-text">Prohibición absoluta de estacionamiento</span></label></li>
+                <li><label><input type="radio" name="q1" value="3"> <span class="option-text">Parquímetro</span></label></li>
+            </ul>
+            <div id="feedback_1" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_1" style="display:none;">El cordón rojo indica que está totalmente prohibido estacionarse en esa zona.</div>
+        </div>
+        <div class="question-block" id="block_2">
+            <div class="question"><span class="q-number">3</span> <span>Si se enciende en el tablero una luz roja con el símbolo de una aceitera (lámpara), esto significa:</span></div>
+            <ul class="options">
+                <li><label><input type="radio" name="q2" value="0"> <span class="option-text">Ir a la gasolinera</span></label></li>
+                <li><label><input type="radio" name="q2" value="1"> <span class="option-text">Peligro: Pérdida grave de presión de aceite; detenerse y apagar el motor inmediatamente</span></label></li>
+                <li><label><input type="radio" name="q2" value="2"> <span class="option-text">Aceite limpio</span></label></li>
+                <li><label><input type="radio" name="q2" value="3"> <span class="option-text">Acelerar más</span></label></li>
+            </ul>
+            <div id="feedback_2" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_2" style="display:none;">Si no hay presión de aceite, el motor está frotándose en seco y se fundirá en minutos si no se apaga.</div>
+        </div>
+        <div class="question-block" id="block_3">
+            <div class="question"><span class="q-number">4</span> <span>El efecto 'visión de túnel' que experimenta un conductor es causado principalmente por:</span></div>
+            <ul class="options">
+                <li><label><input type="radio" name="q3" value="0"> <span class="option-text">Túnel oscuro</span></label></li>
+                <li><label><input type="radio" name="q3" value="1"> <span class="option-text">Miopía</span></label></li>
+                <li><label><input type="radio" name="q3" value="2"> <span class="option-text">El aumento de la velocidad (menor campo visual periférico)</span></label></li>
+                <li><label><input type="radio" name="q3" value="3"> <span class="option-text">Luces altas</span></label></li>
+            </ul>
+            <div id="feedback_3" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_3" style="display:none;">A mayor velocidad, el cerebro bloquea la visión lateral periférica y solo enfoca al frente.</div>
+        </div>
+        <div class="question-block" id="block_4">
+            <div class="question"><span class="q-number">5</span> <span>¿Qué debe hacer un conductor si se topa un semáforo con la luz ROJA INTERMITENTE (parpadeando)?</span></div>
+            <ul class="options">
+                <li><label><input type="radio" name="q4" value="0"> <span class="option-text">Pasar rápido</span></label></li>
+                <li><label><input type="radio" name="q4" value="1"> <span class="option-text">Funciona como CEDA</span></label></li>
+                <li><label><input type="radio" name="q4" value="2"> <span class="option-text">Funciona igual que una señal de ALTO; debe hacer parada total antes de cruzar</span></label></li>
+                <li><label><input type="radio" name="q4" value="3"> <span class="option-text">Dar vuelta en U</span></label></li>
+            </ul>
+            <div id="feedback_4" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_4" style="display:none;">Un semáforo en rojo intermitente tiene valor legal de ALTO. Usted DEBE detener su vehículo por completo.</div>
+        </div>
+        <div class="question-block" id="block_5">
+            <div class="question"><span class="q-number">6</span> <span>¿Cuál es el elemento más importante de la trilogía vial?</span></div>
+            <ul class="options">
+                <li><label><input type="radio" name="q5" value="0"> <span class="option-text">El factor vehículo</span></label></li>
+                <li><label><input type="radio" name="q5" value="1"> <span class="option-text">El factor vía</span></label></li>
+                <li><label><input type="radio" name="q5" value="2"> <span class="option-text">El factor humano</span></label></li>
+                <li><label><input type="radio" name="q5" value="3"> <span class="option-text">El entorno ambiental</span></label></li>
+            </ul>
+            <div id="feedback_5" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_5" style="display:none;">El factor humano es el más importante porque es el único elemento racional capaz de tomar decisiones y cometer errores.</div>
+        </div>
+        <div class="question-block" id="block_6">
+            <div class="question"><span class="q-number">7</span> <span>Si usted llega a una intersección donde el semáforo está en VERDE, pero un Oficial de Tránsito le indica que se DETENGA, ¿qué debe hacer?</span></div>
+            <ul class="options">
+                <li><label><input type="radio" name="q6" value="0"> <span class="option-text">Obedecer al semáforo</span></label></li>
+                <li><label><input type="radio" name="q6" value="1"> <span class="option-text">Obedecer al oficial de tránsito, su indicación prevalece sobre el semáforo</span></label></li>
+                <li><label><input type="radio" name="q6" value="2"> <span class="option-text">Pitarle al oficial</span></label></li>
+                <li><label><input type="radio" name="q6" value="3"> <span class="option-text">Pasar despacio</span></label></li>
+            </ul>
+            <div id="feedback_6" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_6" style="display:none;">Las órdenes en vivo de un Oficial de Tránsito están por encima de los semáforos y rótulos.</div>
+        </div>
+        <div class="question-block" id="block_7">
+            <div class="question"><span class="q-number">8</span> <span>Las señales Reglamentarias tienen como objetivo principal:</span></div>
+            <ul class="options">
+                <li><label><input type="radio" name="q7" value="0"> <span class="option-text">Sugerir rutas alternativas</span></label></li>
+                <li><label><input type="radio" name="q7" value="1"> <span class="option-text">Indicar al usuario las obligaciones, prohibiciones o restricciones (su incumplimiento es multa)</span></label></li>
+                <li><label><input type="radio" name="q7" value="2"> <span class="option-text">Advertir sobre animales</span></label></li>
+                <li><label><input type="radio" name="q7" value="3"> <span class="option-text">Informar sobre hospitales</span></label></li>
+            </ul>
+            <div id="feedback_7" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_7" style="display:none;">Una señal reglamentaria dicta una ley de tránsito. Irrespetarla es una infracción inmediata.</div>
+        </div>
+        <div class="question-block" id="block_8">
+            <div class="question"><span class="q-number">9</span> <span>¿Qué significa una línea amarilla CONTINUA (sólida) en el centro de la calle?</span></div>
+            <ul class="options">
+                <li><label><input type="radio" name="q8" value="0"> <span class="option-text">Que se puede adelantar</span></label></li>
+                <li><label><input type="radio" name="q8" value="1"> <span class="option-text">Que el adelantamiento está estrictamente prohibido para ambos sentidos</span></label></li>
+                <li><label><input type="radio" name="q8" value="2"> <span class="option-text">Solo circulan camiones</span></label></li>
+                <li><label><input type="radio" name="q8" value="3"> <span class="option-text">Paso peatonal</span></label></li>
+            </ul>
+            <div id="feedback_8" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_8" style="display:none;">Una línea continua es un muro imaginario: prohíbe cruzarse al carril contrario para adelantar.</div>
+        </div>
+        <div class="question-block" id="block_9">
+            <div class="question"><span class="q-number">10</span> <span>Al renovar la licencia, ¿cuál es el beneficio si el conductor NO acumuló ningún punto (0 puntos) durante su vigencia?</span></div>
+            <ul class="options">
+                <li><label><input type="radio" name="q9" value="0"> <span class="option-text">No hace fila</span></label></li>
+                <li><label><input type="radio" name="q9" value="1"> <span class="option-text">Le regalan marchamo</span></label></li>
+                <li><label><input type="radio" name="q9" value="2"> <span class="option-text">La puede renovar por 6 años pagando solo el 50% del valor</span></label></li>
+                <li><label><input type="radio" name="q9" value="3"> <span class="option-text">Se renueva de por vida</span></label></li>
+            </ul>
+            <div id="feedback_9" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_9" style="display:none;">Como incentivo al buen conductor, si su expediente está limpio, renueva por 6 años a mitad de precio.</div>
+        </div>
+        <div class="question-block" id="block_10">
+            <div class="question"><span class="q-number">11</span> <span>La batería almacena energía, pero ¿qué pieza genera la electricidad y recarga la batería mientras el motor está encendido?</span></div>
+            <ul class="options">
+                <li><label><input type="radio" name="q10" value="0"> <span class="option-text">Motor de arranque</span></label></li>
+                <li><label><input type="radio" name="q10" value="1"> <span class="option-text">El alternador</span></label></li>
+                <li><label><input type="radio" name="q10" value="2"> <span class="option-text">La bujía</span></label></li>
+                <li><label><input type="radio" name="q10" value="3"> <span class="option-text">Los fusibles</span></label></li>
+            </ul>
+            <div id="feedback_10" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_10" style="display:none;">El alternador es el generador que toma el control eléctrico y recarga la batería en marcha.</div>
+        </div>
+        <div class="question-block" id="block_11">
+            <div class="question"><span class="q-number">12</span> <span>La parte de la vía urbana destinada al tránsito exclusivo de peatones es:</span></div>
+            <ul class="options">
+                <li><label><input type="radio" name="q11" value="0"> <span class="option-text">La calzada</span></label></li>
+                <li><label><input type="radio" name="q11" value="1"> <span class="option-text">El caño</span></label></li>
+                <li><label><input type="radio" name="q11" value="2"> <span class="option-text">El derecho de vía</span></label></li>
+                <li><label><input type="radio" name="q11" value="3"> <span class="option-text">La acera</span></label></li>
+            </ul>
+            <div id="feedback_11" class="feedback" style="display:none;" data-correct="3"></div>
+            <div id="explanation_11" style="display:none;">La acera es la sección elevada a los lados de la calzada en la ciudad, diseñada estrictamente para peatones.</div>
+        </div>
+        <div class="question-block" id="block_12">
+            <div class="question"><span class="q-number">13</span> <span>¿Cómo se revisa correctamente el nivel de aceite del motor con la varilla?</span></div>
+            <ul class="options">
+                <li><label><input type="radio" name="q12" value="0"> <span class="option-text">Motor encendido y acelerando</span></label></li>
+                <li><label><input type="radio" name="q12" value="1"> <span class="option-text">En pendiente y apagado</span></label></li>
+                <li><label><input type="radio" name="q12" value="2"> <span class="option-text">En superficie plana y motor apagado (frío o reposado)</span></label></li>
+                <li><label><input type="radio" name="q12" value="3"> <span class="option-text">Solo viendo el tablero</span></label></li>
+            </ul>
+            <div id="feedback_12" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_12" style="display:none;">El aceite debe haber bajado al cárter (motor apagado) y el carro debe estar nivelado horizontalmente.</div>
+        </div>
+        <div class="question-block" id="block_13">
+            <div class="question"><span class="q-number">14</span> <span>¿Qué técnica de frenado es más segura en moto sobre piso SECO?</span></div>
+            <ul class="options">
+                <li><label><input type="radio" name="q13" value="0"> <span class="option-text">Solo trasero</span></label></li>
+                <li><label><input type="radio" name="q13" value="1"> <span class="option-text">Solo delantero</span></label></li>
+                <li><label><input type="radio" name="q13" value="2"> <span class="option-text">Aplicar ambos frenos simultáneamente y progresivo, con mayor presión en el delantero (70/30)</span></label></li>
+                <li><label><input type="radio" name="q13" value="3"> <span class="option-text">Bloquear la llanta trasera</span></label></li>
+            </ul>
+            <div id="feedback_13" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_13" style="display:none;">El peso se va al frente al frenar, por lo que el freno delantero hace el 70% del trabajo.</div>
+        </div>
+        <div class="question-block" id="block_14">
+            <div class="question"><span class="q-number">15</span> <span>Para evitar el hidroplaneo, la ley exige que la profundidad mínima de las ranuras de las llantas (livianos) sea de:</span></div>
+            <ul class="options">
+                <li><label><input type="radio" name="q14" value="0"> <span class="option-text">1 milímetro</span></label></li>
+                <li><label><input type="radio" name="q14" value="1"> <span class="option-text">2 milímetros</span></label></li>
+                <li><label><input type="radio" name="q14" value="2"> <span class="option-text">4 milímetros</span></label></li>
+                <li><label><input type="radio" name="q14" value="3"> <span class="option-text">5 milímetros</span></label></li>
+            </ul>
+            <div id="feedback_14" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_14" style="display:none;">La Ley establece que el dibujo de la llanta debe tener al menos 2 mm de profundidad.</div>
+        </div>
+        <div class="question-block" id="block_15">
+            <div class="question"><span class="q-number">16</span> <span>Utilizar el teléfono celular sin dispositivo de manos libres al conducir es una infracción de categoría:</span></div>
+            <ul class="options">
+                <li><label><input type="radio" name="q15" value="0"> <span class="option-text">A (6 puntos)</span></label></li>
+                <li><label><input type="radio" name="q15" value="1"> <span class="option-text">B (4 puntos)</span></label></li>
+                <li><label><input type="radio" name="q15" value="2"> <span class="option-text">C (0 puntos, solo multa económica)</span></label></li>
+                <li><label><input type="radio" name="q15" value="3"> <span class="option-text">D</span></label></li>
+            </ul>
+            <div id="feedback_15" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_15" style="display:none;">Es infracción Tipo C, la cual impone una multa económica pero NO acumula puntos.</div>
+        </div>
+        <div class="question-block" id="block_16">
+            <div class="question"><span class="q-number">17</span> <span>Por seguridad y ley, la luz principal (foco delantero) de una motocicleta debe estar:</span></div>
+            <ul class="options">
+                <li><label><input type="radio" name="q16" value="0"> <span class="option-text">Encendida de noche</span></label></li>
+                <li><label><input type="radio" name="q16" value="1"> <span class="option-text">Con lluvia</span></label></li>
+                <li><label><input type="radio" name="q16" value="2"> <span class="option-text">Encendida de forma PERMANENTE (día y noche) mientras el vehículo circule</span></label></li>
+                <li><label><input type="radio" name="q16" value="3"> <span class="option-text">Apagada de día</span></label></li>
+            </ul>
+            <div id="feedback_16" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_16" style="display:none;">Para contrarrestar su tamaño y aumentar su visibilidad, la ley exige a las motos llevar la luz prendida siempre.</div>
+        </div>
+        <div class="question-block" id="block_17">
+            <div class="question"><span class="q-number">18</span> <span>¿Qué tipo de vehículos permite conducir la licencia Tipo B1?</span></div>
+            <ul class="options">
+                <li><label><input type="radio" name="q17" value="0"> <span class="option-text">Vehículos articulados</span></label></li>
+                <li><label><input type="radio" name="q17" value="1"> <span class="option-text">Vehículos livianos de hasta 4.000 kg de peso bruto</span></label></li>
+                <li><label><input type="radio" name="q17" value="2"> <span class="option-text">Solamente motocicletas</span></label></li>
+                <li><label><input type="radio" name="q17" value="3"> <span class="option-text">Autobuses</span></label></li>
+            </ul>
+            <div id="feedback_17" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_17" style="display:none;">La licencia B1 autoriza conducir automóviles, pickups y vehículos livianos de hasta 4.000 kg.</div>
+        </div>
+        <div class="question-block" id="block_18">
+            <div class="question"><span class="q-number">19</span> <span>Una regla de ORO al llegar a una rotonda es que la prioridad de paso la tiene:</span></div>
+            <ul class="options">
+                <li><label><input type="radio" name="q18" value="0"> <span class="option-text">El camión grande</span></label></li>
+                <li><label><input type="radio" name="q18" value="1"> <span class="option-text">El que intenta entrar</span></label></li>
+                <li><label><input type="radio" name="q18" value="2"> <span class="option-text">El vehículo que ya está circulando DENTRO de la rotonda</span></label></li>
+                <li><label><input type="radio" name="q18" value="3"> <span class="option-text">El más rápido</span></label></li>
+            </ul>
+            <div id="feedback_18" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_18" style="display:none;">El que está adentro de la rotonda tiene derecho absoluto de vía. Los que entran hacen CEDA.</div>
+        </div>
+        <div class="question-block" id="block_19">
+            <div class="question"><span class="q-number">20</span> <span>Desde el enfoque de la seguridad vial, los accidentes de tránsito son considerados como:</span></div>
+            <ul class="options">
+                <li><label><input type="radio" name="q19" value="0"> <span class="option-text">Hechos fortuitos producto del destino</span></label></li>
+                <li><label><input type="radio" name="q19" value="1"> <span class="option-text">Eventos inevitables</span></label></li>
+                <li><label><input type="radio" name="q19" value="2"> <span class="option-text">Sucesos que se pueden prever y evitar</span></label></li>
+                <li><label><input type="radio" name="q19" value="3"> <span class="option-text">Castigos divinos</span></label></li>
+            </ul>
+            <div id="feedback_19" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_19" style="display:none;">En Seguridad Vial no existe el 'accidente' por azar; casi el 90% son colisiones causadas por errores humanos que se podían evitar.</div>
+        </div>
+        <div class="question-block" id="block_20">
+            <div class="question"><span class="q-number">21</span> <span>Un factor muy peligroso al frenar en lluvia, donde la llanta pierde contacto y patina sobre el agua, se llama:</span></div>
+            <ul class="options">
+                <li><label><input type="radio" name="q20" value="0"> <span class="option-text">Hidroplaneo (Aquaplaning)</span></label></li>
+                <li><label><input type="radio" name="q20" value="1"> <span class="option-text">Efecto dominó</span></label></li>
+                <li><label><input type="radio" name="q20" value="2"> <span class="option-text">Patinaje seco</span></label></li>
+                <li><label><input type="radio" name="q20" value="3"> <span class="option-text">Efecto látigo</span></label></li>
+            </ul>
+            <div id="feedback_20" class="feedback" style="display:none;" data-correct="0"></div>
+            <div id="explanation_20" style="display:none;">El hidroplaneo ocurre cuando las llantas no evacúan el agua rápido y el carro 'flota', perdiendo dirección.</div>
+        </div>
+        <div class="question-block" id="block_21">
+            <div class="question"><span class="q-number">22</span> <span>¿De qué color suelen ser las señales Preventivas?</span></div>
+            <ul class="options">
+                <li><label><input type="radio" name="q21" value="0"> <span class="option-text">Fondo blanco, borde rojo</span></label></li>
+                <li><label><input type="radio" name="q21" value="1"> <span class="option-text">Fondo azul, símbolos blancos</span></label></li>
+                <li><label><input type="radio" name="q21" value="2"> <span class="option-text">Fondo verde</span></label></li>
+                <li><label><input type="radio" name="q21" value="3"> <span class="option-text">Fondo amarillo, símbolos y bordes negros</span></label></li>
+            </ul>
+            <div id="feedback_21" class="feedback" style="display:none;" data-correct="3"></div>
+            <div id="explanation_21" style="display:none;">Las señales preventivas (que avisan peligros) son rombos amarillos con dibujos negros.</div>
+        </div>
+        <div class="question-block" id="block_22">
+            <div class="question"><span class="q-number">23</span> <span>Si por el escape sale humo AZULADO constante, significa que:</span></div>
+            <ul class="options">
+                <li><label><input type="radio" name="q22" value="0"> <span class="option-text">Filtro sucio</span></label></li>
+                <li><label><input type="radio" name="q22" value="1"> <span class="option-text">Bujías nuevas</span></label></li>
+                <li><label><input type="radio" name="q22" value="2"> <span class="option-text">El motor tiene desgaste interno y está quemando ACEITE</span></label></li>
+                <li><label><input type="radio" name="q22" value="3"> <span class="option-text">Falla alternador</span></label></li>
+            </ul>
+            <div id="feedback_22" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_22" style="display:none;">El humo azul indica que el aceite lubricante se filtra a la cámara de combustión, contaminando gravemente.</div>
+        </div>
+        <div class="question-block" id="block_23">
+            <div class="question"><span class="q-number">24</span> <span>¿Qué significa una línea amarilla DISCONTINUA (fragmentada) en el centro de la vía?</span></div>
+            <ul class="options">
+                <li><label><input type="radio" name="q23" value="0"> <span class="option-text">Prohibición de adelantamiento</span></label></li>
+                <li><label><input type="radio" name="q23" value="1"> <span class="option-text">Permite el adelantamiento siempre que haya visibilidad y carril libre</span></label></li>
+                <li><label><input type="radio" name="q23" value="2"> <span class="option-text">Límite 40 km/h</span></label></li>
+                <li><label><input type="radio" name="q23" value="3"> <span class="option-text">Exclusivo ciclistas</span></label></li>
+            </ul>
+            <div id="feedback_23" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_23" style="display:none;">La línea discontinua indica que es un tramo recto y con visibilidad para rebasar.</div>
+        </div>
+        <div class="question-block" id="block_24">
+            <div class="question"><span class="q-number">25</span> <span>En una vía rural, la zona contigua a la calzada destinada al tránsito de peatones y vehículos en emergencia se llama:</span></div>
+            <ul class="options">
+                <li><label><input type="radio" name="q24" value="0"> <span class="option-text">Acera</span></label></li>
+                <li><label><input type="radio" name="q24" value="1"> <span class="option-text">Cuneta</span></label></li>
+                <li><label><input type="radio" name="q24" value="2"> <span class="option-text">Espaldón</span></label></li>
+                <li><label><input type="radio" name="q24" value="3"> <span class="option-text">Carril de aceleración</span></label></li>
+            </ul>
+            <div id="feedback_24" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_24" style="display:none;">El espaldón funciona como refugio si tu carro se descompone y, al no existir acera, es por donde deben caminar los peatones.</div>
+        </div>
+        <div class="question-block" id="block_25">
+            <div class="question"><span class="q-number">26</span> <span>Si está lloviendo, hay neblina o es de noche, ¿qué debe hacer con la regla de distancia de seguimiento (los 2 segundos)?</span></div>
+            <ul class="options">
+                <li><label><input type="radio" name="q25" value="0"> <span class="option-text">Reducirla a 1 seg</span></label></li>
+                <li><label><input type="radio" name="q25" value="1"> <span class="option-text">Mantenerla igual</span></label></li>
+                <li><label><input type="radio" name="q25" value="2"> <span class="option-text">Aumentarla al menos al doble (3, 4 o más segundos)</span></label></li>
+                <li><label><input type="radio" name="q25" value="3"> <span class="option-text">Ignorarla</span></label></li>
+            </ul>
+            <div id="feedback_25" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_25" style="display:none;">En clima adverso el asfalto resbala, el carro tarda más en frenar y se requiere el doble de distancia.</div>
+        </div>
+        <div class="question-block" id="block_26">
+            <div class="question"><span class="q-number">27</span> <span>El canal de desagüe destinado a recoger las aguas pluviales (de lluvia) en una vía rural se llama:</span></div>
+            <ul class="options">
+                <li><label><input type="radio" name="q26" value="0"> <span class="option-text">Caño</span></label></li>
+                <li><label><input type="radio" name="q26" value="1"> <span class="option-text">Cuneta</span></label></li>
+                <li><label><input type="radio" name="q26" value="2"> <span class="option-text">Alcantarilla</span></label></li>
+                <li><label><input type="radio" name="q26" value="3"> <span class="option-text">Espaldón</span></label></li>
+            </ul>
+            <div id="feedback_26" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_26" style="display:none;">Las cunetas son excavaciones profundas a los lados de las carreteras rurales para evitar que el agua inunde la calzada.</div>
+        </div>
+        <div class="question-block" id="block_27">
+            <div class="question"><span class="q-number">28</span> <span>¿Cuál es el objetivo principal de la Ley de Tránsito y la Seguridad Vial?</span></div>
+            <ul class="options">
+                <li><label><input type="radio" name="q27" value="0"> <span class="option-text">Aumentar la recaudación de multas</span></label></li>
+                <li><label><input type="radio" name="q27" value="1"> <span class="option-text">Proteger la vida humana y prevenir accidentes</span></label></li>
+                <li><label><input type="radio" name="q27" value="2"> <span class="option-text">Construir más carreteras</span></label></li>
+                <li><label><input type="radio" name="q27" value="3"> <span class="option-text">Vender más vehículos</span></label></li>
+            </ul>
+            <div id="feedback_27" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_27" style="display:none;">El fin supremo de la Ley 9078 es salvaguardar la integridad física y la vida de las personas, previniendo accidentes.</div>
+        </div>
+        <div class="question-block" id="block_28">
+            <div class="question"><span class="q-number">29</span> <span>¿Cuáles son los tres documentos MÍNIMOS que debe portar un conductor para no ser multado al circular?</span></div>
+            <ul class="options">
+                <li><label><input type="radio" name="q28" value="0"> <span class="option-text">Cédula, pasaporte y recibo</span></label></li>
+                <li><label><input type="radio" name="q28" value="1"> <span class="option-text">Licencia al día, marchamo y tarjeta de revisión técnica (RTV)</span></label></li>
+                <li><label><input type="radio" name="q28" value="2"> <span class="option-text">Seguro del INS, póliza y cédula</span></label></li>
+                <li><label><input type="radio" name="q28" value="3"> <span class="option-text">Solo la licencia</span></label></li>
+            </ul>
+            <div id="feedback_28" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_28" style="display:none;">Los 3 requisitos obligatorios son: Licencia apta, Marchamo y Revisión Técnica aprobada.</div>
+        </div>
+        <div class="question-block" id="block_29">
+            <div class="question"><span class="q-number">30</span> <span>¿Cuál es la función del Convertidor Catalítico (Catalizador) en el ambiente?</span></div>
+            <ul class="options">
+                <li><label><input type="radio" name="q29" value="0"> <span class="option-text">Hacer ruido deportivo</span></label></li>
+                <li><label><input type="radio" name="q29" value="1"> <span class="option-text">Filtrar aceite</span></label></li>
+                <li><label><input type="radio" name="q29" value="2"> <span class="option-text">Transformar gases tóxicos del motor en emisiones menos dañinas antes de salir</span></label></li>
+                <li><label><input type="radio" name="q29" value="3"> <span class="option-text">Enfriar agua</span></label></li>
+            </ul>
+            <div id="feedback_29" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_29" style="display:none;">Es la primera línea de defensa ecológica. Convierte toxinas mortales en gases más estables como vapor de agua y CO2.</div>
+        </div>
+        <div class="question-block" id="block_30">
+            <div class="question"><span class="q-number">31</span> <span>¿Cuál es el límite de alcohol en sangre sancionable para un conductor con licencia regular (que no es novato ni profesional)?</span></div>
+            <ul class="options">
+                <li><label><input type="radio" name="q30" value="0"> <span class="option-text">Mayor a 0.20 g/l</span></label></li>
+                <li><label><input type="radio" name="q30" value="1"> <span class="option-text">Mayor a 0.50 g/l (multa) y 0.75 g/l (delito penal)</span></label></li>
+                <li><label><input type="radio" name="q30" value="2"> <span class="option-text">Mayor a 1.00 g/l</span></label></li>
+                <li><label><input type="radio" name="q30" value="3"> <span class="option-text">No hay límite</span></label></li>
+            </ul>
+            <div id="feedback_30" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_30" style="display:none;">Para un conductor común, si supera los 0.50 g/l recibe multa A. Si supera 0.75 g/l, es delito penal.</div>
+        </div>
+        <div class="question-block" id="block_31">
+            <div class="question"><span class="q-number">32</span> <span>¿Qué sucede si un conductor se niega a realizarse la prueba de alcoholemia oficial en carretera?</span></div>
+            <ul class="options">
+                <li><label><input type="radio" name="q31" value="0"> <span class="option-text">El oficial lo deja ir</span></label></li>
+                <li><label><input type="radio" name="q31" value="1"> <span class="option-text">Recibe una infracción Tipo A por presunción de ebriedad</span></label></li>
+                <li><label><input type="radio" name="q31" value="2"> <span class="option-text">Se le hace multa Categoría C</span></label></li>
+                <li><label><input type="radio" name="q31" value="3"> <span class="option-text">Solo se le decomisan placas</span></label></li>
+            </ul>
+            <div id="feedback_31" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_31" style="display:none;">Negarse a la prueba conlleva automáticamente la sanción más alta (Categoría A, 6 puntos) al asumir que está ebrio.</div>
+        </div>
+        <div class="question-block" id="block_32">
+            <div class="question"><span class="q-number">33</span> <span>Al conducir de noche y notar que viene un vehículo de frente, usted debe:</span></div>
+            <ul class="options">
+                <li><label><input type="radio" name="q32" value="0"> <span class="option-text">Luces antiniebla</span></label></li>
+                <li><label><input type="radio" name="q32" value="1"> <span class="option-text">Mantener luz alta</span></label></li>
+                <li><label><input type="radio" name="q32" value="2"> <span class="option-text">Cambiar a luz baja a unos 250 metros antes para evitar encandilar</span></label></li>
+                <li><label><input type="radio" name="q32" value="3"> <span class="option-text">Apagar luces</span></label></li>
+            </ul>
+            <div id="feedback_32" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_32" style="display:none;">Encandilar al otro conductor es mortal; siempre baje las luces a 250m del cruce.</div>
+        </div>
+        <div class="question-block" id="block_33">
+            <div class="question"><span class="q-number">34</span> <span>¿Cómo deben estar las llantas si se estaciona en BAJADA a la par del cordón de caño?</span></div>
+            <ul class="options">
+                <li><label><input type="radio" name="q33" value="0"> <span class="option-text">Rectas</span></label></li>
+                <li><label><input type="radio" name="q33" value="1"> <span class="option-text">Hacia el centro</span></label></li>
+                <li><label><input type="radio" name="q33" value="2"> <span class="option-text">Giradas hacia el cordón del caño (derecha/adentro)</span></label></li>
+                <li><label><input type="radio" name="q33" value="3"> <span class="option-text">Sobre la acera</span></label></li>
+            </ul>
+            <div id="feedback_33" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_33" style="display:none;">En bajada, se giran hacia la acera para que, si fallan los frenos, la llanta choque contra el caño y atranque el carro.</div>
+        </div>
+        <div class="question-block" id="block_34">
+            <div class="question"><span class="q-number">35</span> <span>Al llegar a un semáforo rojo, es eficiente quitar el pie del gas desde antes y dejar que el motor frene el carro solo. Esto es:</span></div>
+            <ul class="options">
+                <li><label><input type="radio" name="q34" value="0"> <span class="option-text">Velocidad crucero</span></label></li>
+                <li><label><input type="radio" name="q34" value="1"> <span class="option-text">Conducción Anticipada</span></label></li>
+                <li><label><input type="radio" name="q34" value="2"> <span class="option-text">Hidroplaneo</span></label></li>
+                <li><label><input type="radio" name="q34" value="3"> <span class="option-text">Neutro</span></label></li>
+            </ul>
+            <div id="feedback_34" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_34" style="display:none;">Conducir con anticipación permite aprovechar el freno de motor y ahorrar gasolina y pastillas de freno.</div>
+        </div>
+        <div class="question-block" id="block_35">
+            <div class="question"><span class="q-number">36</span> <span>¿Qué es la 'Fuerza Centrífuga' durante la conducción?</span></div>
+            <ul class="options">
+                <li><label><input type="radio" name="q35" value="0"> <span class="option-text">Freno motor</span></label></li>
+                <li><label><input type="radio" name="q35" value="1"> <span class="option-text">La fuerza física que empuja al vehículo HACIA AFUERA de la curva</span></label></li>
+                <li><label><input type="radio" name="q35" value="2"> <span class="option-text">Gravedad</span></label></li>
+                <li><label><input type="radio" name="q35" value="3"> <span class="option-text">Fuerza de llantas</span></label></li>
+            </ul>
+            <div id="feedback_35" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_35" style="display:none;">La fuerza centrífuga 'jala' el carro hacia afuera de la curva intentando que siga en línea recta.</div>
+        </div>
+        <div class="question-block" id="block_36">
+            <div class="question"><span class="q-number">37</span> <span>¿Qué es la seguridad PASIVA de un vehículo?</span></div>
+            <ul class="options">
+                <li><label><input type="radio" name="q36" value="0"> <span class="option-text">Frenos ABS</span></label></li>
+                <li><label><input type="radio" name="q36" value="1"> <span class="option-text">El cinturón de seguridad, apoyacabezas y bolsas de aire (actúan durante el choque)</span></label></li>
+                <li><label><input type="radio" name="q36" value="2"> <span class="option-text">El volante</span></label></li>
+                <li><label><input type="radio" name="q36" value="3"> <span class="option-text">Las luces</span></label></li>
+            </ul>
+            <div id="feedback_36" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_36" style="display:none;">La seguridad pasiva minimiza lesiones DURANTE y DESPUÉS del accidente (cinturón, bolsa de aire).</div>
+        </div>
+        <div class="question-block" id="block_37">
+            <div class="question"><span class="q-number">38</span> <span>¿Qué institución tiene como fin principal la prevención de accidentes y el financiamiento de la seguridad vial en Costa Rica?</span></div>
+            <ul class="options">
+                <li><label><input type="radio" name="q37" value="0"> <span class="option-text">INS</span></label></li>
+                <li><label><input type="radio" name="q37" value="1"> <span class="option-text">COSEVI (Consejo de Seguridad Vial)</span></label></li>
+                <li><label><input type="radio" name="q37" value="2"> <span class="option-text">CONAVI</span></label></li>
+                <li><label><input type="radio" name="q37" value="3"> <span class="option-text">RECOPE</span></label></li>
+            </ul>
+            <div id="feedback_37" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_37" style="display:none;">El COSEVI administra los fondos de las multas para invertirlos en educación vial, campañas e infraestructura.</div>
+        </div>
+        <div class="question-block" id="block_38">
+            <div class="question"><span class="q-number">39</span> <span>Pasarse un semáforo en rojo o una señal de ALTO corresponde a una infracción:</span></div>
+            <ul class="options">
+                <li><label><input type="radio" name="q38" value="0"> <span class="option-text">Categoría A</span></label></li>
+                <li><label><input type="radio" name="q38" value="1"> <span class="option-text">Categoría B (acumula 4 puntos)</span></label></li>
+                <li><label><input type="radio" name="q38" value="2"> <span class="option-text">Categoría C</span></label></li>
+                <li><label><input type="radio" name="q38" value="3"> <span class="option-text">Categoría E</span></label></li>
+            </ul>
+            <div id="feedback_38" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_38" style="display:none;">Irrespetar la luz roja o el ALTO es una falta Tipo B, castigada con una multa alta y 4 puntos.</div>
+        </div>
+        <div class="question-block" id="block_39">
+            <div class="question"><span class="q-number">40</span> <span>¿Con cuántos puntos pierde (se le suspende) la licencia a un conductor NOVATO?</span></div>
+            <ul class="options">
+                <li><label><input type="radio" name="q39" value="0"> <span class="option-text">12 puntos</span></label></li>
+                <li><label><input type="radio" name="q39" value="1"> <span class="option-text">6 puntos</span></label></li>
+                <li><label><input type="radio" name="q39" value="2"> <span class="option-text">4 puntos</span></label></li>
+                <li><label><input type="radio" name="q39" value="3"> <span class="option-text">10 puntos</span></label></li>
+            </ul>
+            <div id="feedback_39" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_39" style="display:none;">Un conductor novato tiene un margen menor; si acumula 6 puntos (ej. una infracción Tipo A), se le suspende la licencia.</div>
+        </div>
+
+        <button id="submitBtn" class="btn">TERMINAR EXAMEN Y VER NOTA</button>
+    </div>
+    <div id="result"></div>
+</div>
+
+<script>
+    document.getElementById('submitBtn').addEventListener('click', function(e) {
+        e.preventDefault(); 
+
+        // Confirmación antes de enviar
+        if(!confirm("¿Estás seguro que deseas enviar el examen para su calificación final?")) {
+            return;
+        }
+
+        try {
+            let score = 0;
+            const total = 40;
+            const puntajePorPregunta = 2.5; 
+
+            for (let i = 0; i < total; i++) {
+                const radios = document.getElementsByName('q' + i);
+                const feedbackDiv = document.getElementById('feedback_' + i);
+                const explanationText = document.getElementById('explanation_' + i).innerText;
+                const correctIndex = parseInt(feedbackDiv.getAttribute('data-correct'));
+
+                let selectedValue = -1;
+                let correctLabelText = "";
+                let selectedLabelDiv = null;
+
+                for (let j = 0; j < radios.length; j++) {
+                    if (radios[j].checked) {
+                        selectedValue = parseInt(radios[j].value);
+                        selectedLabelDiv = radios[j].nextElementSibling; 
+                    }
+                    if (parseInt(radios[j].value) === correctIndex) {
+                        correctLabelText = radios[j].nextElementSibling.innerText;
+                    }
+                }
+
+                feedbackDiv.style.display = 'block';
+
+                let answerResultHTML = "";
+
+                if (selectedValue === correctIndex) {
+                    score++;
+                    answerResultHTML = '✅ <span style="color:#27ae60; font-size:1.1rem;">¡Respuesta Correcta!</span>';
+                    if(selectedLabelDiv) selectedLabelDiv.style.color = '#27ae60';
+                } else {
+                    let errorMsg = '❌ <span style="color:#e74c3c; font-size:1.1rem; font-weight:bold;">Respuesta Incorrecta.</span><br><br>';
+                    if (selectedValue === -1) {
+                        errorMsg = '⚠️ <span style="color:#f39c12; font-size:1.1rem; font-weight:bold;">No respondiste esta pregunta.</span><br><br>';
+                    } else {
+                        if(selectedLabelDiv) selectedLabelDiv.style.color = '#e74c3c';
+                    }
+                    answerResultHTML = errorMsg + 'La respuesta correcta obligatoria era: <br><strong style="color:#27ae60; font-size:1.1rem; background:#e8f8f5; padding:5px; border-radius:4px; display:inline-block; margin-top:5px;">✓ ' + correctLabelText + '</strong>';
+                }
+
+                feedbackDiv.innerHTML = answerResultHTML + 
+                    '<div class="explanation-box">💡 <strong>Retroalimentación:</strong> ' + explanationText + '</div>';
+            }
+
+            const finalScore = (score * puntajePorPregunta).toFixed(1);
+            const numFinal = parseFloat(finalScore);
+            const resultDiv = document.getElementById('result');
+            resultDiv.style.display = 'block';
+
+            // Ocultar boton
+            this.style.display = 'none';
+
+            let resultHTML = "";
+
+            // LOGICA CORREGIDA: Aprobación con 70 oficial
+            if (numFinal >= 70) {
+                resultDiv.style.backgroundColor = '#d4edda';
+                resultDiv.style.color = '#155724';
+                resultDiv.style.border = '2px solid #c3e6cb';
+
+                // Mensaje especial si saca el 100
+                if (numFinal === 100) {
+                    resultHTML = `
+                        <h2 style="font-size:1.8rem; margin-top:0;">¡EXAMEN PERFECTO! 🏆</h2>
+                        <p style="font-size:1.2rem;">Increíble, no fallaste ni una sola pregunta.</p>
+                        <div class="score-circle" style="color: #155724; border-color: #28a745;">${numFinal}</div>
+                        <p>Acertaste 40 de 40. Estás más que listo.</p>
+                    `;
+                } else {
+                    resultHTML = `
+                        <h2 style="font-size:1.8rem; margin-top:0;">¡EXAMEN APROBADO! 🎉</h2>
+                        <p style="font-size:1.2rem;">Felicidades, superaste la nota mínima de 70.</p>
+                        <div class="score-circle" style="color: #155724; border-color: #28a745;">${numFinal}</div>
+                        <p>Acertaste ${score} de 40 preguntas.</p>
+                    `;
+                }
+            } else {
+                resultDiv.style.backgroundColor = '#f8d7da';
+                resultDiv.style.color = '#721c24';
+                resultDiv.style.border = '2px solid #f5c6cb';
+                resultHTML = `
+                    <h2 style="font-size:1.8rem; margin-top:0;">EXAMEN REPROBADO ⚠️</h2>
+                    <p style="font-size:1.2rem;">La nota mínima para pasar es 70.0</p>
+                    <div class="score-circle" style="color: #721c24; border-color: #dc3545;">${numFinal}</div>
+                    <p>Acertaste solo ${score} de 40 preguntas (Fallaste ${40 - score}). ¡Sigue practicando!</p>
+                `;
+            }
+
+            resultDiv.innerHTML = resultHTML + '<br><p><em>* Desliza hacia arriba para revisar en cuáles preguntas te equivocaste y leer las explicaciones de estudio.</em></p>';
+
+            // Alert nativo para iOS
+            if (numFinal >= 70) {
+                alert("¡FELICIDADES APROBASTE! 🎉\nTu nota final es: " + numFinal + "/100");
+            } else {
+                alert("REPROBASTE ⚠️\nTu nota final es: " + numFinal + "/100.\nNecesitas mínimo 70.");
+            }
+
+            // Scroll hacia la nota final
+            resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+        } catch (error) {
+            alert("Hubo un error calculando tu examen: " + error.message);
+        }
+    });
+</script>
+</body>
+</html>

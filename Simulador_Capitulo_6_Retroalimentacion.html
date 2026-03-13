@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Examen Teórico - Capítulo 6 con Retroalimentación</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f4f9f4; color: #2c3e50; line-height: 1.6; padding: 15px; margin: 0; }
+        h1 { text-align: center; color: #2ecc71; font-size: 1.6rem; margin-bottom: 5px; }
+        h2 { text-align: center; color: #7f8c8d; font-size: 1rem; margin-top: 0; margin-bottom: 25px; }
+        .quiz-container { width: 100%; max-width: 800px; margin: 0 auto; background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); box-sizing: border-box; border-top: 5px solid #27ae60; }
+        .question-block { margin-bottom: 25px; border-bottom: 1px solid #e8f6e9; padding-bottom: 20px; }
+        .question { font-weight: bold; font-size: 1.15rem; margin-bottom: 15px; color: #2c3e50; }
+        .options { list-style-type: none; padding: 0; margin: 0; }
+        .options li { margin-bottom: 12px; }
+        label { cursor: pointer; display: flex; align-items: flex-start; padding: 12px; border-radius: 8px; background: #fdfdfd; border: 1px solid #d4efdf; -webkit-tap-highlight-color: transparent; touch-action: manipulation; transition: background 0.2s; }
+        label:active { background: #e8f8f5; }
+        input[type="radio"] { margin-right: 12px; margin-top: 4px; transform: scale(1.3); }
+        .btn { display: block; width: 100%; padding: 18px; background-color: #27ae60; color: white; border: none; font-size: 1.2rem; font-weight: bold; border-radius: 10px; cursor: pointer; margin-top: 30px; -webkit-appearance: none; box-shadow: 0 4px 6px rgba(39, 174, 96, 0.3); transition: background 0.3s; }
+        .btn:active { background-color: #1e8449; }
+        #result { display: none; margin-top: 30px; padding: 20px; border-radius: 10px; text-align: center; font-size: 1.3rem; font-weight: bold; }
+        .correct-answer { color: #27ae60; font-weight: bold; }
+        .wrong-answer { color: #e74c3c; text-decoration: line-through; }
+        .feedback { margin-top: 15px; font-size: 1rem; padding: 12px; background: #fff; border: 1px solid #eee; border-radius: 6px; }
+        .explanation-box { margin-top: 15px; padding: 15px; background-color: #e9f7ef; border-left: 5px solid #2ecc71; border-radius: 6px; font-size: 0.95rem; color: #1e8449; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+    </style>
+</head>
+<body>
+
+<div class="quiz-container">
+    <h1>Simulador Examen - Capítulo 6</h1>
+    <h2>Conducción Ecológica y Medio Ambiente (iOS)</h2>
+    <p style="text-align:center; font-size: 0.95rem; color: #666; margin-bottom: 25px;">20 preguntas clave sobre contaminación, reciclaje de piezas y ahorro de combustible.</p>
+    <div id="quizForm">
+        <div class="question-block" id="block_0">
+            <div class="question">1. ¿Qué es la contaminación ambiental en el contexto del tránsito vehicular?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q0" value="0"> <span>El exceso de rótulos publicitarios</span></label></li>
+                <li><label><input type="radio" name="q0" value="1"> <span>La alteración de la pureza o calidad del aire, suelo y agua producida por las emisiones, fluidos y ruidos de los vehículos</span></label></li>
+                <li><label><input type="radio" name="q0" value="2"> <span>El polvo que levantan las llantas en verano</span></label></li>
+                <li><label><input type="radio" name="q0" value="3"> <span>La basura que dejan los peatones</span></label></li>
+            </ul>
+            <div id="feedback_0" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_0" style="display:none;">Los vehículos automotores con motor de combustión son de los mayores contaminantes del planeta, alterando la atmósfera mediante gases y ruido permanente.</div>
+        </div>
+        <div class="question-block" id="block_1">
+            <div class="question">2. ¿Cuál es el gas más peligroso, tóxico, inodoro e invisible que emite el tubo de escape de un vehículo de combustión?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q1" value="0"> <span>El Oxígeno</span></label></li>
+                <li><label><input type="radio" name="q1" value="1"> <span>El Dióxido de Carbono (CO2)</span></label></li>
+                <li><label><input type="radio" name="q1" value="2"> <span>El Monóxido de Carbono (CO)</span></label></li>
+                <li><label><input type="radio" name="q1" value="3"> <span>El Nitrógeno</span></label></li>
+            </ul>
+            <div id="feedback_1" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_1" style="display:none;">El Monóxido de Carbono (CO) es un asesino silencioso. No huele ni se ve, pero si se acumula en un garaje cerrado, causa sueño, asfixia y la muerte en pocos minutos.</div>
+        </div>
+        <div class="question-block" id="block_2">
+            <div class="question">3. El Dióxido de Carbono (CO2) expulsado por los vehículos es el principal responsable de:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q2" value="0"> <span>Romper la capa de ozono</span></label></li>
+                <li><label><input type="radio" name="q2" value="1"> <span>El calentamiento global y el efecto invernadero</span></label></li>
+                <li><label><input type="radio" name="q2" value="2"> <span>La contaminación sónica</span></label></li>
+                <li><label><input type="radio" name="q2" value="3"> <span>La lluvia ácida exclusivamente</span></label></li>
+            </ul>
+            <div id="feedback_2" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_2" style="display:none;">El CO2 es un gas de efecto invernadero. Sube a la atmósfera, forma una 'cobija' que no deja salir el calor del sol y produce el calentamiento global del planeta.</div>
+        </div>
+        <div class="question-block" id="block_3">
+            <div class="question">4. ¿Qué gas emitido por los motores a diésel y gasolina se combina con la humedad del aire para producir la 'Lluvia Ácida'?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q3" value="0"> <span>El Helio</span></label></li>
+                <li><label><input type="radio" name="q3" value="1"> <span>Los Óxidos de Nitrógeno (NOx) y Dióxido de Azufre</span></label></li>
+                <li><label><input type="radio" name="q3" value="2"> <span>El Hidrógeno</span></label></li>
+                <li><label><input type="radio" name="q3" value="3"> <span>El Monóxido de Carbono</span></label></li>
+            </ul>
+            <div id="feedback_3" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_3" style="display:none;">Los Óxidos de Nitrógeno (NOx) reaccionan con las nubes formando ácidos. Al llover, este ácido quema los bosques, contamina ríos y corroe los techos y carros.</div>
+        </div>
+        <div class="question-block" id="block_4">
+            <div class="question">5. ¿Qué significa el concepto de 'Conducción Eco-eficiente' o 'Econducción'?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q4" value="0"> <span>Comprar solo carros eléctricos</span></label></li>
+                <li><label><input type="radio" name="q4" value="1"> <span>Un conjunto de técnicas para conducir que reducen el consumo de combustible hasta en un 15% y disminuyen las emisiones de gases contaminantes</span></label></li>
+                <li><label><input type="radio" name="q4" value="2"> <span>Manejar muy despacio, obstaculizando el tránsito</span></label></li>
+                <li><label><input type="radio" name="q4" value="3"> <span>Lavar el carro sin usar manguera</span></label></li>
+            </ul>
+            <div id="feedback_4" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_4" style="display:none;">La eco-conducción es cambiar nuestra forma de manejar (acelerar suave, usar bien los cambios) para gastar menos gasolina y proteger el medio ambiente.</div>
+        </div>
+        <div class="question-block" id="block_5">
+            <div class="question">6. ¿Qué efecto tiene acelerar a fondo o dar 'acelerones' bruscos al arrancar desde un semáforo?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q5" value="0"> <span>Limpia el motor de impurezas</span></label></li>
+                <li><label><input type="radio" name="q5" value="1"> <span>Calienta el carro más rápido</span></label></li>
+                <li><label><input type="radio" name="q5" value="2"> <span>Inyecta un exceso de combustible al motor que no se quema bien, aumentando drásticamente la contaminación y el gasto</span></label></li>
+                <li><label><input type="radio" name="q5" value="3"> <span>Mejora el sistema de frenos</span></label></li>
+            </ul>
+            <div id="feedback_5" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_5" style="display:none;">Al pisar el gas a fondo de golpe, el motor se 'ahoga' en gasolina que no puede quemar eficientemente, por lo que la expulsa cruda y negra por el escape, gastando tu dinero.</div>
+        </div>
+        <div class="question-block" id="block_6">
+            <div class="question">7. Para ahorrar combustible en carretera abierta o autopistas, a nivel de aerodinámica, se recomienda:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q6" value="0"> <span>Conducir con las ventanas abiertas para que el aire circule</span></label></li>
+                <li><label><input type="radio" name="q6" value="1"> <span>Conducir con las ventanas cerradas y usar la ventilación interna (A/C moderado), ya que las ventanas abiertas frenan el carro como un paracaídas</span></label></li>
+                <li><label><input type="radio" name="q6" value="2"> <span>Poner una canasta en el techo llena de bultos</span></label></li>
+                <li><label><input type="radio" name="q6" value="3"> <span>Quitarle los espejos al carro</span></label></li>
+            </ul>
+            <div id="feedback_6" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_6" style="display:none;">A más de 80 km/h, las ventanas abiertas actúan como un ancla aerodinámica. El motor tiene que hacer más fuerza (y quemar más gasolina) para vencer esa resistencia del viento.</div>
+        </div>
+        <div class="question-block" id="block_7">
+            <div class="question">8. ¿Cómo afecta la presión de las llantas al consumo de combustible y al medio ambiente?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q7" value="0"> <span>Las llantas desinfladas generan más fricción y resistencia contra el asfalto, obligando al motor a gastar más gasolina</span></label></li>
+                <li><label><input type="radio" name="q7" value="1"> <span>No afecta, solo afecta la suspensión</span></label></li>
+                <li><label><input type="radio" name="q7" value="2"> <span>Las llantas desinfladas ahorran gasolina porque el carro va más suave</span></label></li>
+                <li><label><input type="radio" name="q7" value="3"> <span>Solo afecta si las llantas son de diferente tamaño</span></label></li>
+            </ul>
+            <div id="feedback_7" class="feedback" style="display:none;" data-correct="0"></div>
+            <div id="explanation_7" style="display:none;">Una llanta desinflada es como caminar en la arena de la playa: cuesta muchísimo esfuerzo. Mantenerlas con la presión correcta (según el manual) ahorra mucho dinero.</div>
+        </div>
+        <div class="question-block" id="block_8">
+            <div class="question">9. Es una práctica de conducción eficiente y amigable con el ambiente apagar el motor del vehículo si prevé que estará detenido por más de:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q8" value="0"> <span>10 segundos</span></label></li>
+                <li><label><input type="radio" name="q8" value="1"> <span>1 o 2 minutos (ej. presas totales, cierre de vías o barreras del tren)</span></label></li>
+                <li><label><input type="radio" name="q8" value="2"> <span>15 minutos</span></label></li>
+                <li><label><input type="radio" name="q8" value="3"> <span>Nunca se debe apagar</span></label></li>
+            </ul>
+            <div id="feedback_8" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_8" style="display:none;">Un motor encendido sin avanzar por más de un minuto (ralentí prolongado) quema combustible innecesariamente y contamina. Hoy en día, los carros modernos traen sistemas 'Start/Stop' para esto.</div>
+        </div>
+        <div class="question-block" id="block_9">
+            <div class="question">10. ¿Cuál es la función específica del Convertidor Catalítico (Catalizador) en relación con el ambiente?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q9" value="0"> <span>Hacer que el tubo de escape suene deportivo</span></label></li>
+                <li><label><input type="radio" name="q9" value="1"> <span>Filtrar el aceite que gotea</span></label></li>
+                <li><label><input type="radio" name="q9" value="2"> <span>Producir una reacción química que transforma los gases tóxicos del motor (CO, NOx) en gases menos dañinos (agua, CO2 y nitrógeno) antes de salir a la atmósfera</span></label></li>
+                <li><label><input type="radio" name="q9" value="3"> <span>Enfriar el agua del radiador</span></label></li>
+            </ul>
+            <div id="feedback_9" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_9" style="display:none;">El catalizador es la primera línea de defensa ambiental del carro. Eliminarlo (como hacen algunos mecánicos) es ilegal y contamina el aire gravemente.</div>
+        </div>
+        <div class="question-block" id="block_10">
+            <div class="question">11. Se considera Contaminación Sónica (ruido) producida por vehículos a:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q10" value="0"> <span>El sonido normal de las llantas rodando</span></label></li>
+                <li><label><input type="radio" name="q10" value="1"> <span>El uso desproporcionado de bocinas (pitos), tronadores (múflers alterados), sirenas no autorizadas y equipos de sonido a alto volumen</span></label></li>
+                <li><label><input type="radio" name="q10" value="2"> <span>El sonido de las puertas al cerrar</span></label></li>
+                <li><label><input type="radio" name="q10" value="3"> <span>Las luces parpadeantes</span></label></li>
+            </ul>
+            <div id="feedback_10" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_10" style="display:none;">El ruido excesivo genera estrés, sordera e irritabilidad en la ciudad. Pitar sin motivo de emergencia o usar muflas modificadas ('roncadores') es multado por la Ley de Tránsito.</div>
+        </div>
+        <div class="question-block" id="block_11">
+            <div class="question">12. ¿Qué problema ambiental genera desechar incorrectamente el aceite quemado del motor?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q11" value="0"> <span>Ninguno, sirve de abono a la tierra</span></label></li>
+                <li><label><input type="radio" name="q11" value="1"> <span>Se evapora rápidamente sin dejar rastro</span></label></li>
+                <li><label><input type="radio" name="q11" value="2"> <span>Un solo litro de aceite usado puede contaminar hasta un millón de litros de agua potable, arruinando ríos y mantos acuíferos</span></label></li>
+                <li><label><input type="radio" name="q11" value="3"> <span>Solo mancha temporalmente el suelo</span></label></li>
+            </ul>
+            <div id="feedback_11" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_11" style="display:none;">El aceite quemado es altísimamente tóxico por los metales pesados que recoge del motor. Nunca se debe tirar en caños, tierra o basureros normales; debe ser entregado a gestores autorizados.</div>
+        </div>
+        <div class="question-block" id="block_12">
+            <div class="question">13. ¿Qué se debe hacer con la batería vieja del vehículo (acumulador) cuando se daña?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q12" value="0"> <span>Tirarla en la basura de la casa</span></label></li>
+                <li><label><input type="radio" name="q12" value="1"> <span>Guardarla en el patio</span></label></li>
+                <li><label><input type="radio" name="q12" value="2"> <span>Entregarla al centro de servicio o reciclaje autorizado, ya que contiene plomo y ácidos sumamente tóxicos y corrosivos</span></label></li>
+                <li><label><input type="radio" name="q12" value="3"> <span>Quemar su contenido</span></label></li>
+            </ul>
+            <div id="feedback_12" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_12" style="display:none;">Las baterías automotrices son residuos peligrosos. El ácido sulfúrico y el plomo destruyen los suelos y el agua. La ley exige su reciclaje controlado.</div>
+        </div>
+        <div class="question-block" id="block_13">
+            <div class="question">14. El gas refrigerante que utilizan los sistemas de Aire Acondicionado de los vehículos (CFCs o similares), si se libera al ambiente:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q13" value="0"> <span>Refresca el clima</span></label></li>
+                <li><label><input type="radio" name="q13" value="1"> <span>Destruye la capa de ozono y contribuye al efecto invernadero</span></label></li>
+                <li><label><input type="radio" name="q13" value="2"> <span>Ayuda a formar nubes de lluvia</span></label></li>
+                <li><label><input type="radio" name="q13" value="3"> <span>No tiene ningún efecto</span></label></li>
+            </ul>
+            <div id="feedback_13" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_13" style="display:none;">Las fugas del gas del aire acondicionado (si son de tipos antiguos o no ecológicos) atacan directamente la capa de ozono de la estratósfera que nos protege del cáncer de piel.</div>
+        </div>
+        <div class="question-block" id="block_14">
+            <div class="question">15. ¿A qué se le llama la 'revisión de control de emisiones' (Revisión Técnica Vehicular - RTV)?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q14" value="0"> <span>Una prueba para ver si el carro corre rápido</span></label></li>
+                <li><label><input type="radio" name="q14" value="1"> <span>Una prueba anual obligatoria donde se mide con equipos especiales que el humo y gases del tubo de escape no superen los límites de contaminación legales</span></label></li>
+                <li><label><input type="radio" name="q14" value="2"> <span>El chequeo del color de la pintura</span></label></li>
+                <li><label><input type="radio" name="q14" value="3"> <span>El pago de los impuestos en Hacienda</span></label></li>
+            </ul>
+            <div id="feedback_14" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_14" style="display:none;">La prueba de gases de RTV asegura que tu motor está quemando bien la gasolina y que el catalizador funciona. Si contamina más de lo permitido por el Ministerio de Salud, el carro no circula.</div>
+        </div>
+        <div class="question-block" id="block_15">
+            <div class="question">16. Una señal de mala combustión en un vehículo Diésel (camiones/buses) es cuando:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q15" value="0"> <span>No hace ruido</span></label></li>
+                <li><label><input type="radio" name="q15" value="1"> <span>Expulsa gran cantidad de humo NEGRO u oscuro (hollín) por el escape</span></label></li>
+                <li><label><input type="radio" name="q15" value="2"> <span>Expulsa vapor de agua transparente</span></label></li>
+                <li><label><input type="radio" name="q15" value="3"> <span>Huele a perfume</span></label></li>
+            </ul>
+            <div id="feedback_15" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_15" style="display:none;">El humo negro en motores diésel significa inyectores sucios o mal calibrados. Es hollín puro y partículas que causan enfermedades respiratorias graves y asma en la población.</div>
+        </div>
+        <div class="question-block" id="block_16">
+            <div class="question">17. Si por el escape de un vehículo de gasolina sale humo BLANCO en exceso (como una nube espesa permanente, no simple vapor de frío), esto indica:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q16" value="0"> <span>Que está funcionando perfectamente</span></label></li>
+                <li><label><input type="radio" name="q16" value="1"> <span>Que está quemando agua o líquido refrigerante (posible empaque de cabezote dañado)</span></label></li>
+                <li><label><input type="radio" name="q16" value="2"> <span>Que está quemando aceite</span></label></li>
+                <li><label><input type="radio" name="q16" value="3"> <span>Que le sobra gasolina</span></label></li>
+            </ul>
+            <div id="feedback_16" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_16" style="display:none;">Humo blanco denso y dulce = el agua del radiador se está filtrando al motor. El motor se fundirá pronto.</div>
+        </div>
+        <div class="question-block" id="block_17">
+            <div class="question">18. Si el vehículo expulsa humo de color AZULADO constante por el escape, el diagnóstico mecánico es:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q17" value="0"> <span>Filtro de aire sucio</span></label></li>
+                <li><label><input type="radio" name="q17" value="1"> <span>Bujías nuevas</span></label></li>
+                <li><label><input type="radio" name="q17" value="2"> <span>El motor tiene desgaste interno en anillos o válvulas y está quemando ACEITE junto con el combustible</span></label></li>
+                <li><label><input type="radio" name="q17" value="3"> <span>Falla en el alternador</span></label></li>
+            </ul>
+            <div id="feedback_17" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_17" style="display:none;">El humo azul huele a fritura mecánica. Indica que el aceite lubricante se está pasando a la cámara de explosión. Esto contamina el aire terriblemente y destruye el catalizador.</div>
+        </div>
+        <div class="question-block" id="block_18">
+            <div class="question">19. En relación al diseño de rutas, ¿qué aporta un beneficio ecológico al conducir?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q18" value="0"> <span>Usar siempre la ruta más larga para pasear</span></label></li>
+                <li><label><input type="radio" name="q18" value="1"> <span>Planificar el viaje, usar aplicaciones de tránsito (GPS) para evitar presas y agrupar varios mandados en un solo recorrido</span></label></li>
+                <li><label><input type="radio" name="q18" value="2"> <span>Manejar sin saber a dónde se va</span></label></li>
+                <li><label><input type="radio" name="q18" value="3"> <span>Viajar siempre en hora pico</span></label></li>
+            </ul>
+            <div id="feedback_18" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_18" style="display:none;">La logística salva el planeta. Si haces 3 mandados en 1 solo viaje redondo en lugar de salir 3 veces de tu casa al centro, ahorras horas de marcha, llantas y kilos de emisiones de CO2.</div>
+        </div>
+        <div class="question-block" id="block_19">
+            <div class="question">20. ¿Cuál es la marcha más eficiente para circular en ciudad reduciendo el consumo, una vez alcanzada la velocidad deseada?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q19" value="0"> <span>Andar siempre en 1ra o 2da bien revolucionado</span></label></li>
+                <li><label><input type="radio" name="q19" value="1"> <span>Andar en neutro</span></label></li>
+                <li><label><input type="radio" name="q19" value="2"> <span>Utilizar la marcha más alta posible (3ra o 4ta) manteniendo las revoluciones bajas y constantes</span></label></li>
+                <li><label><input type="radio" name="q19" value="3"> <span>Cambiar de marcha cada 5 segundos</span></label></li>
+            </ul>
+            <div id="feedback_19" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_19" style="display:none;">Para ahorrar gasolina y contaminar menos, hay que meter los cambios rápido. Una vez llegas a 40 o 50 km/h, pones 3ra o 4ta para que el motor vaya 'relajado' (bajas RPM) pero con impulso.</div>
+        </div>
+
+        <button id="submitBtn" class="btn">Calificar Eco-Conducción</button>
+    </div>
+    <div id="result"></div>
+</div>
+
+<script>
+    document.getElementById('submitBtn').addEventListener('click', function(e) {
+        e.preventDefault(); 
+        try {
+            let score = 0;
+            const total = 20;
+            const puntajePorPregunta = 100 / total; // Vale 5 pts c/u
+
+            for (let i = 0; i < total; i++) {
+                const radios = document.getElementsByName('q' + i);
+                const feedbackDiv = document.getElementById('feedback_' + i);
+                const explanationText = document.getElementById('explanation_' + i).innerText;
+                const correctIndex = parseInt(feedbackDiv.getAttribute('data-correct'));
+
+                let selectedValue = -1;
+                let correctLabelText = "";
+                let selectedLabelDiv = null;
+
+                for (let j = 0; j < radios.length; j++) {
+                    if (radios[j].checked) {
+                        selectedValue = parseInt(radios[j].value);
+                        selectedLabelDiv = radios[j].nextElementSibling; 
+                    }
+                    if (parseInt(radios[j].value) === correctIndex) {
+                        correctLabelText = radios[j].nextElementSibling.innerText;
+                    }
+                }
+
+                feedbackDiv.style.display = 'block';
+
+                let answerResultHTML = "";
+
+                if (selectedValue === correctIndex) {
+                    score++;
+                    answerResultHTML = '✅ <span style="color:#27ae60;">¡Correcto!</span>';
+                    if(selectedLabelDiv) selectedLabelDiv.style.color = '#27ae60';
+                } else {
+                    let errorMsg = '❌ Incorrecto. ';
+                    if (selectedValue === -1) {
+                        errorMsg += 'No respondiste esta pregunta.';
+                    } else {
+                        if(selectedLabelDiv) selectedLabelDiv.style.color = '#e74c3c';
+                    }
+                    answerResultHTML = errorMsg + '<br>La correcta era: <strong style="color:#27ae60;">' + correctLabelText + '</strong>';
+                }
+
+                feedbackDiv.innerHTML = answerResultHTML + 
+                    '<div class="explanation-box">🌱 <strong>Cuidado Ambiental:</strong> ' + explanationText + '</div>';
+            }
+
+            const finalScore = Math.round(score * puntajePorPregunta);
+            const resultDiv = document.getElementById('result');
+            resultDiv.style.display = 'block';
+
+            if (finalScore >= 80) {
+                resultDiv.innerHTML = '¡Conductor Eco-Amigable! Aprobaste con: ' + finalScore + '/100 🏆';
+                resultDiv.style.backgroundColor = '#d4edda';
+                resultDiv.style.color = '#155724';
+            } else {
+                resultDiv.innerHTML = 'Puntaje: ' + finalScore + '/100. Necesitas al menos 80. ¡Repasa los gases y colores del humo! 📚';
+                resultDiv.style.backgroundColor = '#f8d7da';
+                resultDiv.style.color = '#721c24';
+            }
+
+            alert("Tu nota en Medio Ambiente es: " + finalScore + "/100. Sube en la pantalla para ver el resumen ecológico.");
+            window.scrollTo(0, 0); 
+
+        } catch (error) {
+            alert("Hubo un error calculando: " + error.message);
+        }
+    });
+</script>
+</body>
+</html>

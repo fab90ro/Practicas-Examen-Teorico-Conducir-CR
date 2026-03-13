@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Examen Teórico - Capítulo 7 con Retroalimentación</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #fcf3cf; color: #333; line-height: 1.6; padding: 15px; margin: 0; }
+        h1 { text-align: center; color: #f39c12; font-size: 1.6rem; margin-bottom: 5px; }
+        h2 { text-align: center; color: #7f8c8d; font-size: 1rem; margin-top: 0; margin-bottom: 25px; }
+        .quiz-container { width: 100%; max-width: 800px; margin: 0 auto; background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); box-sizing: border-box; border-top: 5px solid #f1c40f; }
+        .question-block { margin-bottom: 25px; border-bottom: 1px solid #fef9e7; padding-bottom: 20px; }
+        .question { font-weight: bold; font-size: 1.15rem; margin-bottom: 15px; color: #2c3e50; }
+        .options { list-style-type: none; padding: 0; margin: 0; }
+        .options li { margin-bottom: 12px; }
+        label { cursor: pointer; display: flex; align-items: flex-start; padding: 12px; border-radius: 8px; background: #fdfdfd; border: 1px solid #f9e79f; -webkit-tap-highlight-color: transparent; touch-action: manipulation; transition: background 0.2s; }
+        label:active { background: #fef5e7; }
+        input[type="radio"] { margin-right: 12px; margin-top: 4px; transform: scale(1.3); }
+        .btn { display: block; width: 100%; padding: 18px; background-color: #f39c12; color: white; border: none; font-size: 1.2rem; font-weight: bold; border-radius: 10px; cursor: pointer; margin-top: 30px; -webkit-appearance: none; box-shadow: 0 4px 6px rgba(243, 156, 18, 0.3); transition: background 0.3s; }
+        .btn:active { background-color: #d68910; }
+        #result { display: none; margin-top: 30px; padding: 20px; border-radius: 10px; text-align: center; font-size: 1.3rem; font-weight: bold; }
+        .correct-answer { color: #27ae60; font-weight: bold; }
+        .wrong-answer { color: #e74c3c; text-decoration: line-through; }
+        .feedback { margin-top: 15px; font-size: 1rem; padding: 12px; background: #fff; border: 1px solid #eee; border-radius: 6px; }
+        .explanation-box { margin-top: 15px; padding: 15px; background-color: #fef9e7; border-left: 5px solid #f1c40f; border-radius: 6px; font-size: 0.95rem; color: #d68910; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+    </style>
+</head>
+<body>
+
+<div class="quiz-container">
+    <h1>Simulador Examen - Capítulo 7</h1>
+    <h2>Uso correcto de las Rotondas (iOS)</h2>
+    <p style="text-align:center; font-size: 0.95rem; color: #666; margin-bottom: 25px;">15 preguntas clave que definen el éxito al circular por intersecciones circulares.</p>
+    <div id="quizForm">
+        <div class="question-block" id="block_0">
+            <div class="question">1. ¿Qué es una rotonda o glorieta?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q0" value="0"> <span>Un cruce semaforizado</span></label></li>
+                <li><label><input type="radio" name="q0" value="1"> <span>Una intersección circular diseñada para facilitar el cruce de vías y reducir el peligro de accidentes graves, donde la circulación es giratoria alrededor de una isla central</span></label></li>
+                <li><label><input type="radio" name="q0" value="2"> <span>Un tipo de puente a desnivel</span></label></li>
+                <li><label><input type="radio" name="q0" value="3"> <span>Un parqueo circular público</span></label></li>
+            </ul>
+            <div id="feedback_0" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_0" style="display:none;">Las rotondas son infraestructuras viales creadas para agilizar el tráfico en cruces sin usar semáforos, obligando a los conductores a disminuir la velocidad y girar en una misma dirección.</div>
+        </div>
+        <div class="question-block" id="block_1">
+            <div class="question">2. Al aproximarse a una rotonda, ¿cuál es la primera regla básica que un conductor debe cumplir?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q1" value="0"> <span>Acelerar para entrar primero</span></label></li>
+                <li><label><input type="radio" name="q1" value="1"> <span>Disminuir la velocidad de aproximación a no más de 30 km/h y estar preparado para detenerse si es necesario</span></label></li>
+                <li><label><input type="radio" name="q1" value="2"> <span>Tocar la bocina para que le den campo</span></label></li>
+                <li><label><input type="radio" name="q1" value="3"> <span>Encender las luces altas</span></label></li>
+            </ul>
+            <div id="feedback_1" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_1" style="display:none;">La seguridad de la rotonda radica en la baja velocidad. Entrar rápido causa choques laterales o vuelcos.</div>
+        </div>
+        <div class="question-block" id="block_2">
+            <div class="question">3. En Costa Rica, el sentido de circulación dentro de una rotonda es:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q2" value="0"> <span>A favor de las manecillas del reloj</span></label></li>
+                <li><label><input type="radio" name="q2" value="1"> <span>En contra de las manecillas del reloj (hacia la izquierda / antihorario)</span></label></li>
+                <li><label><input type="radio" name="q2" value="2"> <span>Se puede elegir el lado según la salida</span></label></li>
+                <li><label><input type="radio" name="q2" value="3"> <span>En línea recta sobre la isla</span></label></li>
+            </ul>
+            <div id="feedback_2" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_2" style="display:none;">Como manejamos por el carril derecho, el flujo en las rotondas siempre entra hacia la derecha y gira en contra de las manecillas del reloj.</div>
+        </div>
+        <div class="question-block" id="block_3">
+            <div class="question">4. Una regla de ORO indiscutible al llegar a una rotonda es que el derecho de vía o prioridad de paso lo tiene:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q3" value="0"> <span>El vehículo más grande o pesado</span></label></li>
+                <li><label><input type="radio" name="q3" value="1"> <span>El vehículo que viene llegando e intenta entrar a la rotonda</span></label></li>
+                <li><label><input type="radio" name="q3" value="2"> <span>El vehículo que ya se encuentra circulando DENTRO de la rotonda</span></label></li>
+                <li><label><input type="radio" name="q3" value="3"> <span>El vehículo que va más rápido</span></label></li>
+            </ul>
+            <div id="feedback_3" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_3" style="display:none;">El que está adentro MANDA. Quien va a ingresar siempre debe hacer el 'CEDA' total hasta que haya un espacio seguro.</div>
+        </div>
+        <div class="question-block" id="block_4">
+            <div class="question">5. Si usted se aproxima a una rotonda por una vía de dos carriles y su intención es abandonar la rotonda en la PRIMERA salida (girar a la derecha), ¿por qué carril debe ingresar?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q4" value="0"> <span>Por el carril izquierdo (interno)</span></label></li>
+                <li><label><input type="radio" name="q4" value="1"> <span>Por el carril derecho (externo)</span></label></li>
+                <li><label><input type="radio" name="q4" value="2"> <span>Por cualquiera de los dos</span></label></li>
+                <li><label><input type="radio" name="q4" value="3"> <span>Por el centro</span></label></li>
+            </ul>
+            <div id="feedback_4" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_4" style="display:none;">Para salir de inmediato, debes usar el carril derecho (externo). Si usas el izquierdo, le vas a cortar el paso a quien va circulando a tu derecha y causarás un choque.</div>
+        </div>
+        <div class="question-block" id="block_5">
+            <div class="question">6. Si su intención es continuar DIRECTO (salir en la SEGUNDA salida, es decir, a 180 grados de donde entró), ¿qué carril debe utilizar en una rotonda estándar de dos carriles?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q5" value="0"> <span>Solamente el carril derecho</span></label></li>
+                <li><label><input type="radio" name="q5" value="1"> <span>Solamente el carril izquierdo</span></label></li>
+                <li><label><input type="radio" name="q5" value="2"> <span>Depende de la demarcación específica, pero por regla general se pueden usar AMBOS carriles (externo e interno) para ir de frente</span></label></li>
+                <li><label><input type="radio" name="q5" value="3"> <span>El espaldón</span></label></li>
+            </ul>
+            <div id="feedback_5" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_5" style="display:none;">Para ir recto, se puede usar el derecho o el izquierdo (siempre que te mantengas en tu mismo carril adentro y salgas por el mismo).</div>
+        </div>
+        <div class="question-block" id="block_6">
+            <div class="question">7. Si usted se aproxima a la rotonda y necesita tomar la TERCERA salida (girar a la izquierda) o dar la vuelta completa (giro en U, CUARTA salida), debe ingresar obligatoriamente por:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q6" value="0"> <span>El carril derecho (externo)</span></label></li>
+                <li><label><input type="radio" name="q6" value="1"> <span>El carril izquierdo (interno)</span></label></li>
+                <li><label><input type="radio" name="q6" value="2"> <span>El carril exclusivo para buses</span></label></li>
+                <li><label><input type="radio" name="q6" value="3"> <span>Cualquier carril</span></label></li>
+            </ul>
+            <div id="feedback_6" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_6" style="display:none;">Para recorridos largos (tercera salida o devolverte) DEBES meterte al carril izquierdo. Así dejas el carril derecho libre para los carros que entran y salen rápido.</div>
+        </div>
+        <div class="question-block" id="block_7">
+            <div class="question">8. ¿Qué uso deben tener las luces direccionales al navegar por una rotonda?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q7" value="0"> <span>No es necesario usarlas porque todos van dando vueltas</span></label></li>
+                <li><label><input type="radio" name="q7" value="1"> <span>Solo se usan si llueve</span></label></li>
+                <li><label><input type="radio" name="q7" value="2"> <span>Deben usarse SIEMPRE para indicar el carril al que se va a entrar, para cambiar de carril adentro, y para anunciar la salida que se va a tomar</span></label></li>
+                <li><label><input type="radio" name="q7" value="3"> <span>Se deben poner luces intermitentes (emergencia) todo el tiempo</span></label></li>
+            </ul>
+            <div id="feedback_7" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_7" style="display:none;">La direccional es la única forma de avisarle al conductor que está esperando en el CEDA si usted va a salir por ahí o si va a continuar girando.</div>
+        </div>
+        <div class="question-block" id="block_8">
+            <div class="question">9. Al estar circulando en el carril INTERNO (izquierdo) de la rotonda y acercarse a su salida elegida, usted debe:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q8" value="0"> <span>Frenar en seco, poner la direccional derecha y cruzar de golpe hacia la salida cruzando el carril derecho</span></label></li>
+                <li><label><input type="radio" name="q8" value="1"> <span>Ceder el paso a los vehículos que van por el carril derecho, poner direccional derecha, pasarse al carril externo de forma segura, y luego tomar la salida</span></label></li>
+                <li><label><input type="radio" name="q8" value="2"> <span>Acelerar y pitarle al carro de la derecha para que lo deje salir</span></label></li>
+                <li><label><input type="radio" name="q8" value="3"> <span>Detenerse por completo dentro del carril izquierdo</span></label></li>
+            </ul>
+            <div id="feedback_8" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_8" style="display:none;">Nunca puedes 'cruzar' el carril derecho desde el izquierdo como si fuera tuyo. Debes prepararte con anticipación, pasarte al derecho cediendo el paso, y luego salir.</div>
+        </div>
+        <div class="question-block" id="block_9">
+            <div class="question">10. Si usted va por el carril interno (izquierdo) de la rotonda, necesita salir, pero hay muchos carros en el carril derecho y no le dan campo. ¿Qué es lo correcto?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q9" value="0"> <span>Detener el carro (hacer alto) en medio de la rotonda hasta que alguien lo deje pasar</span></label></li>
+                <li><label><input type="radio" name="q9" value="1"> <span>Obligar a los otros carros a frenar metiéndoseles a la fuerza</span></label></li>
+                <li><label><input type="radio" name="q9" value="2"> <span>Continuar dando otra vuelta completa a la isla central hasta poder cambiarse al carril derecho con seguridad</span></label></li>
+                <li><label><input type="radio" name="q9" value="3"> <span>Salirse por encima del caño</span></label></li>
+            </ul>
+            <div id="feedback_9" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_9" style="display:none;">Nunca frenes dentro de la rotonda. Si te quedaste encerrado en el carril interno, simplemente das otra vuelta; solo te tomará 15 segundos y evitarás un accidente o presa.</div>
+        </div>
+        <div class="question-block" id="block_10">
+            <div class="question">11. Dentro de la rotonda, ¿está permitido adelantar o rebasar a otros vehículos (correr para pasarlos por la derecha o izquierda)?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q10" value="0"> <span>Sí, si el carro de adelante va muy despacio</span></label></li>
+                <li><label><input type="radio" name="q10" value="1"> <span>No, el adelantamiento está prohibido dentro de una rotonda, se debe mantener la posición y velocidad en su carril</span></label></li>
+                <li><label><input type="radio" name="q10" value="2"> <span>Solo a motocicletas</span></label></li>
+                <li><label><input type="radio" name="q10" value="3"> <span>Sí, pero solo por el carril izquierdo</span></label></li>
+            </ul>
+            <div id="feedback_10" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_10" style="display:none;">En la rotonda todos van en curva y cerca unos de otros; acelerar para rebasar destruye el flujo y provoca que los puntos ciegos se vuelvan trampas mortales.</div>
+        </div>
+        <div class="question-block" id="block_11">
+            <div class="question">12. ¿Qué vehículos tienen prohibido utilizar el carril izquierdo (interno) de una rotonda y siempre deben circular por el carril derecho (externo)?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q11" value="0"> <span>Los automóviles deportivos</span></label></li>
+                <li><label><input type="radio" name="q11" value="1"> <span>Los vehículos pesados articulados, furgones o de gran longitud, por su gran ángulo de giro</span></label></li>
+                <li><label><input type="radio" name="q11" value="2"> <span>Las motocicletas</span></label></li>
+                <li><label><input type="radio" name="q11" value="3"> <span>Los taxis</span></label></li>
+            </ul>
+            <div id="feedback_11" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_11" style="display:none;">Un furgón que entra al carril izquierdo de una rotonda pequeña se quedará 'trabado' con la isla central, o su cola (carreta) barrerá a todos los carros del carril derecho al intentar doblar.</div>
+        </div>
+        <div class="question-block" id="block_12">
+            <div class="question">13. En Costa Rica, algunas rotondas grandes (como la de las Garantías Sociales antes de los viaductos o la de la Hispanidad) utilizan una configuración particular de cruces. Por regla, a qué carril debe aspirar al abandonar la rotonda?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q12" value="0"> <span>Al carril del sentido contrario</span></label></li>
+                <li><label><input type="radio" name="q12" value="1"> <span>Siempre al espaldón</span></label></li>
+                <li><label><input type="radio" name="q12" value="2"> <span>Si sale del carril externo de la rotonda debe incorporarse al carril derecho de la vía nueva; si sale del interno, al carril izquierdo de la vía nueva</span></label></li>
+                <li><label><input type="radio" name="q12" value="3"> <span>A detenerse a comprar en la acera</span></label></li>
+            </ul>
+            <div id="feedback_12" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_12" style="display:none;">Se debe respetar la canalización natural. Si saliste desde el carril derecho, te mantienes en el derecho de la calle; no puedes cruzar la calle recién saliendo.</div>
+        </div>
+        <div class="question-block" id="block_13">
+            <div class="question">14. ¿Qué significa si al llegar a la rotonda nota demarcación horizontal de líneas amarillas cruzadas (zona de antibloqueo o canalizadora) en el carril de entrada?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q13" value="0"> <span>Que puede estacionarse</span></label></li>
+                <li><label><input type="radio" name="q13" value="1"> <span>Que esa zona no debe ser bloqueada ni pisada si no hay espacio para entrar, ya que sirve para guiar el flujo</span></label></li>
+                <li><label><input type="radio" name="q13" value="2"> <span>Que es paso de cebra para peatones</span></label></li>
+                <li><label><input type="radio" name="q13" value="3"> <span>Que la rotonda está cerrada</span></label></li>
+            </ul>
+            <div id="feedback_13" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_13" style="display:none;">Las islas canalizadoras pintadas en amarillo sirven para evitar que los carros se amontonen y choquen en ángulos peligrosos antes de entrar al círculo.</div>
+        </div>
+        <div class="question-block" id="block_14">
+            <div class="question">15. Un error fatal común en las rotondas es ignorar a los ciclistas o motociclistas porque 'son más pequeños'. Según la ley:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q14" value="0"> <span>Tienen los mismos derechos y obligaciones dentro de la rotonda que cualquier otro vehículo, se les debe respetar su carril y distancia</span></label></li>
+                <li><label><input type="radio" name="q14" value="1"> <span>Se les puede adelantar o pasar por encima</span></label></li>
+                <li><label><input type="radio" name="q14" value="2"> <span>Deben usar la acera para pasar la rotonda</span></label></li>
+                <li><label><input type="radio" name="q14" value="3"> <span>Tienen que ceder el paso a los carros incluso si ya están adentro</span></label></li>
+            </ul>
+            <div id="feedback_14" class="feedback" style="display:none;" data-correct="0"></div>
+            <div id="explanation_14" style="display:none;">Una bicicleta es un vehículo legal. Si la bicicleta entró primero a la rotonda, el automóvil debe frenar y cederle el paso.</div>
+        </div>
+
+        <button id="submitBtn" class="btn">Calificar Rotondas</button>
+    </div>
+    <div id="result"></div>
+</div>
+
+<script>
+    document.getElementById('submitBtn').addEventListener('click', function(e) {
+        e.preventDefault(); 
+        try {
+            let score = 0;
+            const total = 15;
+            const puntajePorPregunta = 100 / total; 
+
+            for (let i = 0; i < total; i++) {
+                const radios = document.getElementsByName('q' + i);
+                const feedbackDiv = document.getElementById('feedback_' + i);
+                const explanationText = document.getElementById('explanation_' + i).innerText;
+                const correctIndex = parseInt(feedbackDiv.getAttribute('data-correct'));
+
+                let selectedValue = -1;
+                let correctLabelText = "";
+                let selectedLabelDiv = null;
+
+                for (let j = 0; j < radios.length; j++) {
+                    if (radios[j].checked) {
+                        selectedValue = parseInt(radios[j].value);
+                        selectedLabelDiv = radios[j].nextElementSibling; 
+                    }
+                    if (parseInt(radios[j].value) === correctIndex) {
+                        correctLabelText = radios[j].nextElementSibling.innerText;
+                    }
+                }
+
+                feedbackDiv.style.display = 'block';
+
+                let answerResultHTML = "";
+
+                if (selectedValue === correctIndex) {
+                    score++;
+                    answerResultHTML = '✅ <span style="color:#27ae60;">¡Correcto!</span>';
+                    if(selectedLabelDiv) selectedLabelDiv.style.color = '#27ae60';
+                } else {
+                    let errorMsg = '❌ Incorrecto. ';
+                    if (selectedValue === -1) {
+                        errorMsg += 'No respondiste esta pregunta.';
+                    } else {
+                        if(selectedLabelDiv) selectedLabelDiv.style.color = '#e74c3c';
+                    }
+                    answerResultHTML = errorMsg + '<br>La correcta era: <strong style="color:#27ae60;">' + correctLabelText + '</strong>';
+                }
+
+                feedbackDiv.innerHTML = answerResultHTML + 
+                    '<div class="explanation-box">🔄 <strong>Ley de la Rotonda:</strong> ' + explanationText + '</div>';
+            }
+
+            const finalScore = Math.round(score * puntajePorPregunta);
+            const resultDiv = document.getElementById('result');
+            resultDiv.style.display = 'block';
+
+            if (finalScore >= 80) {
+                resultDiv.innerHTML = '¡Dominas el volante! Aprobaste con: ' + finalScore + '/100 🏆';
+                resultDiv.style.backgroundColor = '#d4edda';
+                resultDiv.style.color = '#155724';
+            } else {
+                resultDiv.innerHTML = 'Puntaje: ' + finalScore + '/100. Necesitas al menos 80. ¡Repasa qué carril usar para salir! 📚';
+                resultDiv.style.backgroundColor = '#f8d7da';
+                resultDiv.style.color = '#721c24';
+            }
+
+            alert("Tu nota en Rotondas es: " + finalScore + "/100. Desliza hacia arriba para ver tus fallos.");
+            window.scrollTo(0, 0); 
+
+        } catch (error) {
+            alert("Hubo un error calculando: " + error.message);
+        }
+    });
+</script>
+</body>
+</html>

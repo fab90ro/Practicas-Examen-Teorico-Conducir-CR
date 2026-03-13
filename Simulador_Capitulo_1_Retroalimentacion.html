@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Examen Teórico - Capítulo 1 con Retroalimentación</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f0f4f8; color: #2c3e50; line-height: 1.6; padding: 15px; margin: 0; }
+        h1 { text-align: center; color: #1a252f; font-size: 1.6rem; margin-bottom: 5px; }
+        h2 { text-align: center; color: #7f8c8d; font-size: 1rem; margin-top: 0; margin-bottom: 25px; }
+        .quiz-container { width: 100%; max-width: 800px; margin: 0 auto; background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); box-sizing: border-box; }
+        .question-block { margin-bottom: 25px; border-bottom: 1px solid #e1e8ed; padding-bottom: 20px; }
+        .question { font-weight: bold; font-size: 1.15rem; margin-bottom: 15px; color: #2c3e50; }
+        .options { list-style-type: none; padding: 0; margin: 0; }
+        .options li { margin-bottom: 12px; }
+        label { cursor: pointer; display: flex; align-items: flex-start; padding: 12px; border-radius: 8px; background: #f8f9fa; border: 1px solid #dcdde1; -webkit-tap-highlight-color: transparent; touch-action: manipulation; transition: background 0.2s; }
+        label:active { background: #e0f2f1; }
+        input[type="radio"] { margin-right: 12px; margin-top: 4px; transform: scale(1.3); }
+        .btn { display: block; width: 100%; padding: 18px; background-color: #8e44ad; color: white; border: none; font-size: 1.2rem; font-weight: bold; border-radius: 10px; cursor: pointer; margin-top: 30px; -webkit-appearance: none; box-shadow: 0 4px 6px rgba(142, 68, 173, 0.3); }
+        .btn:active { background-color: #732d91; }
+        #result { display: none; margin-top: 30px; padding: 20px; border-radius: 10px; text-align: center; font-size: 1.3rem; font-weight: bold; }
+        .correct-answer { color: #27ae60; font-weight: bold; }
+        .wrong-answer { color: #c0392b; text-decoration: line-through; }
+        .feedback { margin-top: 15px; font-size: 1rem; padding: 12px; background: #fdfefe; border: 1px solid #eee; border-radius: 6px; }
+        .explanation-box { margin-top: 15px; padding: 15px; background-color: #e8f4f8; border-left: 5px solid #007aff; border-radius: 6px; font-size: 0.95rem; color: #333; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+    </style>
+</head>
+<body>
+
+<div class="quiz-container">
+    <h1>Simulador Examen - Capítulo 1</h1>
+    <h2>Con Retroalimentación de Estudio (iOS)</h2>
+    <p style="text-align:center; font-size: 0.95rem; color: #555; margin-bottom: 25px;">Responde y al calificar verás la explicación de por qué cada respuesta es correcta.</p>
+    <div id="quizForm">
+        <div class="question-block" id="block_0">
+            <div class="question">1. ¿Cuál es el objetivo principal de la Ley de Tránsito y la Seguridad Vial?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q0" value="0"> <span>Aumentar la recaudación de multas</span></label></li>
+                <li><label><input type="radio" name="q0" value="1"> <span>Proteger la vida humana y prevenir accidentes</span></label></li>
+                <li><label><input type="radio" name="q0" value="2"> <span>Construir más carreteras</span></label></li>
+                <li><label><input type="radio" name="q0" value="3"> <span>Vender más vehículos</span></label></li>
+            </ul>
+            <div id="feedback_0" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_0" style="display:none;">El fin supremo de la Ley de Tránsito y la Seguridad Vial es salvaguardar la integridad física y la vida de las personas, previniendo los accidentes de tránsito y minimizando sus consecuencias.</div>
+        </div>
+        <div class="question-block" id="block_1">
+            <div class="question">2. ¿Qué ley rige actualmente el tránsito por vías públicas terrestres y seguridad vial en Costa Rica?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q1" value="0"> <span>Ley 7331</span></label></li>
+                <li><label><input type="radio" name="q1" value="1"> <span>Ley 9078</span></label></li>
+                <li><label><input type="radio" name="q1" value="2"> <span>Ley 1020</span></label></li>
+                <li><label><input type="radio" name="q1" value="3"> <span>Ley 5000</span></label></li>
+            </ul>
+            <div id="feedback_1" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_1" style="display:none;">La Ley actual es la 9078. Fue creada para actualizar las normativas de tránsito, reemplazando a la antigua Ley 7331.</div>
+        </div>
+        <div class="question-block" id="block_2">
+            <div class="question">3. ¿Cuáles son los tres elementos que conforman la 'Trilogía Vial'?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q2" value="0"> <span>Conductor, peatón y pasajero</span></label></li>
+                <li><label><input type="radio" name="q2" value="1"> <span>Vehículo, carretera y clima</span></label></li>
+                <li><label><input type="radio" name="q2" value="2"> <span>Factor humano, factor vehículo y factor vía (y su entorno)</span></label></li>
+                <li><label><input type="radio" name="q2" value="3"> <span>Señales, semáforos y oficiales de tránsito</span></label></li>
+            </ul>
+            <div id="feedback_2" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_2" style="display:none;">La Trilogía Vial se compone de tres factores interactuantes: el Humano (quien toma decisiones), el Vehículo (la máquina) y la Vía y su Entorno (el espacio físico y el ambiente).</div>
+        </div>
+        <div class="question-block" id="block_3">
+            <div class="question">4. ¿Cuál es el elemento más importante de la trilogía vial?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q3" value="0"> <span>El factor vehículo</span></label></li>
+                <li><label><input type="radio" name="q3" value="1"> <span>El factor vía</span></label></li>
+                <li><label><input type="radio" name="q3" value="2"> <span>El factor humano</span></label></li>
+                <li><label><input type="radio" name="q3" value="3"> <span>El entorno ambiental</span></label></li>
+            </ul>
+            <div id="feedback_3" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_3" style="display:none;">El factor humano es el más importante porque es el único elemento racional capaz de tomar decisiones, adaptarse y cometer errores que desencadenan accidentes.</div>
+        </div>
+        <div class="question-block" id="block_4">
+            <div class="question">5. ¿Cómo se define el 'Tránsito'?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q4" value="0"> <span>Solo la circulación de vehículos con motor</span></label></li>
+                <li><label><input type="radio" name="q4" value="1"> <span>La acción o efecto de trasladarse de un lugar a otro, en vías públicas o privadas de uso público</span></label></li>
+                <li><label><input type="radio" name="q4" value="2"> <span>El congestionamiento de carros en hora pico</span></label></li>
+                <li><label><input type="radio" name="q4" value="3"> <span>Caminar por las aceras</span></label></li>
+            </ul>
+            <div id="feedback_4" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_4" style="display:none;">El tránsito abarca el traslado o movimiento de personas, vehículos y animales de un punto a otro sobre una vía pública.</div>
+        </div>
+        <div class="question-block" id="block_5">
+            <div class="question">6. La disciplina que estudia y aplica acciones y mecanismos para prevenir los accidentes de tránsito se llama:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q5" value="0"> <span>Ingeniería Civil</span></label></li>
+                <li><label><input type="radio" name="q5" value="1"> <span>Seguridad Vial</span></label></li>
+                <li><label><input type="radio" name="q5" value="2"> <span>Educación Cívica</span></label></li>
+                <li><label><input type="radio" name="q5" value="3"> <span>Mecánica Automotriz</span></label></li>
+            </ul>
+            <div id="feedback_5" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_5" style="display:none;">La Seguridad Vial es la disciplina dedicada a estudiar, crear y aplicar acciones para prevenir accidentes, salvar vidas y mejorar la fluidez en las vías.</div>
+        </div>
+        <div class="question-block" id="block_6">
+            <div class="question">7. Además de salvar vidas, ¿cuál es otro objetivo de la seguridad vial?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q6" value="0"> <span>Proteger el medio ambiente y disminuir la contaminación</span></label></li>
+                <li><label><input type="radio" name="q6" value="1"> <span>Eliminar los peajes</span></label></li>
+                <li><label><input type="radio" name="q6" value="2"> <span>Aumentar el límite de velocidad</span></label></li>
+                <li><label><input type="radio" name="q6" value="3"> <span>Fomentar las carreras de autos</span></label></li>
+            </ul>
+            <div id="feedback_6" class="feedback" style="display:none;" data-correct="0"></div>
+            <div id="explanation_6" style="display:none;">Uno de los objetivos fundamentales es disminuir la contaminación ambiental (gases tóxicos y ruido) provocada por los vehículos automotores.</div>
+        </div>
+        <div class="question-block" id="block_7">
+            <div class="question">8. Disminuir los costos operativos de los vehículos y el consumo de combustible es un objetivo:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q7" value="0"> <span>Ambiental de la seguridad vial</span></label></li>
+                <li><label><input type="radio" name="q7" value="1"> <span>Económico de la seguridad vial</span></label></li>
+                <li><label><input type="radio" name="q7" value="2"> <span>Social de la seguridad vial</span></label></li>
+                <li><label><input type="radio" name="q7" value="3"> <span>No es un objetivo de la seguridad vial</span></label></li>
+            </ul>
+            <div id="feedback_7" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_7" style="display:none;">Al aplicar técnicas de conducción eficiente se ahorra combustible y se reduce el desgaste de piezas (llantas, frenos), lo cual representa un beneficio o aspecto económico.</div>
+        </div>
+        <div class="question-block" id="block_8">
+            <div class="question">9. El Factor Humano dentro de la trilogía vial está compuesto por:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q8" value="0"> <span>Solo los oficiales de tránsito</span></label></li>
+                <li><label><input type="radio" name="q8" value="1"> <span>Conductores y pasajeros exclusivamente</span></label></li>
+                <li><label><input type="radio" name="q8" value="2"> <span>Peatones, pasajeros, conductores y ciclistas</span></label></li>
+                <li><label><input type="radio" name="q8" value="3"> <span>Personas mayores de 18 años</span></label></li>
+            </ul>
+            <div id="feedback_8" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_8" style="display:none;">El factor humano incluye a TODAS las personas que interactúan en la vía pública: conductores de cualquier vehículo, pasajeros, ciclistas y peatones.</div>
+        </div>
+        <div class="question-block" id="block_9">
+            <div class="question">10. ¿Qué significa MOPT?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q9" value="0"> <span>Ministerio de Obras Públicas y Transportes</span></label></li>
+                <li><label><input type="radio" name="q9" value="1"> <span>Ministerio de Ordenamiento Público y Tránsito</span></label></li>
+                <li><label><input type="radio" name="q9" value="2"> <span>Ministerio de Operaciones Policiales y Terrestres</span></label></li>
+                <li><label><input type="radio" name="q9" value="3"> <span>Ministerio de Obras Privadas y Trabajo</span></label></li>
+            </ul>
+            <div id="feedback_9" class="feedback" style="display:none;" data-correct="0"></div>
+            <div id="explanation_9" style="display:none;">El MOPT (Ministerio de Obras Públicas y Transportes) es el ente rector que rige las políticas de tránsito y transporte en el país.</div>
+        </div>
+        <div class="question-block" id="block_10">
+            <div class="question">11. ¿Qué institución tiene como fin principal la prevención de accidentes y el financiamiento de la seguridad vial en Costa Rica?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q10" value="0"> <span>INS</span></label></li>
+                <li><label><input type="radio" name="q10" value="1"> <span>COSEVI (Consejo de Seguridad Vial)</span></label></li>
+                <li><label><input type="radio" name="q10" value="2"> <span>CONAVI</span></label></li>
+                <li><label><input type="radio" name="q10" value="3"> <span>RECOPE</span></label></li>
+            </ul>
+            <div id="feedback_10" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_10" style="display:none;">El COSEVI administra los fondos de las multas para invertirlos en educación vial, campañas de prevención, semáforos e infraestructura de seguridad.</div>
+        </div>
+        <div class="question-block" id="block_11">
+            <div class="question">12. ¿Quién es la autoridad encargada del control, regulación y vigilancia del tránsito?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q11" value="0"> <span>La Fuerza Pública</span></label></li>
+                <li><label><input type="radio" name="q11" value="1"> <span>La Policía Municipal</span></label></li>
+                <li><label><input type="radio" name="q11" value="2"> <span>La Policía de Tránsito</span></label></li>
+                <li><label><input type="radio" name="q11" value="3"> <span>El OIJ</span></label></li>
+            </ul>
+            <div id="feedback_11" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_11" style="display:none;">La Policía de Tránsito es el cuerpo especializado encargado de velar por el cumplimiento de la Ley 9078 en las calles.</div>
+        </div>
+        <div class="question-block" id="block_12">
+            <div class="question">13. Todo terreno de dominio público y de uso común destinado al tránsito de peatones y vehículos se conoce como:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q12" value="0"> <span>Vía privada</span></label></li>
+                <li><label><input type="radio" name="q12" value="1"> <span>Vía pública</span></label></li>
+                <li><label><input type="radio" name="q12" value="2"> <span>Carretera nacional</span></label></li>
+                <li><label><input type="radio" name="q12" value="3"> <span>Autopista</span></label></li>
+            </ul>
+            <div id="feedback_12" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_12" style="display:none;">La vía pública es el espacio físico del Estado donde todos tenemos el derecho a transitar libremente (calles, avenidas, aceras, etc.).</div>
+        </div>
+        <div class="question-block" id="block_13">
+            <div class="question">14. Las vías públicas terrestres se clasifican principalmente en:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q13" value="0"> <span>Vías rápidas y vías lentas</span></label></li>
+                <li><label><input type="radio" name="q13" value="1"> <span>Vías asfaltadas y vías de lastre</span></label></li>
+                <li><label><input type="radio" name="q13" value="2"> <span>Vías urbanas y vías rurales</span></label></li>
+                <li><label><input type="radio" name="q13" value="3"> <span>Vías primarias y vías terciarias</span></label></li>
+            </ul>
+            <div id="feedback_13" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_13" style="display:none;">Estructuralmente, las vías se dividen en Urbanas (dentro de las ciudades, cuadrantes urbanos) y Rurales (fuera del cuadrante urbano).</div>
+        </div>
+        <div class="question-block" id="block_14">
+            <div class="question">15. ¿Cuáles son los componentes principales de una vía URBANA?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q14" value="0"> <span>Calzada, espaldón y cuneta</span></label></li>
+                <li><label><input type="radio" name="q14" value="1"> <span>Acera, calzada, caño y borde (cordón)</span></label></li>
+                <li><label><input type="radio" name="q14" value="2"> <span>Acera y espaldón</span></label></li>
+                <li><label><input type="radio" name="q14" value="3"> <span>Carriles y cunetas</span></label></li>
+            </ul>
+            <div id="feedback_14" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_14" style="display:none;">La vía urbana cuenta con acera (para peatones), calzada (para carros), caño (para agua) y borde o cordón de caño.</div>
+        </div>
+        <div class="question-block" id="block_15">
+            <div class="question">16. ¿Cuáles son los componentes principales de una vía RURAL?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q15" value="0"> <span>Acera, calzada y caño</span></label></li>
+                <li><label><input type="radio" name="q15" value="1"> <span>Calzada, espaldón y cuneta</span></label></li>
+                <li><label><input type="radio" name="q15" value="2"> <span>Calzada y acera</span></label></li>
+                <li><label><input type="radio" name="q15" value="3"> <span>Solo la calzada</span></label></li>
+            </ul>
+            <div id="feedback_15" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_15" style="display:none;">En el campo (vía rural) no hay aceras ni caños. Se compone de calzada (para circular), espaldón (orilla para emergencias/peatones) y cuneta (zanja para agua).</div>
+        </div>
+        <div class="question-block" id="block_16">
+            <div class="question">17. La parte de la vía destinada exclusivamente al tránsito de vehículos es:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q16" value="0"> <span>El espaldón</span></label></li>
+                <li><label><input type="radio" name="q16" value="1"> <span>La acera</span></label></li>
+                <li><label><input type="radio" name="q16" value="2"> <span>La calzada</span></label></li>
+                <li><label><input type="radio" name="q16" value="3"> <span>La cuneta</span></label></li>
+            </ul>
+            <div id="feedback_16" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_16" style="display:none;">La calzada es la superficie central pavimentada (o de lastre) por la cual deben circular los automóviles, motos, bicis, etc.</div>
+        </div>
+        <div class="question-block" id="block_17">
+            <div class="question">18. La parte de la vía urbana destinada al tránsito exclusivo de peatones es:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q17" value="0"> <span>La calzada</span></label></li>
+                <li><label><input type="radio" name="q17" value="1"> <span>El caño</span></label></li>
+                <li><label><input type="radio" name="q17" value="2"> <span>El derecho de vía</span></label></li>
+                <li><label><input type="radio" name="q17" value="3"> <span>La acera</span></label></li>
+            </ul>
+            <div id="feedback_17" class="feedback" style="display:none;" data-correct="3"></div>
+            <div id="explanation_17" style="display:none;">La acera es la sección elevada a los lados de la calzada en la ciudad, diseñada estrictamente para la seguridad de quienes caminan.</div>
+        </div>
+        <div class="question-block" id="block_18">
+            <div class="question">19. En una vía rural, la zona contigua a la calzada destinada al tránsito de peatones y vehículos en emergencia se llama:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q18" value="0"> <span>Acera</span></label></li>
+                <li><label><input type="radio" name="q18" value="1"> <span>Cuneta</span></label></li>
+                <li><label><input type="radio" name="q18" value="2"> <span>Espaldón</span></label></li>
+                <li><label><input type="radio" name="q18" value="3"> <span>Carril de aceleración</span></label></li>
+            </ul>
+            <div id="feedback_18" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_18" style="display:none;">El espaldón funciona como refugio si tu carro se descompone y, al no existir acera, es por donde deben caminar los peatones.</div>
+        </div>
+        <div class="question-block" id="block_19">
+            <div class="question">20. El canal de desagüe destinado a recoger las aguas pluviales (de lluvia) en una vía rural se llama:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q19" value="0"> <span>Caño</span></label></li>
+                <li><label><input type="radio" name="q19" value="1"> <span>Cuneta</span></label></li>
+                <li><label><input type="radio" name="q19" value="2"> <span>Alcantarilla</span></label></li>
+                <li><label><input type="radio" name="q19" value="3"> <span>Espaldón</span></label></li>
+            </ul>
+            <div id="feedback_19" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_19" style="display:none;">Las cunetas son excavaciones profundas a los lados de las carreteras rurales para evitar que el agua inunde la calzada.</div>
+        </div>
+        <div class="question-block" id="block_20">
+            <div class="question">21. En la vía urbana, el elemento por donde se evacuan las aguas pluviales es:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q20" value="0"> <span>El espaldón</span></label></li>
+                <li><label><input type="radio" name="q20" value="1"> <span>La cuneta</span></label></li>
+                <li><label><input type="radio" name="q20" value="2"> <span>El caño</span></label></li>
+                <li><label><input type="radio" name="q20" value="3"> <span>El cordón</span></label></li>
+            </ul>
+            <div id="feedback_20" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_20" style="display:none;">El caño es la pequeña depresión junto al cordón de la acera en las ciudades, que dirige la lluvia hacia las alcantarillas.</div>
+        </div>
+        <div class="question-block" id="block_21">
+            <div class="question">22. El ancho total de la vía pública, que incluye la calzada, aceras, espaldones y demás elementos, se conoce como:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q21" value="0"> <span>Derecho de vía</span></label></li>
+                <li><label><input type="radio" name="q21" value="1"> <span>Ancho de calzada</span></label></li>
+                <li><label><input type="radio" name="q21" value="2"> <span>Zona de seguridad</span></label></li>
+                <li><label><input type="radio" name="q21" value="3"> <span>Intersección</span></label></li>
+            </ul>
+            <div id="feedback_21" class="feedback" style="display:none;" data-correct="0"></div>
+            <div id="explanation_21" style="display:none;">El Derecho de Vía abarca todo el terreno expropiado por el Estado para la calle, desde el límite de propiedad de un vecino hasta el límite del vecino de enfrente.</div>
+        </div>
+        <div class="question-block" id="block_22">
+            <div class="question">23. ¿Cómo se define a un 'Conductor'?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q22" value="0"> <span>La persona que paga el pasaje</span></label></li>
+                <li><label><input type="radio" name="q22" value="1"> <span>La persona que tiene el control mecánico y la dirección del vehículo</span></label></li>
+                <li><label><input type="radio" name="q22" value="2"> <span>El dueño registral del vehículo</span></label></li>
+                <li><label><input type="radio" name="q22" value="3"> <span>Cualquiera que vaya dentro del vehículo</span></label></li>
+            </ul>
+            <div id="feedback_22" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_22" style="display:none;">Conductor es quien opera los mandos (volante, pedales) y es el responsable directo del comportamiento del vehículo en movimiento.</div>
+        </div>
+        <div class="question-block" id="block_23">
+            <div class="question">24. Cualquier persona que transita a pie por las vías públicas es considerada un:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q23" value="0"> <span>Conductor</span></label></li>
+                <li><label><input type="radio" name="q23" value="1"> <span>Pasajero</span></label></li>
+                <li><label><input type="radio" name="q23" value="2"> <span>Peatón</span></label></li>
+                <li><label><input type="radio" name="q23" value="3"> <span>Ciclista</span></label></li>
+            </ul>
+            <div id="feedback_23" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_23" style="display:none;">El peatón es el usuario más vulnerable de la vía porque carece de carrocería que lo proteja; por ello, siempre se le debe dar la máxima protección.</div>
+        </div>
+        <div class="question-block" id="block_24">
+            <div class="question">25. La persona que ocupa un lugar en un vehículo, sin tener el control del mismo ni la responsabilidad de su conducción, es un:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q24" value="0"> <span>Peatón</span></label></li>
+                <li><label><input type="radio" name="q24" value="1"> <span>Conductor</span></label></li>
+                <li><label><input type="radio" name="q24" value="2"> <span>Acompañante o pasajero</span></label></li>
+                <li><label><input type="radio" name="q24" value="3"> <span>Instructor</span></label></li>
+            </ul>
+            <div id="feedback_24" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_24" style="display:none;">El pasajero o acompañante viaja en el carro pero no lo maneja. Aunque no maneje, tiene deberes (como usar el cinturón de seguridad y no distraer).</div>
+        </div>
+        <div class="question-block" id="block_25">
+            <div class="question">26. Desde el enfoque de la seguridad vial, los accidentes de tránsito son considerados como:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q25" value="0"> <span>Hechos fortuitos producto del destino</span></label></li>
+                <li><label><input type="radio" name="q25" value="1"> <span>Eventos inevitables</span></label></li>
+                <li><label><input type="radio" name="q25" value="2"> <span>Sucesos que se pueden prever y evitar</span></label></li>
+                <li><label><input type="radio" name="q25" value="3"> <span>Castigos divinos</span></label></li>
+            </ul>
+            <div id="feedback_25" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_25" style="display:none;">En Seguridad Vial no existe el 'accidente' por azar; casi el 90% son colisiones causadas por errores humanos (imprudencia), por lo que siempre son evitables.</div>
+        </div>
+        <div class="question-block" id="block_26">
+            <div class="question">27. ¿A qué se refiere el 'Factor Vehículo' en la trilogía vial?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q26" value="0"> <span>A los ciclistas</span></label></li>
+                <li><label><input type="radio" name="q26" value="1"> <span>Al medio físico y sus condiciones</span></label></li>
+                <li><label><input type="radio" name="q26" value="2"> <span>Al medio de transporte terrestre impulsado por un motor, tracción animal o humana</span></label></li>
+                <li><label><input type="radio" name="q26" value="3"> <span>Exclusivamente a los automóviles tipo sedán</span></label></li>
+            </ul>
+            <div id="feedback_26" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_26" style="display:none;">El vehículo es la máquina. Incluye desde un tráiler de 18 llantas hasta una bicicleta o una carreta jalada por bueyes.</div>
+        </div>
+        <div class="question-block" id="block_27">
+            <div class="question">28. ¿Qué elementos se incluyen en el 'Factor Entorno' (o medio ambiente) de la trilogía vial?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q27" value="0"> <span>Las luces y llantas del vehículo</span></label></li>
+                <li><label><input type="radio" name="q27" value="1"> <span>El clima, la naturaleza, la iluminación y los edificios</span></label></li>
+                <li><label><input type="radio" name="q27" value="2"> <span>La edad y el estado de salud del conductor</span></label></li>
+                <li><label><input type="radio" name="q27" value="3"> <span>El cilindraje del motor</span></label></li>
+            </ul>
+            <div id="feedback_27" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_27" style="display:none;">El entorno incluye las condiciones climáticas (lluvia, neblina), la iluminación (día, noche) y los elementos que rodean la vía (árboles, señales, edificios).</div>
+        </div>
+        <div class="question-block" id="block_28">
+            <div class="question">29. Dar mayor fluidez al tránsito y disminuir el congestionamiento es un objetivo de:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q28" value="0"> <span>El Factor Vehículo</span></label></li>
+                <li><label><input type="radio" name="q28" value="1"> <span>La Ley de Impuestos</span></label></li>
+                <li><label><input type="radio" name="q28" value="2"> <span>La Seguridad Vial</span></label></li>
+                <li><label><input type="radio" name="q28" value="3"> <span>El fabricante del vehículo</span></label></li>
+            </ul>
+            <div id="feedback_28" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_28" style="display:none;">La fluidez vial (evitar presas innecesarias con buena semaforización y cortesía) es un pilar de la Seguridad Vial, reduciendo el estrés y la contaminación.</div>
+        </div>
+        <div class="question-block" id="block_29">
+            <div class="question">30. Según el Capítulo 1, ¿quién asume la mayor responsabilidad al integrarse al tránsito?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q29" value="0"> <span>El Gobierno</span></label></li>
+                <li><label><input type="radio" name="q29" value="1"> <span>El peatón</span></label></li>
+                <li><label><input type="radio" name="q29" value="2"> <span>El vehículo</span></label></li>
+                <li><label><input type="radio" name="q29" value="3"> <span>El conductor humano, por ser el elemento que razona y toma decisiones</span></label></li>
+            </ul>
+            <div id="feedback_29" class="feedback" style="display:none;" data-correct="3"></div>
+            <div id="explanation_29" style="display:none;">Dado que el conductor manipula una máquina que puede convertirse en un arma letal si se usa mal, recae sobre él la responsabilidad legal y moral del tránsito.</div>
+        </div>
+
+        <button id="submitBtn" class="btn">Calificar y Ver Explicaciones</button>
+    </div>
+    <div id="result"></div>
+</div>
+
+<script>
+    document.getElementById('submitBtn').addEventListener('click', function(e) {
+        e.preventDefault(); 
+        try {
+            let score = 0;
+            const total = 30;
+            const puntajePorPregunta = 100 / total;
+
+            for (let i = 0; i < total; i++) {
+                const radios = document.getElementsByName('q' + i);
+                const feedbackDiv = document.getElementById('feedback_' + i);
+                const explanationText = document.getElementById('explanation_' + i).innerText;
+                const correctIndex = parseInt(feedbackDiv.getAttribute('data-correct'));
+
+                let selectedValue = -1;
+                let correctLabelText = "";
+                let selectedLabelDiv = null;
+
+                for (let j = 0; j < radios.length; j++) {
+                    if (radios[j].checked) {
+                        selectedValue = parseInt(radios[j].value);
+                        selectedLabelDiv = radios[j].nextElementSibling; 
+                    }
+                    if (parseInt(radios[j].value) === correctIndex) {
+                        correctLabelText = radios[j].nextElementSibling.innerText;
+                    }
+                }
+
+                feedbackDiv.style.display = 'block';
+
+                let answerResultHTML = "";
+
+                if (selectedValue === correctIndex) {
+                    score++;
+                    answerResultHTML = '✅ <span style="color:#27ae60;">¡Correcto!</span>';
+                    if(selectedLabelDiv) selectedLabelDiv.style.color = '#27ae60';
+                } else {
+                    let errorMsg = '❌ Incorrecto. ';
+                    if (selectedValue === -1) {
+                        errorMsg += 'No respondiste esta pregunta.';
+                    } else {
+                        if(selectedLabelDiv) selectedLabelDiv.style.color = '#c0392b';
+                    }
+                    answerResultHTML = errorMsg + '<br>La respuesta correcta era: <strong style="color:#27ae60;">' + correctLabelText + '</strong>';
+                }
+
+                // Agregar la cajita de explicación o retroalimentación a la respuesta
+                feedbackDiv.innerHTML = answerResultHTML + 
+                    '<div class="explanation-box">💡 <strong>Explicación:</strong> ' + explanationText + '</div>';
+            }
+
+            const finalScore = Math.round(score * puntajePorPregunta);
+            const resultDiv = document.getElementById('result');
+            resultDiv.style.display = 'block';
+
+            if (finalScore >= 80) {
+                resultDiv.innerHTML = '¡Felicidades! Aprobaste con un puntaje de: ' + finalScore + '/100 🏆';
+                resultDiv.style.backgroundColor = '#d4edda';
+                resultDiv.style.color = '#155724';
+            } else {
+                resultDiv.innerHTML = 'Puntaje: ' + finalScore + '/100. Necesitas al menos 80. ¡Lee las explicaciones arriba y repasa! 📚';
+                resultDiv.style.backgroundColor = '#f8d7da';
+                resultDiv.style.color = '#721c24';
+            }
+
+            alert("Tu puntaje final es: " + finalScore + "/100. Revisa las preguntas para ver la retroalimentación de estudio.");
+            window.scrollTo(0, 0); // Volvemos arriba para que empiece a leer sus errores
+
+        } catch (error) {
+            alert("Hubo un error calculando: " + error.message);
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Examen Teórico - Capítulo 4 con Retroalimentación</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f2f3f4; color: #333; line-height: 1.6; padding: 15px; margin: 0; }
+        h1 { text-align: center; color: #e67e22; font-size: 1.6rem; margin-bottom: 5px; }
+        h2 { text-align: center; color: #7f8c8d; font-size: 1rem; margin-top: 0; margin-bottom: 25px; }
+        .quiz-container { width: 100%; max-width: 800px; margin: 0 auto; background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); box-sizing: border-box; }
+        .question-block { margin-bottom: 25px; border-bottom: 1px solid #e5e8e8; padding-bottom: 20px; }
+        .question { font-weight: bold; font-size: 1.15rem; margin-bottom: 15px; color: #2c3e50; }
+        .options { list-style-type: none; padding: 0; margin: 0; }
+        .options li { margin-bottom: 12px; }
+        label { cursor: pointer; display: flex; align-items: flex-start; padding: 12px; border-radius: 8px; background: #fdfdfd; border: 1px solid #d5d8dc; -webkit-tap-highlight-color: transparent; touch-action: manipulation; transition: background 0.2s; }
+        label:active { background: #fdebd0; }
+        input[type="radio"] { margin-right: 12px; margin-top: 4px; transform: scale(1.3); }
+        .btn { display: block; width: 100%; padding: 18px; background-color: #d35400; color: white; border: none; font-size: 1.2rem; font-weight: bold; border-radius: 10px; cursor: pointer; margin-top: 30px; -webkit-appearance: none; box-shadow: 0 4px 6px rgba(211, 84, 0, 0.3); transition: background 0.3s; }
+        .btn:active { background-color: #a04000; }
+        #result { display: none; margin-top: 30px; padding: 20px; border-radius: 10px; text-align: center; font-size: 1.3rem; font-weight: bold; }
+        .correct-answer { color: #27ae60; font-weight: bold; }
+        .wrong-answer { color: #c0392b; text-decoration: line-through; }
+        .feedback { margin-top: 15px; font-size: 1rem; padding: 12px; background: #fff; border: 1px solid #eee; border-radius: 6px; }
+        .explanation-box { margin-top: 15px; padding: 15px; background-color: #fef5e7; border-left: 5px solid #e67e22; border-radius: 6px; font-size: 0.95rem; color: #424949; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+    </style>
+</head>
+<body>
+
+<div class="quiz-container">
+    <h1>Simulador Examen - Capítulo 4</h1>
+    <h2>Factor Vehículo y Mecánica (iOS)</h2>
+    <p style="text-align:center; font-size: 0.95rem; color: #666; margin-bottom: 25px;">30 preguntas sobre mecánica básica, luces del tablero y mantenimiento. ¡Aprende cómo funciona tu auto!</p>
+    <div id="quizForm">
+        <div class="question-block" id="block_0">
+            <div class="question">1. ¿Cuáles son los dos componentes principales de un vehículo?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q0" value="0"> <span>El motor y las llantas</span></label></li>
+                <li><label><input type="radio" name="q0" value="1"> <span>El chasis y la carrocería</span></label></li>
+                <li><label><input type="radio" name="q0" value="2"> <span>El sistema eléctrico y la transmisión</span></label></li>
+                <li><label><input type="radio" name="q0" value="3"> <span>El volante y los asientos</span></label></li>
+            </ul>
+            <div id="feedback_0" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_0" style="display:none;">Estructuralmente, el vehículo se divide en Chasis (el esqueleto rígido donde se montan el motor y los sistemas) y Carrocería (el caparazón de lata donde van los pasajeros y la carga).</div>
+        </div>
+        <div class="question-block" id="block_1">
+            <div class="question">2. ¿Qué es la seguridad ACTIVA de un vehículo?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q1" value="0"> <span>Los dispositivos que reducen los daños durante un accidente</span></label></li>
+                <li><label><input type="radio" name="q1" value="1"> <span>Las bolsas de aire (Airbags)</span></label></li>
+                <li><label><input type="radio" name="q1" value="2"> <span>Los elementos que se usan todos los días para prevenir que ocurra un accidente (frenos, llantas, luces, dirección)</span></label></li>
+                <li><label><input type="radio" name="q1" value="3"> <span>El seguro contra accidentes del INS</span></label></li>
+            </ul>
+            <div id="feedback_1" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_1" style="display:none;">La seguridad activa son los sistemas que el conductor maneja para evitar el choque. Actúan ANTES del accidente (dirección, frenos, espejos, buenas llantas).</div>
+        </div>
+        <div class="question-block" id="block_2">
+            <div class="question">3. ¿Cuál es un ejemplo principal de seguridad PASIVA en el vehículo?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q2" value="0"> <span>Los frenos ABS</span></label></li>
+                <li><label><input type="radio" name="q2" value="1"> <span>El cinturón de seguridad, apoyacabezas y bolsas de aire</span></label></li>
+                <li><label><input type="radio" name="q2" value="2"> <span>El volante</span></label></li>
+                <li><label><input type="radio" name="q2" value="3"> <span>El sistema de luces</span></label></li>
+            </ul>
+            <div id="feedback_2" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_2" style="display:none;">La seguridad pasiva actúa DURANTE y DESPUÉS del accidente para minimizar las lesiones en los ocupantes (cinturón que te retiene, bolsa de aire que amortigua, apoyacabezas que evita el latigazo cervical).</div>
+        </div>
+        <div class="question-block" id="block_3">
+            <div class="question">4. El sistema encargado de proveer la energía que permite que el vehículo se mueva es:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q3" value="0"> <span>El sistema de suspensión</span></label></li>
+                <li><label><input type="radio" name="q3" value="1"> <span>El sistema eléctrico</span></label></li>
+                <li><label><input type="radio" name="q3" value="2"> <span>El motor (sistema de combustión)</span></label></li>
+                <li><label><input type="radio" name="q3" value="3"> <span>El sistema de embrague</span></label></li>
+            </ul>
+            <div id="feedback_3" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_3" style="display:none;">El motor es el corazón del vehículo; se encarga de convertir la energía química del combustible (o eléctrica) en energía mecánica (movimiento).</div>
+        </div>
+        <div class="question-block" id="block_4">
+            <div class="question">5. ¿Qué instrumento del tablero (panel de control) mide la velocidad a la que se desplaza el vehículo?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q4" value="0"> <span>El Odómetro</span></label></li>
+                <li><label><input type="radio" name="q4" value="1"> <span>El Tacómetro</span></label></li>
+                <li><label><input type="radio" name="q4" value="2"> <span>El Velocímetro</span></label></li>
+                <li><label><input type="radio" name="q4" value="3"> <span>El Manómetro</span></label></li>
+            </ul>
+            <div id="feedback_4" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_4" style="display:none;">El velocímetro indica la velocidad actual en kilómetros por hora (km/h).</div>
+        </div>
+        <div class="question-block" id="block_5">
+            <div class="question">6. ¿Qué instrumento del tablero registra la cantidad total de kilómetros que el vehículo ha recorrido desde que salió de fábrica?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q5" value="0"> <span>El Velocímetro</span></label></li>
+                <li><label><input type="radio" name="q5" value="1"> <span>El Odómetro</span></label></li>
+                <li><label><input type="radio" name="q5" value="2"> <span>El Termómetro</span></label></li>
+                <li><label><input type="radio" name="q5" value="3"> <span>El Tacómetro</span></label></li>
+            </ul>
+            <div id="feedback_5" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_5" style="display:none;">El odómetro es el contador de kilometraje total (y a veces parcial/trip) que sirve, por ejemplo, para saber cuándo toca el cambio de aceite.</div>
+        </div>
+        <div class="question-block" id="block_6">
+            <div class="question">7. ¿Qué indica el Tacómetro en el panel de control?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q6" value="0"> <span>La temperatura del agua</span></label></li>
+                <li><label><input type="radio" name="q6" value="1"> <span>La cantidad de gasolina restante</span></label></li>
+                <li><label><input type="radio" name="q6" value="2"> <span>Las revoluciones por minuto (RPM) a las que está girando el motor</span></label></li>
+                <li><label><input type="radio" name="q6" value="3"> <span>La presión de las llantas</span></label></li>
+            </ul>
+            <div id="feedback_6" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_6" style="display:none;">El tacómetro muestra qué tan forzado va el motor (RPM). Es crucial en vehículos manuales para saber en qué momento realizar el cambio de marcha.</div>
+        </div>
+        <div class="question-block" id="block_7">
+            <div class="question">8. El sistema encargado de disminuir la fricción (roce) y el desgaste entre las piezas móviles internas del motor se llama:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q7" value="0"> <span>Sistema de Refrigeración</span></label></li>
+                <li><label><input type="radio" name="q7" value="1"> <span>Sistema de Lubricación</span></label></li>
+                <li><label><input type="radio" name="q7" value="2"> <span>Sistema de Combustible</span></label></li>
+                <li><label><input type="radio" name="q7" value="3"> <span>Sistema de Frenos</span></label></li>
+            </ul>
+            <div id="feedback_7" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_7" style="display:none;">El sistema de lubricación (cuyo elemento principal es el aceite del motor) crea una película resbaladiza entre los metales para que no se fundan al frotarse a altas temperaturas.</div>
+        </div>
+        <div class="question-block" id="block_8">
+            <div class="question">9. ¿Cómo se revisa correctamente el nivel de aceite del motor mediante la varilla de medición?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q8" value="0"> <span>Con el motor encendido y acelerando</span></label></li>
+                <li><label><input type="radio" name="q8" value="1"> <span>Con el vehículo en una pendiente y el motor apagado</span></label></li>
+                <li><label><input type="radio" name="q8" value="2"> <span>Con el vehículo en una superficie plana y el motor apagado (preferiblemente frío o reposado)</span></label></li>
+                <li><label><input type="radio" name="q8" value="3"> <span>No se revisa con varilla, solo viendo el tablero</span></label></li>
+            </ul>
+            <div id="feedback_8" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_8" style="display:none;">Para una lectura real, el aceite debe haber bajado al cárter (motor apagado y reposado) y el carro debe estar totalmente nivelado horizontalmente.</div>
+        </div>
+        <div class="question-block" id="block_9">
+            <div class="question">10. Si se enciende en el tablero una luz roja con el símbolo de una aceitera (lámpara de Aladino) mientras usted conduce, esto significa:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q9" value="0"> <span>Que es momento de ir a la gasolinera</span></label></li>
+                <li><label><input type="radio" name="q9" value="1"> <span>Peligro: Pérdida grave de presión o falta de aceite en el motor; debe detenerse y apagar el motor inmediatamente</span></label></li>
+                <li><label><input type="radio" name="q9" value="2"> <span>Que el aceite está muy limpio</span></label></li>
+                <li><label><input type="radio" name="q9" value="3"> <span>Que debe acelerar para que el aceite suba</span></label></li>
+            </ul>
+            <div id="feedback_9" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_9" style="display:none;">Es una de las luces más graves. Si no hay presión de aceite, el motor se está frotando metal con metal y se destruirá (fundirá) en pocos minutos si no se apaga.</div>
+        </div>
+        <div class="question-block" id="block_10">
+            <div class="question">11. El sistema que se encarga de disipar el exceso de calor producido por las explosiones dentro del motor es:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q10" value="0"> <span>El sistema de Suspensión</span></label></li>
+                <li><label><input type="radio" name="q10" value="1"> <span>El sistema Eléctrico</span></label></li>
+                <li><label><input type="radio" name="q10" value="2"> <span>El sistema de Enfriamiento (o Refrigeración)</span></label></li>
+                <li><label><input type="radio" name="q10" value="3"> <span>El sistema de Dirección</span></label></li>
+            </ul>
+            <div id="feedback_10" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_10" style="display:none;">El sistema de enfriamiento usa agua o líquido refrigerante (coolant) que circula por el motor para absorber el calor y luego se enfría al pasar por el radiador frontal.</div>
+        </div>
+        <div class="question-block" id="block_11">
+            <div class="question">12. ¿Qué precaución vital se debe tener al revisar el nivel de agua o líquido refrigerante en el radiador?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q11" value="0"> <span>Revisarlo únicamente con el motor encendido</span></label></li>
+                <li><label><input type="radio" name="q11" value="1"> <span>Jamás abrir la tapa del radiador si el motor está caliente, por riesgo de quemaduras graves por vapor a presión</span></label></li>
+                <li><label><input type="radio" name="q11" value="2"> <span>Revisarlo solo por la noche</span></label></li>
+                <li><label><input type="radio" name="q11" value="3"> <span>Utilizar guantes de cuero</span></label></li>
+            </ul>
+            <div id="feedback_11" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_11" style="display:none;">El refrigerante caliente está bajo alta presión. Si se quita la tapa del radiador en caliente, el agua hirviendo saldrá disparada como un géiser hacia la cara y brazos.</div>
+        </div>
+        <div class="question-block" id="block_12">
+            <div class="question">13. ¿Qué función cumple el embrague (clutch) en un vehículo de transmisión manual?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q12" value="0"> <span>Frenar las llantas traseras</span></label></li>
+                <li><label><input type="radio" name="q12" value="1"> <span>Unir y separar el movimiento del motor hacia la caja de cambios</span></label></li>
+                <li><label><input type="radio" name="q12" value="2"> <span>Aumentar la potencia del motor</span></label></li>
+                <li><label><input type="radio" name="q12" value="3"> <span>Encender el vehículo</span></label></li>
+            </ul>
+            <div id="feedback_12" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_12" style="display:none;">El pedal del clutch desconecta temporalmente el motor de las ruedas para permitirte hacer el cambio de marchas sin que los engranajes raspen.</div>
+        </div>
+        <div class="question-block" id="block_13">
+            <div class="question">14. El mecanismo encargado de trasladar la fuerza y movimiento generados en el motor hacia las llantas motrices (las que empujan el carro) se denomina:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q13" value="0"> <span>Sistema de Transmisión</span></label></li>
+                <li><label><input type="radio" name="q13" value="1"> <span>Sistema de Dirección</span></label></li>
+                <li><label><input type="radio" name="q13" value="2"> <span>Sistema de Suspensión</span></label></li>
+                <li><label><input type="radio" name="q13" value="3"> <span>Sistema de Escape</span></label></li>
+            </ul>
+            <div id="feedback_13" class="feedback" style="display:none;" data-correct="0"></div>
+            <div id="explanation_13" style="display:none;">La transmisión incluye el embrague, la caja de cambios, el eje cardán (o flechas) y el diferencial. Traslada el giro del motor hasta las llantas.</div>
+        </div>
+        <div class="question-block" id="block_14">
+            <div class="question">15. En el sistema de dirección, ¿qué problema presenta un vehículo si al soltar el volante en una recta plana (a baja velocidad y con precaución) el vehículo tiende a irse hacia un lado?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q14" value="0"> <span>Falta de gasolina</span></label></li>
+                <li><label><input type="radio" name="q14" value="1"> <span>Falta de alineación (trama y alineamiento) o problemas de presión en las llantas</span></label></li>
+                <li><label><input type="radio" name="q14" value="2"> <span>El alternador está dañado</span></label></li>
+                <li><label><input type="radio" name="q14" value="3"> <span>El motor necesita aceite</span></label></li>
+            </ul>
+            <div id="feedback_14" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_14" style="display:none;">Si el carro 'jala' hacia un lado, las llantas no están perfectamente paralelas (alineación) o una llanta está más desinflada que la otra en el mismo eje.</div>
+        </div>
+        <div class="question-block" id="block_15">
+            <div class="question">16. ¿Cuál es la función principal del sistema de suspensión?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q15" value="0"> <span>Hacer que el carro se vea más bajo</span></label></li>
+                <li><label><input type="radio" name="q15" value="1"> <span>Absorber los golpes y vibraciones producidos por los huecos e irregularidades de la calle, brindando confort y estabilidad</span></label></li>
+                <li><label><input type="radio" name="q15" value="2"> <span>Frenar en bajadas</span></label></li>
+                <li><label><input type="radio" name="q15" value="3"> <span>Alinear las llantas automáticamente</span></label></li>
+            </ul>
+            <div id="feedback_15" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_15" style="display:none;">Mediante resortes y amortiguadores (compensadores), la suspensión evita que los golpes de la vía lleguen secos a la carrocería, manteniendo las 4 llantas pegadas al suelo.</div>
+        </div>
+        <div class="question-block" id="block_16">
+            <div class="question">17. Si al circular por una calle con baches (huecos) el vehículo rebota excesivamente como una gelatina y no se estabiliza rápido, es probable que tenga dañados:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q16" value="0"> <span>Los discos de freno</span></label></li>
+                <li><label><input type="radio" name="q16" value="1"> <span>Los amortiguadores (compensadores)</span></label></li>
+                <li><label><input type="radio" name="q16" value="2"> <span>Las rótulas de dirección</span></label></li>
+                <li><label><input type="radio" name="q16" value="3"> <span>El radiador</span></label></li>
+            </ul>
+            <div id="feedback_16" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_16" style="display:none;">Los resortes se encargan de rebotar, pero el amortiguador (compensador) es el que frena ese rebote para estabilizar el carro. Si rebotas mucho, los amortiguadores no sirven.</div>
+        </div>
+        <div class="question-block" id="block_17">
+            <div class="question">18. El sistema que produce, almacena y distribuye la energía necesaria para arrancar el motor, encender las luces y el radio es:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q17" value="0"> <span>El Sistema de Refrigeración</span></label></li>
+                <li><label><input type="radio" name="q17" value="1"> <span>El Sistema de Transmisión</span></label></li>
+                <li><label><input type="radio" name="q17" value="2"> <span>El Sistema Eléctrico</span></label></li>
+                <li><label><input type="radio" name="q17" value="3"> <span>El Sistema de Encendido</span></label></li>
+            </ul>
+            <div id="feedback_17" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_17" style="display:none;">El sistema eléctrico (compuesto por la batería, el motor de arranque y el alternador) maneja toda la corriente del vehículo.</div>
+        </div>
+        <div class="question-block" id="block_18">
+            <div class="question">19. La batería o acumulador se encarga de almacenar la energía eléctrica. Pero, ¿qué pieza se encarga de generar la electricidad y recargar la batería mientras el motor está encendido?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q18" value="0"> <span>El motor de arranque (marcha)</span></label></li>
+                <li><label><input type="radio" name="q18" value="1"> <span>El alternador</span></label></li>
+                <li><label><input type="radio" name="q18" value="2"> <span>La bujía</span></label></li>
+                <li><label><input type="radio" name="q18" value="3"> <span>Los fusibles</span></label></li>
+            </ul>
+            <div id="feedback_18" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_18" style="display:none;">El alternador es un pequeño generador eléctrico conectado al motor por una faja. Una vez que el carro enciende, el alternador toma el control eléctrico y recarga la batería gastada.</div>
+        </div>
+        <div class="question-block" id="block_19">
+            <div class="question">20. Si mientras usted maneja de noche nota que la intensidad de sus luces principales baja (se ponen amarillentas u opacas) o si se le enciende en el tablero una luz roja con forma de batería, esto indica:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q19" value="0"> <span>Que las luces altas están puestas</span></label></li>
+                <li><label><input type="radio" name="q19" value="1"> <span>Un fallo en el alternador o en el sistema de carga; el vehículo se apagará pronto al agotar la batería</span></label></li>
+                <li><label><input type="radio" name="q19" value="2"> <span>Que la batería es nueva</span></label></li>
+                <li><label><input type="radio" name="q19" value="3"> <span>Que debe apagar el radio</span></label></li>
+            </ul>
+            <div id="feedback_19" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_19" style="display:none;">Si el alternador se daña (o se rompe su faja), el carro empieza a usar la reserva de la batería. La luz roja te avisa que no hay carga y en pocos kilómetros el carro se quedará sin chispa y morirá.</div>
+        </div>
+        <div class="question-block" id="block_20">
+            <div class="question">21. La función principal de los fusibles en el sistema eléctrico es:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q20" value="0"> <span>Hacer ruido cuando hay un fallo</span></label></li>
+                <li><label><input type="radio" name="q20" value="1"> <span>Proteger los circuitos y cables cortando el paso de corriente (fundiéndose) en caso de un cortocircuito o sobrecarga</span></label></li>
+                <li><label><input type="radio" name="q20" value="2"> <span>Dar más potencia a los parlantes</span></label></li>
+                <li><label><input type="radio" name="q20" value="3"> <span>Acumular energía de reserva</span></label></li>
+            </ul>
+            <div id="feedback_20" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_20" style="display:none;">El fusible es un alambre delgado de seguridad. Si hay un pico peligroso de electricidad, el fusible se quema (se rompe) a propósito para evitar que el carro se incendie.</div>
+        </div>
+        <div class="question-block" id="block_21">
+            <div class="question">22. El sistema encargado de evacuar, enfriar y reducir la toxicidad y el ruido de los gases que expulsa el motor después de la combustión se llama:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q21" value="0"> <span>Sistema de Enfriamiento</span></label></li>
+                <li><label><input type="radio" name="q21" value="1"> <span>Sistema de Inyección</span></label></li>
+                <li><label><input type="radio" name="q21" value="2"> <span>Sistema de Escape</span></label></li>
+                <li><label><input type="radio" name="q21" value="3"> <span>Sistema de Lubricación</span></label></li>
+            </ul>
+            <div id="feedback_21" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_21" style="display:none;">El escape recoge los humos quemados. Cuenta con el múltiple, el tubo de escape, el catalizador (para contaminación) y el silenciador (múfler, para ruido).</div>
+        </div>
+        <div class="question-block" id="block_22">
+            <div class="question">23. ¿Qué dispositivo se incluye en el sistema de escape moderno para transformar químicamente los gases contaminantes en emisiones menos tóxicas antes de que salgan al aire?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q22" value="0"> <span>El tubo de escape</span></label></li>
+                <li><label><input type="radio" name="q22" value="1"> <span>El silenciador (múfler)</span></label></li>
+                <li><label><input type="radio" name="q22" value="2"> <span>El convertidor catalítico (catalizador)</span></label></li>
+                <li><label><input type="radio" name="q22" value="3"> <span>El múltiple de admisión</span></label></li>
+            </ul>
+            <div id="feedback_22" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_22" style="display:none;">El catalizador es vital ambientalmente. Contiene metales preciosos que reaccionan con el humo tóxico y lo convierten en gases más inofensivos.</div>
+        </div>
+        <div class="question-block" id="block_23">
+            <div class="question">24. En el sistema de frenos, el tipo de freno que normalmente se acciona con la mano (o un pedal pequeño) y actúa de forma mecánica para dejar el vehículo inmovilizado al estacionar es:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q23" value="0"> <span>El freno de servicio (pedal)</span></label></li>
+                <li><label><input type="radio" name="q23" value="1"> <span>El freno ABS</span></label></li>
+                <li><label><input type="radio" name="q23" value="2"> <span>El freno de motor</span></label></li>
+                <li><label><input type="radio" name="q23" value="3"> <span>El freno de estacionamiento (freno de mano o de emergencia)</span></label></li>
+            </ul>
+            <div id="feedback_23" class="feedback" style="display:none;" data-correct="3"></div>
+            <div id="explanation_23" style="display:none;">El freno de mano actúa por medio de cables mecánicos directamente sobre las ruedas traseras para evitar que el carro ruede estando parqueado.</div>
+        </div>
+        <div class="question-block" id="block_24">
+            <div class="question">25. Un factor muy peligroso al frenar en carretera mojada, donde la llanta pierde el contacto con el asfalto patinando sobre una capa de agua, se conoce como:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q24" value="0"> <span>Hidroplaneo (Aquaplaning)</span></label></li>
+                <li><label><input type="radio" name="q24" value="1"> <span>Efecto dominó</span></label></li>
+                <li><label><input type="radio" name="q24" value="2"> <span>Patinaje seco</span></label></li>
+                <li><label><input type="radio" name="q24" value="3"> <span>Efecto látigo</span></label></li>
+            </ul>
+            <div id="feedback_24" class="feedback" style="display:none;" data-correct="0"></div>
+            <div id="explanation_24" style="display:none;">El hidroplaneo ocurre a altas velocidades en lluvia; los surcos de la llanta no pueden evacuar el agua suficientemente rápido, por lo que la llanta 'flota' como un esquí acuático, perdiendo dirección y freno.</div>
+        </div>
+        <div class="question-block" id="block_25">
+            <div class="question">26. Para evitar el hidroplaneo y asegurar un buen agarre, la ley exige que la profundidad de las ranuras (surcos o 'tacos') en las llantas de un vehículo liviano no sea inferior a:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q25" value="0"> <span>1 milímetro</span></label></li>
+                <li><label><input type="radio" name="q25" value="1"> <span>2 milímetros</span></label></li>
+                <li><label><input type="radio" name="q25" value="2"> <span>4 milímetros</span></label></li>
+                <li><label><input type="radio" name="q25" value="3"> <span>5 milímetros</span></label></li>
+            </ul>
+            <div id="feedback_25" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_25" style="display:none;">La Ley establece que para vehículos livianos, la profundidad mínima del dibujo de la banda de rodamiento de la llanta es de 2 mm.</div>
+        </div>
+        <div class="question-block" id="block_26">
+            <div class="question">27. Si las llantas delanteras de su vehículo presentan un desgaste excesivo SOLAMENTE en el centro de la banda de rodamiento (y menos a los lados), esto se debe a:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q26" value="0"> <span>Presión de inflado demasiado alta (sobreinfladas)</span></label></li>
+                <li><label><input type="radio" name="q26" value="1"> <span>Presión de inflado muy baja (desinfladas)</span></label></li>
+                <li><label><input type="radio" name="q26" value="2"> <span>Problemas de alineación (trama)</span></label></li>
+                <li><label><input type="radio" name="q26" value="3"> <span>Exceso de carga en el maletero</span></label></li>
+            </ul>
+            <div id="feedback_26" class="feedback" style="display:none;" data-correct="0"></div>
+            <div id="explanation_26" style="display:none;">Una llanta sobreinflada se deforma pareciendo un globo ovalado, provocando que solo la franja central roce contra la calle y se desgaste prematuramente.</div>
+        </div>
+        <div class="question-block" id="block_27">
+            <div class="question">28. Si la llanta presenta un desgaste excesivo en AMBOS bordes exteriores (y el centro está bien), esto indica que el vehículo se está conduciendo con:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q27" value="0"> <span>Mucha velocidad en curvas</span></label></li>
+                <li><label><input type="radio" name="q27" value="1"> <span>Presión de inflado deficiente (muy baja / desinflada)</span></label></li>
+                <li><label><input type="radio" name="q27" value="2"> <span>Problemas en el motor</span></label></li>
+                <li><label><input type="radio" name="q27" value="3"> <span>Una alineación perfecta</span></label></li>
+            </ul>
+            <div id="feedback_27" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_27" style="display:none;">Si la llanta está 'bajita' (desinflada), el centro se hunde hacia arriba y los hombros exteriores soportan todo el peso y la fricción, desgastándose rápido.</div>
+        </div>
+        <div class="question-block" id="block_28">
+            <div class="question">29. ¿Qué mantenimiento básico y frecuente recomiendan los fabricantes hacerle a las llantas para asegurar que se desgasten de forma pareja en todas sus posiciones?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q28" value="0"> <span>Pintarlas de negro</span></label></li>
+                <li><label><input type="radio" name="q28" value="1"> <span>Mojarlas a diario</span></label></li>
+                <li><label><input type="radio" name="q28" value="2"> <span>La rotación de las llantas (cambiarlas de eje delantero a trasero y viceversa) cada ciertos kilómetros</span></label></li>
+                <li><label><input type="radio" name="q28" value="3"> <span>Ponerles aceite para que brillen</span></label></li>
+            </ul>
+            <div id="feedback_28" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_28" style="display:none;">Como las llantas delanteras se desgastan más rápido (por soportar el peso del motor, dar dirección y frenar), es vital 'rotarlas' hacia atrás periódicamente para que las 4 duren lo mismo.</div>
+        </div>
+        <div class="question-block" id="block_29">
+            <div class="question">30. El mantenimiento PREVENTIVO del vehículo consiste en:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q29" value="0"> <span>Llevar el carro al taller solo cuando una pieza se quiebra</span></label></li>
+                <li><label><input type="radio" name="q29" value="1"> <span>La revisión y cambio periódico de fluidos y piezas desgastables (aceites, filtros, pastillas) antes de que causen un fallo grave</span></label></li>
+                <li><label><input type="radio" name="q29" value="2"> <span>Lavar el carro todos los domingos</span></label></li>
+                <li><label><input type="radio" name="q29" value="3"> <span>Cambiar el motor todos los años</span></label></li>
+            </ul>
+            <div id="feedback_29" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_29" style="display:none;">El mantenimiento preventivo se basa en el manual del fabricante: cambiar cosas por kilometraje ANTES de que se rompan. Evita accidentes y reparaciones carísimas.</div>
+        </div>
+
+        <button id="submitBtn" class="btn">Calificar Mecánica</button>
+    </div>
+    <div id="result"></div>
+</div>
+
+<script>
+    document.getElementById('submitBtn').addEventListener('click', function(e) {
+        e.preventDefault(); 
+        try {
+            let score = 0;
+            const total = 30;
+            const puntajePorPregunta = 100 / total;
+
+            for (let i = 0; i < total; i++) {
+                const radios = document.getElementsByName('q' + i);
+                const feedbackDiv = document.getElementById('feedback_' + i);
+                const explanationText = document.getElementById('explanation_' + i).innerText;
+                const correctIndex = parseInt(feedbackDiv.getAttribute('data-correct'));
+
+                let selectedValue = -1;
+                let correctLabelText = "";
+                let selectedLabelDiv = null;
+
+                for (let j = 0; j < radios.length; j++) {
+                    if (radios[j].checked) {
+                        selectedValue = parseInt(radios[j].value);
+                        selectedLabelDiv = radios[j].nextElementSibling; 
+                    }
+                    if (parseInt(radios[j].value) === correctIndex) {
+                        correctLabelText = radios[j].nextElementSibling.innerText;
+                    }
+                }
+
+                feedbackDiv.style.display = 'block';
+
+                let answerResultHTML = "";
+
+                if (selectedValue === correctIndex) {
+                    score++;
+                    answerResultHTML = '✅ <span style="color:#27ae60;">¡Correcto!</span>';
+                    if(selectedLabelDiv) selectedLabelDiv.style.color = '#27ae60';
+                } else {
+                    let errorMsg = '❌ Incorrecto. ';
+                    if (selectedValue === -1) {
+                        errorMsg += 'No respondiste esta pregunta.';
+                    } else {
+                        if(selectedLabelDiv) selectedLabelDiv.style.color = '#c0392b';
+                    }
+                    answerResultHTML = errorMsg + '<br>La correcta era: <strong style="color:#27ae60;">' + correctLabelText + '</strong>';
+                }
+
+                feedbackDiv.innerHTML = answerResultHTML + 
+                    '<div class="explanation-box">🔧 <strong>Mecánica fácil:</strong> ' + explanationText + '</div>';
+            }
+
+            const finalScore = Math.round(score * puntajePorPregunta);
+            const resultDiv = document.getElementById('result');
+            resultDiv.style.display = 'block';
+
+            if (finalScore >= 80) {
+                resultDiv.innerHTML = '¡Mecánico experto! Aprobaste con: ' + finalScore + '/100 🏆';
+                resultDiv.style.backgroundColor = '#d4edda';
+                resultDiv.style.color = '#155724';
+            } else {
+                resultDiv.innerHTML = 'Puntaje: ' + finalScore + '/100. Necesitas al menos 80. ¡Lee las explicaciones de los sistemas y repite! 📚';
+                resultDiv.style.backgroundColor = '#f8d7da';
+                resultDiv.style.color = '#721c24';
+            }
+
+            alert("Tu nota en Factor Vehículo es: " + finalScore + "/100. Sube en la página para aprender de tus errores.");
+            window.scrollTo(0, 0); 
+
+        } catch (error) {
+            alert("Hubo un error calculando: " + error.message);
+        }
+    });
+</script>
+</body>
+</html>

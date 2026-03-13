@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Examen Teórico - Capítulo 5 con Retroalimentación</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #fdfefe; color: #333; line-height: 1.6; padding: 15px; margin: 0; }
+        h1 { text-align: center; color: #16a085; font-size: 1.6rem; margin-bottom: 5px; }
+        h2 { text-align: center; color: #7f8c8d; font-size: 1rem; margin-top: 0; margin-bottom: 25px; }
+        .quiz-container { width: 100%; max-width: 800px; margin: 0 auto; background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); box-sizing: border-box; border-top: 5px solid #1abc9c; }
+        .question-block { margin-bottom: 25px; border-bottom: 1px solid #eee; padding-bottom: 20px; }
+        .question { font-weight: bold; font-size: 1.15rem; margin-bottom: 15px; color: #2c3e50; }
+        .options { list-style-type: none; padding: 0; margin: 0; }
+        .options li { margin-bottom: 12px; }
+        label { cursor: pointer; display: flex; align-items: flex-start; padding: 12px; border-radius: 8px; background: #f8f9f9; border: 1px solid #e5e8e8; -webkit-tap-highlight-color: transparent; touch-action: manipulation; transition: background 0.2s; }
+        label:active { background: #e8f8f5; }
+        input[type="radio"] { margin-right: 12px; margin-top: 4px; transform: scale(1.3); }
+        .btn { display: block; width: 100%; padding: 18px; background-color: #16a085; color: white; border: none; font-size: 1.2rem; font-weight: bold; border-radius: 10px; cursor: pointer; margin-top: 30px; -webkit-appearance: none; box-shadow: 0 4px 6px rgba(22, 160, 133, 0.3); transition: background 0.3s; }
+        .btn:active { background-color: #117864; }
+        #result { display: none; margin-top: 30px; padding: 20px; border-radius: 10px; text-align: center; font-size: 1.3rem; font-weight: bold; }
+        .correct-answer { color: #27ae60; font-weight: bold; }
+        .wrong-answer { color: #e74c3c; text-decoration: line-through; }
+        .feedback { margin-top: 15px; font-size: 1rem; padding: 12px; background: #fff; border: 1px solid #eee; border-radius: 6px; }
+        .explanation-box { margin-top: 15px; padding: 15px; background-color: #e8f8f5; border-left: 5px solid #1abc9c; border-radius: 6px; font-size: 0.95rem; color: #117864; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+    </style>
+</head>
+<body>
+
+<div class="quiz-container">
+    <h1>Simulador Examen - Capítulo 5</h1>
+    <h2>Conducción Defensiva y Eficiente (iOS)</h2>
+    <p style="text-align:center; font-size: 0.95rem; color: #666; margin-bottom: 25px;">30 preguntas sobre el Factor Humano, velocidades, curvas, clima y técnicas de manejo al volante.</p>
+    <div id="quizForm">
+        <div class="question-block" id="block_0">
+            <div class="question">1. ¿Qué elementos interactúan constantemente en la 'Trilogía Vial' desde la perspectiva del manejo?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q0" value="0"> <span>El acelerador, freno y embrague</span></label></li>
+                <li><label><input type="radio" name="q0" value="1"> <span>El Humano, el Vehículo y el Entorno (vía y ambiente)</span></label></li>
+                <li><label><input type="radio" name="q0" value="2"> <span>El día, la noche y la lluvia</span></label></li>
+                <li><label><input type="radio" name="q0" value="3"> <span>Peatón, pasajero y policía</span></label></li>
+            </ul>
+            <div id="feedback_0" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_0" style="display:none;">Toda la conducción gira en torno a estos 3 factores. El conductor (Humano) debe adaptar su Máquina (Vehículo) a las condiciones de la Calle y el Clima (Entorno).</div>
+        </div>
+        <div class="question-block" id="block_1">
+            <div class="question">2. El Factor Humano es el principal causante de accidentes. ¿Qué porcentaje de las colisiones se le atribuyen a errores de las personas?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q1" value="0"> <span>Cerca del 50%</span></label></li>
+                <li><label><input type="radio" name="q1" value="1"> <span>Aproximadamente el 70%</span></label></li>
+                <li><label><input type="radio" name="q1" value="2"> <span>Alrededor del 90%</span></label></li>
+                <li><label><input type="radio" name="q1" value="3"> <span>Menos del 20%</span></label></li>
+            </ul>
+            <div id="feedback_1" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_1" style="display:none;">Estadísticamente, el 90% de los accidentes ocurren por fallas humanas: distracción, exceso de velocidad, alcohol o imprudencias, no por fallas mecánicas de la nada.</div>
+        </div>
+        <div class="question-block" id="block_2">
+            <div class="question">3. ¿Qué significa conducir a la 'defensiva' (manejo defensivo)?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q2" value="0"> <span>Manejar con agresividad para que no nos choquen</span></label></li>
+                <li><label><input type="radio" name="q2" value="1"> <span>Anticipar los errores de los demás conductores y las condiciones adversas para prevenir accidentes</span></label></li>
+                <li><label><input type="radio" name="q2" value="2"> <span>Conducir tocando la bocina en cada intersección</span></label></li>
+                <li><label><input type="radio" name="q2" value="3"> <span>Ir siempre por debajo del límite de velocidad mínimo</span></label></li>
+            </ul>
+            <div id="feedback_2" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_2" style="display:none;">El conductor defensivo no asume que los demás van a respetar la ley. Está preparado para reaccionar a tiempo si un peatón se cruza o si un carro se salta un Alto.</div>
+        </div>
+        <div class="question-block" id="block_3">
+            <div class="question">4. ¿Cuáles son las condiciones o estados físicos internos que más afectan negativamente a un conductor?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q3" value="0"> <span>La edad y la estatura</span></label></li>
+                <li><label><input type="radio" name="q3" value="1"> <span>El uso de anteojos y la ropa</span></label></li>
+                <li><label><input type="radio" name="q3" value="2"> <span>La fatiga, el sueño, el estrés, las distracciones o conducir bajo efectos del alcohol o medicamentos</span></label></li>
+                <li><label><input type="radio" name="q3" value="3"> <span>El estado del asiento del vehículo</span></label></li>
+            </ul>
+            <div id="feedback_3" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_3" style="display:none;">Las condiciones psico-físicas del conductor determinan su tiempo de reacción. El cansancio extremo y el alcohol deprimen el sistema nervioso, haciéndolo lento y torpe.</div>
+        </div>
+        <div class="question-block" id="block_4">
+            <div class="question">5. El alcohol afecta directamente la capacidad de conducir al:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q4" value="0"> <span>Mejorar los reflejos visuales</span></label></li>
+                <li><label><input type="radio" name="q4" value="1"> <span>Producir una falsa sensación de seguridad, disminuir la coordinación y aumentar el tiempo de reacción</span></label></li>
+                <li><label><input type="radio" name="q4" value="2"> <span>Hacer que el motor consuma menos combustible</span></label></li>
+                <li><label><input type="radio" name="q4" value="3"> <span>Aumentar la resistencia física</span></label></li>
+            </ul>
+            <div id="feedback_4" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_4" style="display:none;">El alcohol engaña al cerebro: la persona cree que maneja mejor, pero en realidad sus reflejos están lentos, su visión es de túnel y le cuesta calcular distancias.</div>
+        </div>
+        <div class="question-block" id="block_5">
+            <div class="question">6. El efecto 'visión de túnel' que experimenta un conductor es causado principalmente por:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q5" value="0"> <span>Entrar a un túnel muy oscuro</span></label></li>
+                <li><label><input type="radio" name="q5" value="1"> <span>Un problema de miopía</span></label></li>
+                <li><label><input type="radio" name="q5" value="2"> <span>El aumento de la velocidad (a mayor velocidad, menor campo visual periférico)</span></label></li>
+                <li><label><input type="radio" name="q5" value="3"> <span>Utilizar luces altas en lluvia</span></label></li>
+            </ul>
+            <div id="feedback_5" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_5" style="display:none;">A medida que el carro va más rápido (ej: 100 km/h), el cerebro humano no puede procesar los lados, por lo que bloquea la visión periférica y solo enfoca lo que está directamente al frente.</div>
+        </div>
+        <div class="question-block" id="block_6">
+            <div class="question">7. ¿Cuál es la regla más segura y recomendada para mantener la distancia con el vehículo que va adelante en condiciones normales (día soleado)?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q6" value="0"> <span>Mantener exactamente 5 metros de distancia</span></label></li>
+                <li><label><input type="radio" name="q6" value="1"> <span>La regla de los 2 segundos</span></label></li>
+                <li><label><input type="radio" name="q6" value="2"> <span>La regla de los 10 segundos</span></label></li>
+                <li><label><input type="radio" name="q6" value="3"> <span>Ir a un carro de distancia por cada 10 km/h</span></label></li>
+            </ul>
+            <div id="feedback_6" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_6" style="display:none;">La regla de los 2 segundos: toma un punto fijo (un poste), cuando el carro de adelante lo pase, cuenta 'mil uno, mil dos'. Si pasas el poste antes de terminar de contar, vas muy pegado.</div>
+        </div>
+        <div class="question-block" id="block_7">
+            <div class="question">8. Si está lloviendo, hay neblina o es de noche, ¿qué debe hacer con la regla de distancia (los 2 segundos)?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q7" value="0"> <span>Reducirla a 1 segundo</span></label></li>
+                <li><label><input type="radio" name="q7" value="1"> <span>Mantenerla igual</span></label></li>
+                <li><label><input type="radio" name="q7" value="2"> <span>Aumentarla al menos al doble (3, 4 o más segundos)</span></label></li>
+                <li><label><input type="radio" name="q7" value="3"> <span>Ignorarla</span></label></li>
+            </ul>
+            <div id="feedback_7" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_7" style="display:none;">En clima adverso (lluvia), el asfalto resbala y el carro tarda mucho más en frenar. Por eso la distancia debe duplicarse para evitar chocar por detrás si el de adelante frena brusco.</div>
+        </div>
+        <div class="question-block" id="block_8">
+            <div class="question">9. ¿Qué es la 'Fuerza Centrífuga' durante la conducción?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q8" value="0"> <span>La fuerza de frenado del motor</span></label></li>
+                <li><label><input type="radio" name="q8" value="1"> <span>La fuerza física que empuja al vehículo HASTA AFUERA al tomar una curva a velocidad</span></label></li>
+                <li><label><input type="radio" name="q8" value="2"> <span>La fuerza que mantiene el carro pegado al asfalto</span></label></li>
+                <li><label><input type="radio" name="q8" value="3"> <span>La fuerza de los amortiguadores</span></label></li>
+            </ul>
+            <div id="feedback_8" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_8" style="display:none;">Cuando tomas una curva rápido, sientes que el cuerpo se va de lado. Esa misma fuerza centrífuga 'jala' el carro hacia el precipicio o carril contrario intentando que siga recto.</div>
+        </div>
+        <div class="question-block" id="block_9">
+            <div class="question">10. ¿Cómo se debe contrarrestar o manejar correctamente el efecto de la fuerza centrífuga en una curva?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q9" value="0"> <span>Acelerando antes de entrar a la curva y frenando a la mitad</span></label></li>
+                <li><label><input type="radio" name="q9" value="1"> <span>Frenando bruscamente cuando ya se está dentro de la curva</span></label></li>
+                <li><label><input type="radio" name="q9" value="2"> <span>Disminuyendo la velocidad ANTES de entrar a la curva, y manteniendo una aceleración suave y constante mientras se gira</span></label></li>
+                <li><label><input type="radio" name="q9" value="3"> <span>Poniendo el vehículo en neutro (punto muerto)</span></label></li>
+            </ul>
+            <div id="feedback_9" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_9" style="display:none;">La regla de oro de las curvas es: 'Se entra despacio y se sale acelerando suave'. Si frenas duro DENTRO de la curva, el peso se va a las llantas delanteras, las de atrás pierden agarre y el carro hace un trompo.</div>
+        </div>
+        <div class="question-block" id="block_10">
+            <div class="question">11. ¿Qué es el 'Peralte' en una carretera?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q10" value="0"> <span>Un tipo de asfalto especial</span></label></li>
+                <li><label><input type="radio" name="q10" value="1"> <span>La inclinación o levantamiento de la carretera en el lado exterior de una curva, diseñado para contrarrestar la fuerza centrífuga</span></label></li>
+                <li><label><input type="radio" name="q10" value="2"> <span>El borde pintado de blanco</span></label></li>
+                <li><label><input type="radio" name="q10" value="3"> <span>El hueco profundo a la orilla de la calle</span></label></li>
+            </ul>
+            <div id="feedback_10" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_10" style="display:none;">El peralte es un desnivel intencional (como en las pistas de carreras). Ayuda a que la misma gravedad apoye al carro hacia el interior de la curva, evitando que se salga.</div>
+        </div>
+        <div class="question-block" id="block_11">
+            <div class="question">12. ¿Cuáles son los 'Puntos Ciegos' en un vehículo?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q11" value="0"> <span>Las luces que se queman</span></label></li>
+                <li><label><input type="radio" name="q11" value="1"> <span>Zonas alrededor del vehículo que el conductor NO puede ver a través de los espejos retrovisores (interior y laterales)</span></label></li>
+                <li><label><input type="radio" name="q11" value="2"> <span>Los puntos negros en el parabrisas</span></label></li>
+                <li><label><input type="radio" name="q11" value="3"> <span>La parte trasera del maletero</span></label></li>
+            </ul>
+            <div id="feedback_11" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_11" style="display:none;">Por más bien que ajustes los espejos, hay ángulos en diagonal hacia atrás donde cabe perfectamente un carro o una moto sin que los veas. Por eso se debe girar levemente la cabeza antes de cambiar de carril.</div>
+        </div>
+        <div class="question-block" id="block_12">
+            <div class="question">13. El 'Ángulo de Giro' es un factor crítico en vehículos grandes. ¿Qué significa esto en la práctica?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q12" value="0"> <span>Que las llantas giran muy rápido</span></label></li>
+                <li><label><input type="radio" name="q12" value="1"> <span>Que un camión o autobús necesita abrirse hacia el carril contrario o usar más espacio para poder doblar en una esquina sin subirse a la acera</span></label></li>
+                <li><label><input type="radio" name="q12" value="2"> <span>Que el volante gira 360 grados</span></label></li>
+                <li><label><input type="radio" name="q12" value="3"> <span>Que no pueden girar a la izquierda</span></label></li>
+            </ul>
+            <div id="feedback_12" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_12" style="display:none;">Por ser tan largos, las llantas traseras de los camiones 'cortan la esquina'. Los conductores de vehículos livianos y motos NUNCA deben meterse a la par de un furgón que está doblando.</div>
+        </div>
+        <div class="question-block" id="block_13">
+            <div class="question">14. ¿Cuál es la velocidad máxima general para circular en zona URBANA (ciudad), si no hay rótulos que indiquen lo contrario?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q13" value="0"> <span>40 km/h</span></label></li>
+                <li><label><input type="radio" name="q13" value="1"> <span>50 km/h</span></label></li>
+                <li><label><input type="radio" name="q13" value="2"> <span>60 km/h</span></label></li>
+                <li><label><input type="radio" name="q13" value="3"> <span>80 km/h</span></label></li>
+            </ul>
+            <div id="feedback_13" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_13" style="display:none;">Por defecto de Ley, en zonas urbanas pobladas el límite es 50 km/h, esto para proteger a la alta cantidad de peatones, ciclistas e intersecciones frecuentes.</div>
+        </div>
+        <div class="question-block" id="block_14">
+            <div class="question">15. ¿Cuál es la velocidad máxima permitida en una zona ESCOLAR cuando hay presencia de estudiantes?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q14" value="0"> <span>15 km/h</span></label></li>
+                <li><label><input type="radio" name="q14" value="1"> <span>25 km/h</span></label></li>
+                <li><label><input type="radio" name="q14" value="2"> <span>30 km/h</span></label></li>
+                <li><label><input type="radio" name="q14" value="3"> <span>40 km/h</span></label></li>
+            </ul>
+            <div id="feedback_14" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_14" style="display:none;">Por ley, frente a escuelas, colegios o zonas de paso de niños en horario de clases (presencia estudiantil), el límite estricto es de 25 km/h (y acumula puntos si se irrespeta).</div>
+        </div>
+        <div class="question-block" id="block_15">
+            <div class="question">16. El carril IZQUIERDO en una carretera o autopista de múltiples carriles en un mismo sentido, debe utilizarse preferiblemente para:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q15" value="0"> <span>Manejar a la velocidad más baja posible</span></label></li>
+                <li><label><input type="radio" name="q15" value="1"> <span>Solo para camiones pesados</span></label></li>
+                <li><label><input type="radio" name="q15" value="2"> <span>Adelantar a otros vehículos más lentos o prepararse para girar a la izquierda</span></label></li>
+                <li><label><input type="radio" name="q15" value="3"> <span>Ir hablando por celular</span></label></li>
+            </ul>
+            <div id="feedback_15" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_15" style="display:none;">El carril izquierdo es considerado el carril 'rápido' o de rebase. Una vez que usted adelanta al carro que iba lento por la derecha, debe regresar al carril derecho.</div>
+        </div>
+        <div class="question-block" id="block_16">
+            <div class="question">17. Al conducir de noche y notar que viene un vehículo de frente por el carril contrario, ¿qué debe hacer con las luces?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q16" value="0"> <span>Encender las luces antiniebla</span></label></li>
+                <li><label><input type="radio" name="q16" value="1"> <span>Mantener la luz alta para ver mejor</span></label></li>
+                <li><label><input type="radio" name="q16" value="2"> <span>Cambiar a luz baja o 'corta' a unos 250 metros antes de cruzarse, para evitar encandilar (cegar) al otro conductor</span></label></li>
+                <li><label><input type="radio" name="q16" value="3"> <span>Apagar las luces completamente</span></label></li>
+            </ul>
+            <div id="feedback_16" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_16" style="display:none;">Encandilar al conductor que viene de frente es mortal, ya que por varios segundos conducirá a ciegas. Siempre debes bajar la luz a tiempo.</div>
+        </div>
+        <div class="question-block" id="block_17">
+            <div class="question">18. ¿Cómo debe ser la posición correcta de las manos en el volante?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q17" value="0"> <span>Solo con una mano en la parte baja</span></label></li>
+                <li><label><input type="radio" name="q17" value="1"> <span>Imaginando la carátula de un reloj, colocar las manos en posición de 'las 10 y 2' o 'las 9 y 3'</span></label></li>
+                <li><label><input type="radio" name="q17" value="2"> <span>Agarrando los radios internos del volante</span></label></li>
+                <li><label><input type="radio" name="q17" value="3"> <span>A las 12 en punto (una mano sobre la otra)</span></label></li>
+            </ul>
+            <div id="feedback_17" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_17" style="display:none;">La posición 9 y 3 (o 10 y 2) te da el máximo rango de maniobra inmediata si se estalla una llanta, y evita que la bolsa de aire te rompa los brazos si se despliega.</div>
+        </div>
+        <div class="question-block" id="block_18">
+            <div class="question">19. ¿Qué regla aplica para los niños en el vehículo en Costa Rica según la ley?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q18" value="0"> <span>Todo niño menor de 12 años y de estatura menor a 1.45 metros debe viajar en el asiento trasero utilizando un dispositivo de retención infantil (silla o booster) adecuado a su peso y talla</span></label></li>
+                <li><label><input type="radio" name="q18" value="1"> <span>Pueden ir adelante si el viaje es corto</span></label></li>
+                <li><label><input type="radio" name="q18" value="2"> <span>Pueden viajar en las piernas de la mamá atrás</span></label></li>
+                <li><label><input type="radio" name="q18" value="3"> <span>Solo ocupan el cinturón normal de adulto</span></label></li>
+            </ul>
+            <div id="feedback_18" class="feedback" style="display:none;" data-correct="0"></div>
+            <div id="explanation_18" style="display:none;">La ley es inflexible: todo menor de 12 años y que mida menos de 1.45m va atrás y en silla (portabebés, silla, o alzador/booster). El cinturón de adulto puede ahorcar a un niño en un choque.</div>
+        </div>
+        <div class="question-block" id="block_19">
+            <div class="question">20. Al adelantar a un ciclista en carretera, el conductor de un vehículo automotor está obligado por ley a:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q19" value="0"> <span>Acelerar rápidamente y pitarle</span></label></li>
+                <li><label><input type="radio" name="q19" value="1"> <span>Guardar una distancia mínima lateral de 1.5 metros respecto al ciclista para evitar desestabilizarlo con el aire o golpearlo</span></label></li>
+                <li><label><input type="radio" name="q19" value="2"> <span>Pasarle lo más cerca posible para no invadir el carril contrario</span></label></li>
+                <li><label><input type="radio" name="q19" value="3"> <span>Obligarlo a subirse a la acera</span></label></li>
+            </ul>
+            <div id="feedback_19" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_19" style="display:none;">1.5 metros es la separación de la vida. El viento que mueve un carro (especialmente a alta velocidad) es suficiente para succionar y botar al suelo a un ciclista.</div>
+        </div>
+        <div class="question-block" id="block_20">
+            <div class="question">21. En cuanto al uso del cinturón de seguridad, ¿quiénes están obligados a utilizarlo?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q20" value="0"> <span>Solo el conductor</span></label></li>
+                <li><label><input type="radio" name="q20" value="1"> <span>El conductor y el acompañante (copiloto)</span></label></li>
+                <li><label><input type="radio" name="q20" value="2"> <span>Todos los ocupantes del vehículo en todas las plazas</span></label></li>
+                <li><label><input type="radio" name="q20" value="3"> <span>Solo en viajes largos o fuera de la ciudad</span></label></li>
+            </ul>
+            <div id="feedback_20" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_20" style="display:none;">Todos los ocupantes, sin excepción, deben ir abrochados. Un pasajero suelto en el asiento trasero sale disparado como un proyectil hacia el frente en un choque, matando al piloto.</div>
+        </div>
+        <div class="question-block" id="block_21">
+            <div class="question">22. Al llegar a una intersección regulada por una señal de ALTO, ¿qué acción es obligatoria?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q21" value="0"> <span>Detenerse totalmente (las 4 llantas paradas) en la línea de parada, verificar la vía y luego avanzar</span></label></li>
+                <li><label><input type="radio" name="q21" value="1"> <span>Si no vienen carros, frenar un poquito y seguir</span></label></li>
+                <li><label><input type="radio" name="q21" value="2"> <span>Acelerar si se va recto</span></label></li>
+                <li><label><input type="radio" name="q21" value="3"> <span>Detenerse solo si hay un policía viendo</span></label></li>
+            </ul>
+            <div id="feedback_21" class="feedback" style="display:none;" data-correct="0"></div>
+            <div id="explanation_21" style="display:none;">El ALTO exige que el velocímetro llegue a cero absoluto en la línea blanca (o donde haya visibilidad). Hacer 'medios altos' o reducir la velocidad sin parar totalmente es una infracción gravísima.</div>
+        </div>
+        <div class="question-block" id="block_22">
+            <div class="question">23. ¿A qué se le denomina Conducción Eficiente (Técnica y Económica)?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q22" value="0"> <span>Llegar rápido al destino en el menor tiempo posible</span></label></li>
+                <li><label><input type="radio" name="q22" value="1"> <span>Es el conjunto de técnicas para operar el vehículo reduciendo el consumo de combustible, minimizando el desgaste de piezas y disminuyendo la contaminación ambiental</span></label></li>
+                <li><label><input type="radio" name="q22" value="2"> <span>Apagar el motor en bajadas</span></label></li>
+                <li><label><input type="radio" name="q22" value="3"> <span>Evitar el pago de peajes</span></label></li>
+            </ul>
+            <div id="feedback_22" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_22" style="display:none;">Manejar sin acelerones bruscos, usando bien los cambios de marcha y manteniendo la presión de llantas correcta, hace que tu carro dure más y gastes mucho menos dinero en gasolina y frenos.</div>
+        </div>
+        <div class="question-block" id="block_23">
+            <div class="question">24. Una técnica básica de conducción eficiente es la 'Conducción Anticipada', que significa:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q23" value="0"> <span>Llegar antes a las citas</span></label></li>
+                <li><label><input type="radio" name="q23" value="1"> <span>Quitar el pie del acelerador mucho antes de llegar a un semáforo rojo, dejando que el carro se frene solo con el motor (freno de motor) en lugar de frenar bruscamente a último momento</span></label></li>
+                <li><label><input type="radio" name="q23" value="2"> <span>Acelerar antes de las curvas</span></label></li>
+                <li><label><input type="radio" name="q23" value="3"> <span>Adelantar carros constantemente</span></label></li>
+            </ul>
+            <div id="feedback_23" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_23" style="display:none;">Si ves el semáforo rojo a lo lejos, no tiene sentido seguir acelerando. Sueltas el gas y el motor frena el carro gratis. Ahorras pastillas de freno y combustible de inmediato.</div>
+        </div>
+        <div class="question-block" id="block_24">
+            <div class="question">25. Para iniciar la marcha (arrancar) en una pendiente hacia arriba en un carro manual, es vital:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q24" value="0"> <span>Usar siempre el freno de emergencia para ayudarse</span></label></li>
+                <li><label><input type="radio" name="q24" value="1"> <span>Encontrar el 'punto de fricción' del embrague (clutch) antes de soltar el freno por completo, para evitar que el carro se vaya para atrás</span></label></li>
+                <li><label><input type="radio" name="q24" value="2"> <span>Acelerar a fondo patinando las llantas</span></label></li>
+                <li><label><input type="radio" name="q24" value="3"> <span>Ponerlo en neutro</span></label></li>
+            </ul>
+            <div id="feedback_24" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_24" style="display:none;">El control del clutch es básico. Se saca el pedal izquierdo despacio hasta sentir que el carro 'vibra' y quiere avanzar (punto de contacto); ahí se suelta el freno y se acelera suave sin irse para atrás.</div>
+        </div>
+        <div class="question-block" id="block_25">
+            <div class="question">26. ¿Cómo deben estar las llantas si usted se estaciona en bajada (descenso) a la par de una acera (cordón de caño)?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q25" value="0"> <span>Rectas</span></label></li>
+                <li><label><input type="radio" name="q25" value="1"> <span>Giradas hacia el centro de la calle</span></label></li>
+                <li><label><input type="radio" name="q25" value="2"> <span>Giradas hacia el cordón del caño (hacia la derecha/adentro)</span></label></li>
+                <li><label><input type="radio" name="q25" value="3"> <span>Sobre la acera</span></label></li>
+            </ul>
+            <div id="feedback_25" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_25" style="display:none;">En bajada, se giran las llantas hacia la acera. Si fallan los frenos, la llanta delantera derecha chocará inmediatamente con el borde del caño y el carro quedará atascado ahí, evitando una tragedia.</div>
+        </div>
+        <div class="question-block" id="block_26">
+            <div class="question">27. ¿Cómo deben estar las llantas si se estaciona en una subida (ascenso) a la par del cordón de caño?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q26" value="0"> <span>Rectas</span></label></li>
+                <li><label><input type="radio" name="q26" value="1"> <span>Giradas hacia el centro de la calle (hacia afuera / izquierda)</span></label></li>
+                <li><label><input type="radio" name="q26" value="2"> <span>Giradas hacia la acera</span></label></li>
+                <li><label><input type="radio" name="q26" value="3"> <span>Una a cada lado</span></label></li>
+            </ul>
+            <div id="feedback_26" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_26" style="display:none;">En subida es al revés. Se giran hacia el centro de la calle para que la parte trasera de la llanta delantera 'muerda' el cordón de la acera y sirva de cuña si el carro se va para atrás.</div>
+        </div>
+        <div class="question-block" id="block_27">
+            <div class="question">28. ¿Qué se recomienda al bajar por una pendiente muy pronunciada y prolongada (ej: cerro de la muerte)?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q27" value="0"> <span>Bajar en neutro para ahorrar gasolina</span></label></li>
+                <li><label><input type="radio" name="q27" value="1"> <span>Bajar en la marcha más alta (5ta o 6ta)</span></label></li>
+                <li><label><input type="radio" name="q27" value="2"> <span>Utilizar marchas o cambios fuertes (compresionar el motor en 2da o 3ra) para que el motor frene al vehículo y evitar recalentar o fundir los frenos de pedal</span></label></li>
+                <li><label><input type="radio" name="q27" value="3"> <span>Bajar frenando fuerte todo el tiempo</span></label></li>
+            </ul>
+            <div id="feedback_27" class="feedback" style="display:none;" data-correct="2"></div>
+            <div id="explanation_27" style="display:none;">Nunca se debe bajar abusando del pedal de freno porque las fricciones se cristalizan por el calor, el líquido hierve y te quedas 'sin frenos'. El motor en una marcha baja sostiene el peso del carro.</div>
+        </div>
+        <div class="question-block" id="block_28">
+            <div class="question">29. ¿Qué precaución extrema se debe tener con los 'puntos ciegos' de un vehículo de transporte de carga pesada (furgón)?</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q28" value="0"> <span>Rebasarlo rápidamente</span></label></li>
+                <li><label><input type="radio" name="q28" value="1"> <span>Si usted no puede ver los espejos laterales del conductor del furgón, significa que él tampoco lo puede ver a usted; debe alejarse</span></label></li>
+                <li><label><input type="radio" name="q28" value="2"> <span>Ponerse detrás bien pegado para evitar el viento (rebufo)</span></label></li>
+                <li><label><input type="radio" name="q28" value="3"> <span>Sonarle la bocina para avisar</span></label></li>
+            </ul>
+            <div id="feedback_28" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_28" style="display:none;">La regla de los espejos: Si no ves la cara del trailero en su espejo, estás invisible para él. La parte trasera y las áreas laterales de un furgón son trampas mortales.</div>
+        </div>
+        <div class="question-block" id="block_29">
+            <div class="question">30. Uno de los peores hábitos de conducción en lluvia que produce pérdida del control direccional al frenar sobre piso mojado es:</div>
+            <ul class="options">
+                <li><label><input type="radio" name="q29" value="0"> <span>Encender las escobillas</span></label></li>
+                <li><label><input type="radio" name="q29" value="1"> <span>El frenado de pánico (pisar a fondo trancando las llantas) a altas velocidades, en lugar de un frenado progresivo (bombeo suave)</span></label></li>
+                <li><label><input type="radio" name="q29" value="2"> <span>Manejar muy despacio</span></label></li>
+                <li><label><input type="radio" name="q29" value="3"> <span>Usar el desempañador</span></label></li>
+            </ul>
+            <div id="feedback_29" class="feedback" style="display:none;" data-correct="1"></div>
+            <div id="explanation_29" style="display:none;">En lluvia, la calle es jabón. Si pisas el freno de golpe sin tener ABS, las llantas se bloquean, derrapan sobre el agua y el volante pierde todo control.</div>
+        </div>
+
+        <button id="submitBtn" class="btn">Calificar Técnicas de Conducción</button>
+    </div>
+    <div id="result"></div>
+</div>
+
+<script>
+    document.getElementById('submitBtn').addEventListener('click', function(e) {
+        e.preventDefault(); 
+        try {
+            let score = 0;
+            const total = 30;
+            const puntajePorPregunta = 100 / total;
+
+            for (let i = 0; i < total; i++) {
+                const radios = document.getElementsByName('q' + i);
+                const feedbackDiv = document.getElementById('feedback_' + i);
+                const explanationText = document.getElementById('explanation_' + i).innerText;
+                const correctIndex = parseInt(feedbackDiv.getAttribute('data-correct'));
+
+                let selectedValue = -1;
+                let correctLabelText = "";
+                let selectedLabelDiv = null;
+
+                for (let j = 0; j < radios.length; j++) {
+                    if (radios[j].checked) {
+                        selectedValue = parseInt(radios[j].value);
+                        selectedLabelDiv = radios[j].nextElementSibling; 
+                    }
+                    if (parseInt(radios[j].value) === correctIndex) {
+                        correctLabelText = radios[j].nextElementSibling.innerText;
+                    }
+                }
+
+                feedbackDiv.style.display = 'block';
+
+                let answerResultHTML = "";
+
+                if (selectedValue === correctIndex) {
+                    score++;
+                    answerResultHTML = '✅ <span style="color:#27ae60;">¡Correcto!</span>';
+                    if(selectedLabelDiv) selectedLabelDiv.style.color = '#27ae60';
+                } else {
+                    let errorMsg = '❌ Incorrecto. ';
+                    if (selectedValue === -1) {
+                        errorMsg += 'No respondiste esta pregunta.';
+                    } else {
+                        if(selectedLabelDiv) selectedLabelDiv.style.color = '#e74c3c';
+                    }
+                    answerResultHTML = errorMsg + '<br>La correcta era: <strong style="color:#27ae60;">' + correctLabelText + '</strong>';
+                }
+
+                feedbackDiv.innerHTML = answerResultHTML + 
+                    '<div class="explanation-box">🧠 <strong>Análisis Defensivo:</strong> ' + explanationText + '</div>';
+            }
+
+            const finalScore = Math.round(score * puntajePorPregunta);
+            const resultDiv = document.getElementById('result');
+            resultDiv.style.display = 'block';
+
+            if (finalScore >= 80) {
+                resultDiv.innerHTML = '¡Excelente Conductor! Aprobaste con: ' + finalScore + '/100 🏆';
+                resultDiv.style.backgroundColor = '#d4edda';
+                resultDiv.style.color = '#155724';
+            } else {
+                resultDiv.innerHTML = 'Puntaje: ' + finalScore + '/100. Necesitas al menos 80. ¡Repasa las reglas de la distancia y clima! 📚';
+                resultDiv.style.backgroundColor = '#f8d7da';
+                resultDiv.style.color = '#721c24';
+            }
+
+            alert("Tu nota en Conducción Defensiva es: " + finalScore + "/100. Sube para leer los consejos de manejo.");
+            window.scrollTo(0, 0); 
+
+        } catch (error) {
+            alert("Hubo un error calculando: " + error.message);
+        }
+    });
+</script>
+</body>
+</html>
