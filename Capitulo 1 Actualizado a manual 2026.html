@@ -3,445 +3,439 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulador Capítulo 1 - Manual 2026</title>
+    <title>Simulador Pro: Manual Conductor 2026 - Capítulo 1</title>
     <style>
-        :root {
-            --primary: #2c3e50;
-            --secondary: #34495e;
-            --accent: #e67e22;
-            --success: #27ae60;
-            --danger: #c0392b;
-            --light: #ecf0f1;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f7f6;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-
-        #quiz-container {
-            background: white;
-            width: 95%;
-            max-width: 800px;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            margin: 20px;
-        }
-
-        h1 { color: var(--primary); text-align: center; font-size: 1.5rem; margin-top: 0; }
-        
-        .progress-container { margin-bottom: 2rem; }
-        .progress-bar { height: 10px; background: #ddd; border-radius: 5px; overflow: hidden; }
-        #progress { height: 100%; background: var(--accent); width: 0%; transition: width 0.3s; }
-        #progress-text { font-size: 0.9rem; color: #666; margin-top: 5px; display: block; text-align: right; }
-
-        .question { font-size: 1.2rem; margin-bottom: 1.5rem; color: var(--secondary); font-weight: 600; line-height: 1.4; }
-        .options { display: flex; flex-direction: column; gap: 0.8rem; }
-        .option-btn {
-            padding: 1rem;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            background: white;
-            cursor: pointer;
-            transition: all 0.2s;
-            text-align: left;
-            font-size: 1rem;
-            line-height: 1.3;
-        }
-        .option-btn:hover { border-color: var(--accent); background: #fff9f4; }
-        .option-btn.correct { background-color: var(--success) !important; color: white; border-color: var(--success); }
-        .option-btn.wrong { background-color: var(--danger) !important; color: white; border-color: var(--danger); }
-
-        #feedback { margin-top: 1.5rem; padding: 1rem; border-radius: 8px; display: none; line-height: 1.5; font-size: 0.95rem; }
-        .feedback-correct { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
-        .feedback-wrong { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
-
-        #next-btn {
-            margin-top: 2rem;
-            width: 100%;
-            padding: 1rem;
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
-            display: none;
-            font-size: 1.1rem;
-        }
-        #next-btn:hover { background: var(--secondary); }
-
-        #result-screen { text-align: center; display: none; }
-        .score-count { font-size: 2rem; color: var(--secondary); margin-bottom: 0.5rem; }
-        .final-grade { font-size: 4rem; color: var(--accent); font-weight: 800; margin: 1rem 0; }
-        #score-msg { font-size: 1.2rem; margin-bottom: 2rem; font-weight: 500; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f2f5; color: #1c1e21; margin: 0; padding: 20px; }
+        .container { max-width: 800px; margin: auto; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        h1 { color: #004a99; text-align: center; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        .status-bar { display: flex; justify-content: space-between; margin-bottom: 20px; font-weight: bold; background: #e7f3ff; padding: 10px; border-radius: 8px; }
+        .question { font-size: 1.2em; margin-bottom: 20px; font-weight: 600; line-height: 1.4; }
+        .options { display: grid; gap: 10px; }
+        .option { padding: 15px; border: 2px solid #ddd; border-radius: 10px; cursor: pointer; transition: all 0.2s; }
+        .option:hover { background-color: #f8f9fa; border-color: #004a99; }
+        .option.correct { background-color: #d4edda; border-color: #28a745; color: #155724; font-weight: bold; }
+        .option.wrong { background-color: #f8d7da; border-color: #dc3545; color: #721c24; }
+        .feedback { margin-top: 20px; padding: 15px; border-radius: 10px; display: none; font-style: italic; border-left: 5px solid #004a99; background: #f1f8ff; }
+        button { width: 100%; padding: 15px; background: #004a99; color: white; border: none; border-radius: 10px; font-size: 1.1em; cursor: pointer; margin-top: 20px; display: none; }
+        button:hover { background: #003366; }
+        .results { text-align: center; display: none; }
+        .score { font-size: 3em; color: #004a99; margin: 20px 0; }
+        .badge { display: inline-block; padding: 10px 20px; border-radius: 20px; font-weight: bold; margin-bottom: 20px; }
+        .pass { background: #d4edda; color: #155724; }
+        .fail { background: #f8d7da; color: #721c24; }
     </style>
 </head>
 <body>
 
-<div id="quiz-container">
-    <div id="quiz-content">
-        <h1>Capítulo 1: Conceptos y Generalidades</h1>
-        <div class="progress-container">
-            <div class="progress-bar"><div id="progress"></div></div>
-            <span id="progress-text">Pregunta 1 de 40</span>
+<div class="container">
+    <h1>Simulador Capítulo 1 (2026)</h1>
+    
+    <div id="quiz-section">
+        <div class="status-bar">
+            <span>Pregunta: <span id="current-q">1</span>/50</span>
+            <span>Aciertos: <span id="current-score">0</span></span>
         </div>
-        <div id="question-area">
-            <div class="question" id="question-text"></div>
+
+        <div id="question-container">
+            <div class="question" id="q-text">Cargando pregunta...</div>
             <div class="options" id="options-container"></div>
         </div>
-        <div id="feedback"></div>
-        <button id="next-btn" onclick="loadNextQuestion()">Siguiente Pregunta</button>
+
+        <div class="feedback" id="feedback"></div>
+        <button id="next-btn" onclick="nextQuestion()">Siguiente Pregunta</button>
     </div>
 
-    <div id="result-screen">
-        <h2>Resultado del Simulacro</h2>
-        <div class="score-count" id="final-count">Aciertos: 0 / 40</div>
-        <div class="final-grade" id="final-grade">0</div>
-        <p id="score-msg"></p>
-        <button class="option-btn" style="text-align:center; width: 100%; margin-top: 1rem; background: var(--primary); color: white;" onclick="location.reload()">Reiniciar Simulador</button>
+    <div class="results" id="results-section">
+        <h2>Resultado Final</h2>
+        <div class="score" id="final-score">0/100</div>
+        <div id="badge-container"></div>
+        <p id="result-msg"></p>
+        <button style="display:block" onclick="location.reload()">Reiniciar Simulacro</button>
     </div>
 </div>
 
 <script>
-    const questions = [
-        {
-            q: "¿Cómo define el manual el concepto de 'Seguridad Vial'?",
-            o: ["Es el estudio de la mecánica y el mantenimiento preventivo del vehículo.", "Disciplina que estudia y aplica medidas para prevenir accidentes y minimizar sus efectos.", "Conjunto de leyes enfocadas únicamente en sancionar al conductor.", "Es el sistema que coordina exclusivamente los semáforos de la ciudad."],
-            a: 1,
-            f: "Busca eliminar o reducir los riesgos de accidentes para proteger la integridad física de las personas."
-        },
-        {
-            q: "Aproximadamente, ¿qué porcentaje de los accidentes de tránsito es causado por el 'Factor Humano'?",
-            o: ["50%", "75%", "90%", "100%"],
-            a: 2,
-            f: "El factor humano es el principal responsable en 9 de cada 10 incidentes viales."
-        },
-        {
-            q: "¿Qué caracteriza a un 'Conductor Novato' según la normativa?",
-            o: ["Cualquier persona menor de 21 años.", "Persona acreditada por primera vez con una licencia cuya vigencia inicial es de 3 años.", "Alguien que conduce sin acompañante por primera vez.", "Un conductor que tiene menos de 10 puntos en su licencia."],
-            a: 1,
-            f: "Se les otorga un periodo de prueba de 3 años y tienen un límite de puntos más estricto."
-        },
-        {
-            q: "¿Cuántos años de experiencia mínima con licencia B se requieren para optar por una licencia profesional?",
-            o: ["1 año.", "2 años.", "3 años.", "5 años."],
-            a: 1,
-            f: "Para las categorías profesionales se exige una antigüedad mínima de 2 años con la licencia tipo B."
-        },
-        {
-            q: "¿Qué es un 'Conductor no Acreditado'?",
-            o: ["Alguien con la licencia vencida.", "Persona que conduce sin haber obtenido nunca el permiso legal habilitante.", "Un conductor extranjero sin permiso.", "Alguien que olvidó su licencia en casa."],
-            a: 1,
-            f: "Es quien opera un vehículo sin haber superado nunca las pruebas para obtener el documento legal."
-        },
-        {
-            q: "¿Cuál es el espacio de la vía urbana destinado exclusivamente al tránsito de peatones?",
-            o: ["La Calzada.", "El Caño.", "La Acera.", "La Cuneta."],
-            a: 2,
-            f: "La acera es la zona de seguridad para el peatón en el entorno urbano."
-        },
-        {
-            q: "En una vía rural, ¿cómo se llama la superficie lateral destinada a emergencias o estacionamiento?",
-            o: ["Cuneta.", "Espaldón.", "Ciclovía.", "Isleta."],
-            a: 1,
-            f: "El espaldón es vital en carreteras rurales para detenciones seguras fuera de la calzada."
-        },
-        {
-            q: "El concepto de 'Tránsito' incluye:",
-            o: ["Solo vehículos de motor en movimiento.", "La acción de desplazarse peatones, animales y vehículos por la vía pública.", "Únicamente a los oficiales de tránsito y patrullas.", "El estado de las carreteras nacionales."],
-            a: 1,
-            f: "Es un concepto integral que abarca a todos los usuarios de la vía, sin importar su medio de transporte."
-        },
-        {
-            q: "¿Cuál es el periodo de validez de un 'Permiso Temporal de Aprendizaje'?",
-            o: ["1 mes.", "3 meses.", "6 meses.", "12 meses."],
-            a: 1,
-            f: "Tiene una vigencia de 3 meses naturales desde su emisión."
-        },
-        {
-            q: "Para circular con permiso temporal, el acompañante debe tener una licencia de la misma clase o superior con al menos:",
-            o: ["2 años de expedida.", "5 años de expedida.", "10 años de expedida.", "3 años de expedida."],
-            a: 1,
-            f: "El acompañante debe ser un conductor experimentado con mínimo 5 años de antigüedad."
-        },
-        {
-            q: "¿Qué se evalúa primordialmente en la Fase 1 del examen práctico?",
-            o: ["Habilidad en carretera.", "Revisión técnica, documentos, luces y dispositivos de seguridad del vehículo.", "Maniobras de reversa.", "Conocimiento del motor."],
-            a: 1,
-            f: "Es la revisión de seguridad y legalidad previa al inicio de la conducción."
-        },
-        {
-            q: "¿Con cuántos puntos acumulados pierde su derecho a conducir un conductor novato?",
-            o: ["4 puntos.", "6 puntos.", "12 puntos.", "8 puntos."],
-            a: 1,
-            f: "A diferencia del conductor común (12 pts), el novato tiene un tope de 6 puntos."
-        },
-        {
-            q: "¿Qué documento acredita el pago anual de los derechos de circulación y seguros?",
-            o: ["Título de Propiedad.", "RTV / Dekra.", "Marchamo.", "Tarjeta de Pesos."],
-            a: 2,
-            f: "El Marchamo es el distintivo que debe estar visible en el parabrisas."
-        },
-        {
-            q: "¿Cuál es la distancia mínima lateral que debe dejar un conductor al adelantar a un ciclista?",
-            o: ["0.5 metros.", "1.0 metro.", "1.5 metros.", "2.0 metros."],
-            a: 2,
-            f: "Es una norma vital para proteger la estabilidad y vida del ciclista."
-        },
-        {
-            q: "¿Qué establece la 'Regla de los 2 Segundos'?",
-            o: ["El tiempo de reacción en un semáforo.", "La distancia mínima de seguimiento respecto al vehículo delantero en condiciones normales.", "El tiempo máximo de parqueo en zona amarilla.", "Lo que tarda el motor en calentar."],
-            a: 1,
-            f: "Ayuda a mantener un espacio seguro para evitar colisiones por alcance."
-        },
-        {
-            q: "¿En qué casos se debe aumentar la distancia de seguridad a 4 segundos?",
-            o: ["Solo en autopistas nuevas.", "Bajo lluvia, de noche, con neblina o si se está cansado.", "Cuando se lleva carga liviana.", "Si el vehículo de atrás viene muy cerca."],
-            a: 1,
-            f: "Condiciones adversas exigen mayor espacio para reaccionar ante imprevistos."
-        },
-        {
-            q: "¿Cuál es el intervalo recomendado para realizar pausas activas en viajes largos?",
-            o: ["Cada hora.", "Cada 2 horas o 200 kilómetros.", "Cada 500 kilómetros.", "Solo cuando aparezca el bostezo."],
-            a: 1,
-            f: "Previene la fatiga muscular y mental, evitando el 'hipnotismo del camino'."
-        },
-        {
-            q: "¿Quién tiene la prioridad de paso absoluta sobre los demás usuarios?",
-            o: ["El vehículo que viene por la derecha.", "El peatón.", "El autobús.", "El vehículo de emergencia (sin sirena)."],
-            a: 1,
-            f: "El peatón es el eslabón más débil del sistema y siempre debe ser protegido."
-        },
-        {
-            q: "¿Qué función cumple la 'Cuneta' en la vía rural?",
-            o: ["Servir de carril adicional para motos.", "Evacuar y canalizar las aguas pluviales.", "Zona para que descansen animales.", "Límite para cercas de fincas."],
-            a: 1,
-            f: "Es fundamental para el drenaje de la carretera y evitar inundaciones o daños en el asfalto."
-        },
-        {
-            q: "¿Qué tipo de vehículos permite conducir la licencia Clase B-1?",
-            o: ["Motos de hasta 125cc.", "Vehículos de hasta 4000kg de peso máximo autorizado.", "Solo vehículos con transmisión automática.", "Camiones pesados de dos ejes."],
-            a: 1,
-            f: "Es la licencia estándar para automóviles particulares y pick-ups."
-        },
-        {
-            q: "El término 'Colisión' se aplica cuando el choque ocurre entre:",
-            o: ["Un vehículo y un poste.", "Dos o más vehículos en movimiento.", "Un vehículo y un semoviente.", "Un vehículo y un peatón."],
-            a: 1,
-            f: "Específicamente se refiere al impacto entre unidades de transporte en circulación."
-        },
-        {
-            q: "Si un vehículo impacta directamente a una persona, el accidente se define como:",
-            o: ["Colisión.", "Choque.", "Atropello.", "Vuelco."],
-            a: 2,
-            f: "El atropello involucra directamente la integridad de un peatón."
-        },
-        {
-            q: "¿Qué se entiende por 'Semoviente' en el manual?",
-            o: ["Un remolque de carga.", "Cualquier animal que transita por la vía.", "Un oficial de tránsito motorizado.", "Un semáforo inteligente."],
-            a: 1,
-            f: "Son animales que pueden ser un riesgo si invaden la calzada."
-        },
-        {
-            q: "¿Cuál es el propósito de la inspección técnica vehicular (RTV)?",
-            o: ["Cobrar una tasa de entrada al país.", "Verificar que el vehículo es apto mecánicamente para circular sin riesgo.", "Controlar el kilometraje de los autos.", "Asegurar que el conductor sabe manejar."],
-            a: 1,
-            f: "Busca reducir accidentes por fallas mecánicas y controlar emisiones contaminantes."
-        },
-        {
-            q: "En una intersección sin señales, ¿cuál es la regla de prioridad?",
-            o: ["Pasa primero el vehículo más grande.", "Tiene prioridad el vehículo que aparece por el lado derecho.", "Pasa el que va más rápido.", "El que gira a la izquierda tiene la vía."],
-            a: 1,
-            f: "Es la 'Regla de la Mano Derecha': el vehículo a tu derecha tiene la preferencia."
-        },
-        {
-            q: "¿Qué busca la 'Conducción Inteligente'?",
-            o: ["Usar la mejor tecnología de GPS.", "Gestionar visión, espacio y tiempo para evitar riesgos proactivamente.", "Aprender a derrapar en curvas.", "Reducir el tiempo de viaje a la mitad."],
-            a: 1,
-            f: "Se basa en la prevención y en no dejar la seguridad al azar o a los reflejos."
-        },
-        {
-            q: "¿Qué documento NO se exige portar físicamente (si se tiene registro electrónico)?",
-            o: ["Cédula de identidad.", "Título de propiedad original.", "Licencia de conducir.", "Tarjeta de circulación."],
-            a: 1,
-            f: "El título de propiedad no es un documento de circulación; para ello existe la tarjeta de circulación."
-        },
-        {
-            q: "¿Qué es la 'Calzada'?",
-            o: ["El borde de la calle donde está el caño.", "Superficie de la vía destinada a la circulación de vehículos.", "La zona donde caminan los peatones.", "El terreno natural a los lados de la ruta."],
-            a: 1,
-            f: "Es la parte asfaltada o afirmada por donde se desplazan los carros."
-        },
-        {
-            q: "¿Cuándo se produce un 'Vuelco'?",
-            o: ["Cuando el vehículo choca por detrás.", "Cuando el vehículo pierde su posición normal y gira sobre sus ejes.", "Cuando se sale de la vía pero queda de pie.", "Cuando se pinchan dos llantas al mismo tiempo."],
-            a: 1,
-            f: "El vuelco puede ser lateral o total (campana)."
-        },
-        {
-            q: "El objetivo del Capítulo 1 es:",
-            o: ["Enseñar a reparar el vehículo.", "Establecer las bases de la seguridad vial y convivencia social.", "Explicar las señales de tránsito internacionales.", "Aprender el abecedario del conductor."],
-            a: 1,
-            f: "Sienta los principios éticos y técnicos básicos para ser un conductor responsable."
-        },
-        {
-            q: "Ante un vehículo de emergencia con sirena activa, usted debe:",
-            o: ["Acelerar para quitarse del camino.", "Moverse al carril derecho y detenerse si es necesario.", "Quedarse quieto donde está.", "Tocar el pito para avisar a los demás."],
-            a: 1,
-            f: "Facilitar el paso es una obligación legal y humanitaria."
-        },
-        {
-            q: "¿Qué es la 'Movilidad Sostenible'?",
-            o: ["Que cada persona tenga su propio auto.", "Sistema que minimiza impacto ambiental y maximiza eficiencia y seguridad.", "Construir autopistas de 10 carriles.", "Eliminar todos los semáforos."],
-            a: 1,
-            f: "Busca un equilibrio entre transporte, medio ambiente y calidad de vida."
-        },
-        {
-            q: "La Seguridad Vial es 'Integral' porque:",
-            o: ["Se aplica en todo el mundo.", "Involucra factores humanos, vehiculares, ambientales y legales.", "Es obligatoria para todos.", "Se estudia en la escuela."],
-            a: 1,
-            f: "Considera todos los elementos que interactúan en la vía pública."
-        },
-        {
-            q: "¿Cómo se llama el sistema que resta puntos por infracciones?",
-            o: ["Control de Multas.", "Sistema de Evaluación Permanente de Conductores.", "Ley Seca.", "Registro Judicial Vial."],
-            a: 1,
-            f: "Popularmente conocido como 'Sistema de Puntos'."
-        },
-        {
-            q: "¿Para qué sirven los distintivos o identificadores en los vehículos?",
-            o: ["Para que el carro se vea mejor.", "Para indicar usos especiales (transporte escolar, carga, etc.).", "Para que la policía no los detenga.", "Para identificar el modelo del auto."],
-            a: 1,
-            f: "Permiten a otros usuarios saber qué esperar de ese vehículo específico."
-        },
-        {
-            q: "¿Qué factor debe revisar un conductor antes de salir de viaje?",
-            o: ["Solo el nivel de aceite.", "Ruta, estado mecánico del vehículo y su propio estado físico/mental.", "Que el radio funcione bien.", "La presión de la llanta de repuesto únicamente."],
-            a: 1,
-            f: "La preparación integral reduce drásticamente los riesgos de incidentes."
-        },
-        {
-            q: "Manejar bajo los efectos del alcohol altera directamente el:",
-            o: ["Factor Vehicular.", "Factor Humano.", "Factor Ambiental.", "Estado de la carretera."],
-            a: 1,
-            f: "El alcohol merma las capacidades de percepción y reacción del conductor."
-        },
-        {
-            q: "¿Qué implica la 'Convivencia Vial'?",
-            o: ["Poder hablar con otros conductores en los semáforos.", "Interacción respetuosa y solidaria entre todos los usuarios.", "Ceder siempre el paso aunque se tenga la vía.", "No usar el aire acondicionado."],
-            a: 1,
-            f: "Se basa en el respeto mutuo para garantizar la fluidez y seguridad."
-        },
-        {
-            q: "¿Qué es el 'Caño'?",
-            o: ["Una tubería de escape del carro.", "Elemento entre la calzada y la acera para recolectar agua.", "El borde del espaldón rural.", "Una señalización horizontal."],
-            a: 1,
-            f: "Es clave en ciudades para que el agua de lluvia no inunde la calzada o la acera."
-        },
-        {
-            q: "La licencia Clase B-2 es para:",
-            o: ["Bicicletas motorizadas.", "Vehículos de carga de hasta 8000kg (8 toneladas).", "Motos de alto cilindraje.", "Transporte de pasajeros (autobuses)."],
-            a: 1,
-            f: "Es una licencia de categoría profesional para camiones medianos."
-        }
-    ];
+const questions = [
+    {
+        q: "¿Qué se considera un 'Conductor Novato' según el manual?",
+        a: ["Quien conduce por primera vez después de obtener su licencia por un periodo de 3 años.", "Quien tiene su licencia por un periodo de 2 años después de expedida por primera vez.", "Cualquier persona menor de 21 años con licencia.", "Quien no ha aprobado el curso teórico."],
+        c: 1,
+        f: "El conductor novato es aquel que se encuentra en un periodo de aprendizaje práctico de 2 años tras obtener su licencia."
+    },
+    {
+        q: "En el triángulo de seguridad vial, ¿cuál factor es responsable del 80% al 90% de los accidentes?",
+        a: ["Factor Vehicular", "Factor Ambiental", "Factor Humano", "Factor Mecánico"],
+        c: 2,
+        f: "El ser humano es el causante de la gran mayoría de los accidentes de tránsito debido a imprudencias o fallos."
+    },
+    {
+        q: "¿Cuál es la distancia lateral mínima obligatoria que debe dejar un conductor al adelantar a un ciclista?",
+        a: ["0.5 metros", "1 metro", "1.5 metros", "2 metros"],
+        c: 2,
+        f: "La Ley exige una separación de al menos 1.5 metros para proteger la integridad del ciclista."
+    },
+    {
+        q: "En una vía rural, ¿cuál es el nombre de la sección lateral de la calzada destinada al tránsito de peatones o estacionamiento de emergencia?",
+        a: ["Acera", "Cuneta", "Espaldón", "Caño"],
+        c: 2,
+        f: "En zonas rurales, el espaldón cumple la función que la acera tiene en zonas urbanas."
+    },
+    {
+        q: "¿Cuántos puntos de acumulación recibe un conductor que obtiene su licencia por primera vez?",
+        a: ["0 puntos", "6 puntos", "12 puntos", "4 puntos"],
+        c: 1,
+        f: "Los conductores por primera vez inician con 6 puntos en su expediente (puntuación de conductor novato)."
+    },
+    {
+        q: "Si un conductor acumula de 0 a 4 puntos en su periodo de vigencia, ¿por cuánto tiempo se le renovará la licencia?",
+        a: ["3 años", "4 años", "6 años", "10 años"],
+        c: 2,
+        f: "La renovación por 6 años es un incentivo para quienes mantienen un historial limpio o de baja infracción."
+    },
+    {
+        q: "Ante la presencia de un vehículo de emergencia con sirenas y luces activas, ¿qué debe hacer el conductor?",
+        a: ["Aumentar la velocidad para no estorbar.", "Girar a la izquierda y detenerse.", "Desplazarse a la derecha, despejar el carril y detenerse si es necesario.", "Mantener el carril y frenar en seco."],
+        c: 2,
+        f: "Se debe facilitar el paso desplazándose a la derecha de forma segura."
+    },
+    {
+        q: "¿A qué distancia se deben colocar los triángulos de seguridad si un vehículo se vara en una carretera de alta velocidad?",
+        a: ["15 y 30 metros", "45 y 90 metros", "90 y 150 metros", "10 y 20 metros"],
+        c: 1,
+        f: "Se colocan uno atrás y otro adelante (o dos atrás según la vía) a distancias que permitan visibilidad anticipada."
+    },
+    {
+        q: "¿Cuál es la regla de oro de la conducción inteligente respecto a la distancia con el vehículo de adelante en condiciones normales?",
+        a: ["Regla de los 2 segundos", "Regla de los 4 segundos", "Regla de los 6 metros", "Regla del metro y medio"],
+        c: 0,
+        f: "La regla de los 2 segundos es la distancia mínima de seguridad en condiciones climáticas y de vía óptimas."
+    },
+    {
+        q: "Cuando la calzada está mojada o es de noche, ¿cómo cambia la regla de distancia de seguridad?",
+        a: ["Se mantiene en 2 segundos.", "Se reduce a 1 segundo.", "Se aumenta a 4 segundos.", "Se mide en metros, no en segundos."],
+        c: 2,
+        f: "En condiciones adversas (lluvia, oscuridad), el tiempo de reacción y frenado requiere duplicar la distancia a 4 segundos."
+    },
+    {
+        q: "¿Qué indica la presencia de una línea de barrera (continua amarilla) en el centro de la carretera?",
+        a: ["Permiso para adelantar con cuidado.", "Prohibición total de adelantar.", "Zona de estacionamiento permitida.", "Carril exclusivo para buses."],
+        c: 1,
+        f: "La línea amarilla continua prohíbe el adelantamiento debido a riesgos de visibilidad o diseño de la vía."
+    },
+    {
+        q: "¿Cuál es la altura mínima y edad recomendada para que un niño pueda viajar en el asiento delantero?",
+        a: ["1.10 metros y 10 años", "1.45 metros y 12 años", "1.20 metros y 7 años", "1.50 metros y 15 años"],
+        c: 1,
+        f: "Por seguridad (activación de airbag y cinturón), se requiere medir 1.45m y tener al menos 12 años."
+    },
+    {
+        q: "¿Qué documento acredita que el vehículo cumplió con la revisión técnica obligatoria?",
+        a: ["Título de Propiedad", "Marchamo", "Tarjeta de Inspección Vehicular (IVE/RTV)", "Licencia de conducir"],
+        c: 2,
+        f: "La IVE (Inspección Vehicular) garantiza que el auto es mecánicamente apto para circular."
+    },
+    {
+        q: "¿Qué es el 'Ángulo Muerto' o Punto Ciego?",
+        a: ["Una zona de la carretera donde no hay luz.", "El área alrededor del vehículo que no se puede ver a través de los espejos retrovisores.", "Un fallo en los frenos.", "La curva más cerrada de una vía."],
+        c: 1,
+        f: "Son zonas invisibles para el conductor que requieren girar la cabeza o usar espejos convexos."
+    },
+    {
+        q: "¿Cuál es la función del Sistema de Evaluación Permanente de Conductores (Sistema de Puntos)?",
+        a: ["Cobrar más impuestos.", "Premiar a los que conducen rápido.", "Controlar el comportamiento del conductor y suspender licencias a infractores recurrentes.", "Clasificar los tipos de vehículos."],
+        c: 2,
+        f: "El sistema busca mejorar la seguridad vial penalizando conductas peligrosas mediante la pérdida de puntos."
+    },
+    {
+        q: "¿Qué debe hacer un conductor al acercarse a una intersección si la luz del semáforo está en amarillo?",
+        a: ["Acelerar para pasar antes de que cambie a rojo.", "Detenerse, a menos que ya esté dentro de la intersección o el frenazo cause un accidente.", "Pitar para avisar que va a pasar.", "Poner luces de emergencia."],
+        c: 1,
+        f: "El amarillo es para avisar que viene el rojo y se debe limpiar la intersección, no para acelerar."
+    },
+    {
+        q: "En una vía urbana, ¿cuál es el componente destinado exclusivamente a la circulación de peatones?",
+        a: ["Berma", "Calzada", "Acera", "Cuneta"],
+        c: 2,
+        f: "La acera es el espacio vital del peatón en la ciudad."
+    },
+    {
+        q: "¿Cómo se debe caminar en una vía pública rural si no existen aceras ni espaldones?",
+        a: ["Por el centro del carril.", "Al lado derecho, dando la espalda al tránsito.", "Al lado izquierdo, de frente al tránsito.", "Solo se puede caminar de noche."],
+        c: 2,
+        f: "Caminar de frente al tránsito permite al peatón ver el peligro y reaccionar."
+    },
+    {
+        q: "¿Qué es la 'Conducción Inteligente'?",
+        a: ["Manejar un carro con computadora.", "Conducir de forma preventiva, anticipando riesgos y respetando a los demás.", "Saber reparar el motor en carretera.", "Manejar a la máxima velocidad permitida."],
+        c: 1,
+        f: "Se basa en la prevención, visión panorámica y cortesía vial."
+    },
+    {
+        q: "¿Cuál es el tiempo máximo de conducción continua recomendado antes de realizar una 'Pausa Activa'?",
+        a: ["1 hora", "2 horas", "5 horas", "8 horas"],
+        c: 1,
+        f: "Se recomienda descansar cada 2 horas o 200 km para evitar la fatiga y la hipnosis del camino."
+    },
+    {
+        q: "¿Qué significa que el transporte sea 'Sostenible'?",
+        a: ["Que sea muy rápido.", "Que satisfaga las necesidades de movilidad minimizando el impacto ambiental y social.", "Que no use gasolina.", "Que solo use buses."],
+        c: 1,
+        f: "La movilidad sostenible busca equilibrio entre eficiencia, ambiente y salud."
+    },
+    {
+        q: "¿Quién tiene la prioridad de paso en un paso peatonal (cebra) no regulado por semáforo?",
+        a: ["El vehículo más grande.", "El vehículo que viene más rápido.", "El peatón.", "Nadie, es por cortesía."],
+        c: 2,
+        f: "El peatón siempre tiene la prioridad en las zonas demarcadas para su cruce."
+    },
+    {
+        q: "¿Qué tipo de placa identifica a los vehículos de transporte de carga liviana?",
+        a: ["Placa con letra C", "Placa con letra CL", "Placa con letra P", "Placa con letra T"],
+        c: 1,
+        f: "CL corresponde a Carga Liviana según la nomenclatura oficial."
+    },
+    {
+        q: "Al transportar mascotas en un vehículo, ¿cuál es la forma más segura?",
+        a: ["En el regazo del acompañante.", "Sueltas en el asiento trasero.", "En un dispositivo de sujeción (arnés) o transportadora debidamente asegurada.", "En el maletero cerrado."],
+        c: 2,
+        f: "Una mascota suelta es un proyectil en caso de choque y puede distraer al conductor."
+    },
+    {
+        q: "¿Cuál es la sanción por obstruir una intersección (quedar atravesado) aunque el semáforo esté en verde?",
+        a: ["No hay sanción.", "Multa de categoría C y pérdida de puntos.", "Multa económica sin pérdida de puntos.", "Suspensión inmediata de la licencia."],
+        c: 1,
+        f: "Obstruir el paso en una intersección es una falta que afecta la fluidez y seguridad vial."
+    },
+    {
+        q: "La 'Adherencia' de los neumáticos disminuye principalmente por:",
+        a: ["Usar aire acondicionado.", "Lluvia, nieve, aceite o desgaste excesivo de la banda de rodamiento.", "Manejar de día.", "Tener el tanque de gasolina lleno."],
+        c: 1,
+        f: "Factores externos y el estado de la llanta determinan qué tanto se agarra el auto al suelo."
+    },
+    {
+        q: "¿Qué es el SOA?",
+        a: ["Seguro Obligatorio de Automóviles (incluido en el marchamo).", "Sistema de Operación de Alarmas.", "Servicio de Auxilio en Carretera.", "Sindicato de Oficiales de Tránsito."],
+        c: 0,
+        f: "Es el seguro que cubre la atención médica de personas heridas en accidentes de tránsito."
+    },
+    {
+        q: "Para obtener la licencia B1 por primera vez, ¿cuál es el requisito de edad mínima?",
+        a: ["16 años", "18 años", "21 años", "25 años"],
+        c: 1,
+        f: "La mayoría de edad (18 años) es requisito para la licencia tipo B."
+    },
+    {
+        q: "¿Qué sucede si un conductor novato acumula más de 6 puntos en sus primeros 2 años?",
+        a: ["Paga una multa y sigue manejando.", "Se le suspende la licencia por un año.", "Se le quita la licencia permanentemente.", "Debe hacer el curso teórico de nuevo solamente."],
+        c: 1,
+        f: "Los conductores novatos tienen un umbral de tolerancia menor y pierden la licencia más fácilmente."
+    },
+    {
+        q: "¿Cuál es la función del 'Carril de Canalización'?",
+        a: ["Para que los buses recojan pasajeros.", "Para guiar el giro a la izquierda o derecha de forma segura, separándolo del flujo principal.", "Para correr a más de 100 km/h.", "Para estacionarse."],
+        c: 1,
+        f: "Estos carriles ordenan el tránsito en intersecciones complejas."
+    },
+    {
+        q: "¿Qué se define como 'Semoviente' en el manual?",
+        a: ["Un vehículo que se mueve solo.", "Animales de carga o ganado que circulan por la vía.", "Un oficial de tránsito en moto.", "Un semáforo dañado."],
+        c: 1,
+        f: "Incluye vacas, caballos y otros animales de producción que pueden estar en carretera."
+    },
+    {
+        q: "¿Cómo se debe distribuir el equipaje dentro del vehículo?",
+        a: ["Todo en el asiento del pasajero para tenerlo cerca.", "En el maletero, colocando lo más pesado al fondo y asegurado.", "En el techo sin amarrar.", "Donde haya campo."],
+        c: 1,
+        f: "El peso debe estar equilibrado y los objetos no deben volar en caso de frenazo."
+    },
+    {
+        q: "¿Cuál es el principal riesgo de la 'Hipnosis de la Carretera'?",
+        a: ["Hacer que el conductor maneje mejor.", "Perder la noción de la velocidad y el entorno debido a la monotonía.", "Quedarse ciego por el sol.", "Gastar más combustible."],
+        c: 1,
+        f: "Ocurre en viajes largos y rectos, reduciendo la capacidad de reacción."
+    },
+    {
+        q: "¿Qué significa la sigla MOPT?",
+        a: ["Municipalidad de Obras de Pozos y Tierra.", "Ministerio de Obras Públicas y Transportes.", "Manual Oficial de Pasajeros y Tránsito.", "Manejo Operativo de Patrullas Terrestres."],
+        c: 1,
+        f: "Es la institución máxima encargada del tránsito en Costa Rica."
+    },
+    {
+        q: "¿Cuál de estos NO es un requisito para el Permiso Temporal de Aprendizaje?",
+        a: ["Haber aprobado el examen teórico.", "Tener dictamen médico vigente.", "Tener un vehículo propio a su nombre.", "Pagar el seguro correspondiente."],
+        c: 2,
+        f: "No es necesario ser dueño del auto para aprender a manejar."
+    },
+    {
+        q: "En una autopista, ¿cuál carril se debe usar para adelantar?",
+        a: ["El carril derecho.", "El carril central.", "El carril izquierdo.", "Cualquiera que esté vacío."],
+        c: 2,
+        f: "El carril izquierdo es exclusivamente para maniobras de adelantamiento."
+    },
+    {
+        q: "¿Qué es el 'Sentido de Circulación'?",
+        a: ["Hacia donde va el viento.", "La dirección obligatoria en la que deben moverse los vehículos en una vía.", "La forma en que gira el volante.", "La intuición del conductor."],
+        c: 1,
+        f: "Respetar el sentido de la vía evita choques frontales."
+    },
+    {
+        q: "¿Cuál es el objetivo principal de la Seguridad Vial?",
+        a: ["Vender más carros.", "Prevenir accidentes de tránsito y minimizar sus efectos.", "Hacer carreteras más bonitas.", "Cobrar multas."],
+        c: 1,
+        f: "La prioridad absoluta es proteger la vida humana."
+    },
+    {
+        q: "¿Qué tipo de licencia permite conducir motocicletas de cualquier cilindrada (Moto Grande)?",
+        a: ["A1", "A2", "A3", "B1"],
+        c: 2,
+        f: "La A3 es para motocicletas sin límite de potencia o cilindraje."
+    },
+    {
+        q: "¿Qué se debe revisar en el vehículo ANTES de iniciar un viaje largo?",
+        a: ["Solo que tenga gasolina.", "Niveles de líquidos, presión de llantas, luces y frenos.", "Que la radio funcione.", "Si tiene los vidrios limpios solamente."],
+        c: 1,
+        f: "La revisión preventiva evita fallos mecánicos en ruta."
+    },
+    {
+        q: "¿Cuál es la función del 'Espaldón' en carreteras rurales?",
+        a: ["Para adelantar cuando hay mucha presa.", "Para tránsito de peatones, parada de emergencia o soporte de la calzada.", "Es un carril exclusivo para bicicletas.", "Para sembrar árboles."],
+        c: 1,
+        f: "Brinda seguridad lateral y espacio para emergencias."
+    },
+    {
+        q: "¿Qué documento NO es necesario portar físicamente según las nuevas normativas (si se tiene digital)?",
+        a: ["Cédula de identidad.", "Licencia de conducir y tarjeta de circulación (siempre que el sistema sea verificable).", "Título de propiedad.", "Recibo del marchamo."],
+        c: 1,
+        f: "Aunque se permite verificación digital, el conductor debe asegurar que los documentos estén vigentes en sistema."
+    },
+    {
+        q: "¿Qué grupo se considera el más vulnerable en la vía pública?",
+        a: ["Conductores de trailers.", "Peatones (especialmente niños, adultos mayores y personas con discapacidad).", "Conductores de buses.", "Oficiales de tránsito."],
+        c: 1,
+        f: "Su cuerpo es su única carrocería ante un impacto."
+    },
+    {
+        q: "Un conductor que maneja bajo efectos del alcohol por encima del límite permitido comete una:",
+        a: ["Falta leve.", "Infracción administrativa solamente.", "Contravención o delito según el grado de alcohol y la Ley.", "Cortesía vial."],
+        c: 2,
+        f: "El alcohol al volante es una de las causas más graves de accidentes y tiene penas severas."
+    },
+    {
+        q: "¿Qué es la 'Cuneta'?",
+        a: ["Una parte del motor.", "Zanja al lado de la vía para recoger aguas pluviales.", "El asiento del bebé.", "La parte superior del semáforo."],
+        c: 1,
+        f: "Su función es el drenaje para evitar inundaciones en la calzada."
+    },
+    {
+        q: "Al conducir en una zona escolar, la velocidad máxima permitida (cuando hay estudiantes) es:",
+        a: ["40 km/h", "25 km/h", "30 km/h", "15 km/h"],
+        c: 1,
+        f: "La Ley establece 25 km/h como límite máximo en presencia de menores en centros educativos."
+    },
+    {
+        q: "¿Qué significa tener 'Cortesía Vial'?",
+        a: ["Saludar a todos.", "Ceder el paso cuando sea seguro y facilitar la movilidad de los demás.", "Manejar muy despacio.", "No usar el pito nunca."],
+        c: 1,
+        f: "La cortesía reduce el estrés vial y los conflictos."
+    },
+    {
+        q: "¿Qué es un 'Vehículo de Tracción Humana'?",
+        a: ["Un carro empujado por gente.", "Bicicletas, carretillas o similares movidos por esfuerzo físico.", "Un patinete eléctrico.", "Un bus lleno."],
+        c: 1,
+        f: "La bicicleta es el ejemplo más común."
+    },
+    {
+        q: "¿Cuál es la sanción por conducir con la licencia vencida?",
+        a: ["No hay sanción si es por menos de un mes.", "Multa de categoría C.", "Retiro del vehículo solamente.", "Cárcel."],
+        c: 1,
+        f: "Manejar con documento vencido es una infracción a la Ley de Tránsito."
+    },
+    {
+        q: "El 'Factor Ambiental' incluye:",
+        a: ["Estado de ánimo del conductor.", "Condiciones del clima, estado de la carretera y señalización.", "Estado de las llantas.", "Uso de cinturón."],
+        c: 1,
+        f: "Todo lo externo al conductor y al vehículo."
+    }
+];
 
-    let currentQuestion = 0;
-    let score = 0;
-    let answered = false;
+let currentIdx = 0;
+let score = 0;
 
-    function loadQuestion() {
-        const qData = questions[currentQuestion];
-        const progressPercent = ((currentQuestion / questions.length) * 100);
-        document.getElementById("progress").style.width = progressPercent + "%";
-        document.getElementById("progress-text").innerText = `Pregunta ${currentQuestion + 1} de ${questions.length}`;
-        
-        document.getElementById("question-text").innerText = qData.q;
-        
-        const optionsContainer = document.getElementById("options-container");
-        optionsContainer.innerHTML = "";
-        
-        qData.o.forEach((option, index) => {
-            const btn = document.createElement("button");
-            btn.className = "option-btn";
-            btn.innerText = option;
-            btn.onclick = () => checkAnswer(index, btn);
-            optionsContainer.appendChild(btn);
-        });
+function loadQuestion() {
+    const q = questions[currentIdx];
+    document.getElementById('q-text').innerText = q.q;
+    document.getElementById('current-q').innerText = currentIdx + 1;
+    
+    const container = document.getElementById('options-container');
+    container.innerHTML = '';
+    
+    q.a.forEach((opt, i) => {
+        const div = document.createElement('div');
+        div.className = 'option';
+        div.innerText = opt;
+        div.onclick = () => checkAnswer(i);
+        container.appendChild(div);
+    });
+    
+    document.getElementById('feedback').style.display = 'none';
+    document.getElementById('next-btn').style.display = 'none';
+}
 
-        document.getElementById("feedback").style.display = "none";
-        document.getElementById("next-btn").style.display = "none";
-        answered = false;
+function checkAnswer(idx) {
+    const q = questions[currentIdx];
+    const opts = document.getElementsByClassName('option');
+    
+    // Bloquear clics
+    for(let opt of opts) opt.onclick = null;
+
+    if(idx === q.c) {
+        opts[idx].classList.add('correct');
+        score++;
+        document.getElementById('current-score').innerText = score;
+    } else {
+        opts[idx].classList.add('wrong');
+        opts[q.c].classList.add('correct');
     }
 
-    function checkAnswer(index, btn) {
-        if (answered) return;
-        answered = true;
-        
-        const qData = questions[currentQuestion];
-        const feedback = document.getElementById("feedback");
-        const allBtns = document.querySelectorAll(".option-btn");
+    const feedback = document.getElementById('feedback');
+    feedback.innerText = q.f;
+    feedback.style.display = 'block';
+    document.getElementById('next-btn').style.display = 'block';
+}
 
-        if (index === qData.a) {
-            btn.classList.add("correct");
-            feedback.innerHTML = "<strong>✅ ¡Correcto!</strong><br>" + qData.f;
-            feedback.className = "feedback-correct";
-            score++;
-        } else {
-            btn.classList.add("wrong");
-            allBtns[qData.a].classList.add("correct");
-            feedback.innerHTML = "<strong>❌ Incorrecto</strong><br>" + qData.f;
-            feedback.className = "feedback-wrong";
-        }
-
-        feedback.style.display = "block";
-        document.getElementById("next-btn").style.display = "block";
+function nextQuestion() {
+    currentIdx++;
+    if(currentIdx < questions.length) {
+        loadQuestion();
+    } else {
+        showResults();
     }
+}
 
-    function loadNextQuestion() {
-        currentQuestion++;
-        if (currentQuestion < questions.length) {
-            loadQuestion();
-        } else {
-            showResults();
-        }
+function showResults() {
+    document.getElementById('quiz-section').style.display = 'none';
+    const res = document.getElementById('results-section');
+    res.style.display = 'block';
+    
+    const finalScore = Math.round((score / questions.length) * 100);
+    document.getElementById('final-score').innerText = finalScore + "/100";
+    
+    const badge = document.getElementById('badge-container');
+    const msg = document.getElementById('result-msg');
+    
+    if(finalScore >= 80) {
+        badge.innerHTML = '<span class="badge pass">APROBADO</span>';
+        msg.innerText = "¡Excelente! Tienes un dominio sólido del Capítulo 1. Estás listo para el siguiente nivel.";
+    } else {
+        badge.innerHTML = '<span class="badge fail">REPROBADO</span>';
+        msg.innerText = "Necesitas repasar un poco más. El examen oficial requiere un mínimo de 80 para ganar.";
     }
+}
 
-    function showResults() {
-        document.getElementById("quiz-content").style.display = "none";
-        const resultScreen = document.getElementById("result-screen");
-        resultScreen.style.display = "block";
-        
-        // Conteo de aciertos
-        document.getElementById("final-count").innerText = `Aciertos: ${score} / ${questions.length}`;
-
-        // Cálculo de nota ponderada sobre 100
-        const grade = Math.round((score / questions.length) * 100);
-        const finalGradeElement = document.getElementById("final-grade");
-        finalGradeElement.innerText = grade;
-
-        const msg = document.getElementById("score-msg");
-        if (grade >= 80) {
-            msg.innerText = "¡Excelente! Tienes un dominio sólido del Capítulo 1.";
-            msg.style.color = "var(--success)";
-        } else if (grade >= 70) {
-            msg.innerText = "Pasarías raspando. Te sugiero repasar los fallos.";
-            msg.style.color = "var(--accent)";
-        } else {
-            msg.innerText = "Reprobado. Debes estudiar más a fondo los conceptos.";
-            msg.style.color = "var(--danger)";
-        }
-    }
-
-    loadQuestion();
+// Iniciar
+loadQuestion();
 </script>
 
 </body>
+</html>
 </html>
