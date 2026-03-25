@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Pro: Manual Conductor 2026 - Capítulo 2</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; color: #333; margin: 0; padding: 20px; }
+        .container { max-width: 850px; margin: auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.15); }
+        h1 { color: #d32f2f; text-align: center; border-bottom: 3px solid #d32f2f; padding-bottom: 10px; }
+        .status-bar { display: flex; justify-content: space-between; margin-bottom: 20px; font-weight: bold; background: #ffebee; padding: 15px; border-radius: 8px; border: 1px solid #ffcdd2; }
+        .question { font-size: 1.25em; margin-bottom: 20px; font-weight: 600; line-height: 1.5; color: #1a237e; }
+        .options { display: grid; gap: 12px; }
+        .option { padding: 15px; border: 2px solid #cfd8dc; border-radius: 8px; cursor: pointer; transition: all 0.2s; background: #fff; }
+        .option:hover { background-color: #f5f5f5; border-color: #d32f2f; }
+        .option.correct { background-color: #c8e6c9; border-color: #2e7d32; color: #1b5e20; font-weight: bold; }
+        .option.wrong { background-color: #ffcdd2; border-color: #c62828; color: #b71c1c; }
+        .feedback { margin-top: 20px; padding: 15px; border-radius: 8px; display: none; border-left: 5px solid #d32f2f; background: #fff3e0; font-size: 0.95em; }
+        button { width: 100%; padding: 15px; background: #d32f2f; color: white; border: none; border-radius: 8px; font-size: 1.1em; cursor: pointer; margin-top: 20px; display: none; font-weight: bold; }
+        button:hover { background: #b71c1c; }
+        .results { text-align: center; display: none; }
+        .score { font-size: 4em; color: #d32f2f; margin: 20px 0; }
+        .badge { display: inline-block; padding: 10px 25px; border-radius: 50px; font-weight: bold; font-size: 1.2em; margin-bottom: 20px; }
+        .pass { background: #c8e6c9; color: #1b5e20; }
+        .fail { background: #ffcdd2; color: #b71c1c; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Evaluación Capítulo 2: Señalamiento Vial</h1>
+    
+    <div id="quiz-section">
+        <div class="status-bar">
+            <span>Pregunta: <span id="current-q">1</span>/40</span>
+            <span>Aciertos: <span id="current-score">0</span></span>
+        </div>
+
+        <div id="question-container">
+            <div class="question" id="q-text">Cargando...</div>
+            <div class="options" id="options-container"></div>
+        </div>
+
+        <div class="feedback" id="feedback"></div>
+        <button id="next-btn" onclick="nextQuestion()">Confirmar y Continuar</button>
+    </div>
+
+    <div class="results" id="results-section">
+        <h2>Resultado del Capítulo 2</h2>
+        <div class="score" id="final-score">0/100</div>
+        <div id="badge-container"></div>
+        <p id="result-msg"></p>
+        <button style="display:block" onclick="location.reload()">Reintentar Capítulo 2</button>
+    </div>
+</div>
+
+<script>
+const questions = [
+    {
+        q: "¿Cuál es la función principal del señalamiento vial?",
+        a: ["Guiar a los turistas y decorar las carreteras.", "Advertir, informar, regular y guiar a los usuarios para un tránsito seguro.", "Sustituir a los oficiales de tránsito en horas de poco tráfico.", "Indicar solamente dónde hay curvas peligrosas."],
+        c: 1,
+        f: "El señalamiento busca garantizar la seguridad y fluidez mediante la comunicación de normas, peligros e información útil."
+    },
+    {
+        q: "¿En qué grupos se dividen las señales verticales?",
+        a: ["Obligatorias, Opcionales y Turísticas.", "Rojas, Amarillas y Verdes.", "Reglamentación, Prevención e Información.", "Luminosas, Acústicas y Manuales."],
+        c: 2,
+        f: "Esta es la clasificación técnica oficial basada en el mensaje que transmiten."
+    },
+    {
+        q: "¿Qué forma y color predominan en las señales de REGLAMENTACIÓN?",
+        a: ["Rombos de color amarillo.", "Círculos con borde rojo y fondo blanco.", "Rectángulos azules.", "Triángulos amarillos."],
+        c: 1,
+        f: "Las señales de reglamentación indican prohibiciones o leyes; su incumplimiento es una infracción."
+    },
+    {
+        q: "La señal de ALTO y la de CEDA EL PASO tienen formas únicas (Octagonal y Triangular invertida) para:",
+        a: ["Que sean más baratas de fabricar.", "Poder ser identificadas incluso por detrás por otros conductores.", "Indicar que son señales informativas.", "Cumplir con estándares de diseño artístico."],
+        c: 1,
+        f: "Su forma distintiva permite que cualquier conductor sepa quién tiene la prioridad en un cruce, aunque no vea el frente de la señal."
+    },
+    {
+        q: "¿Qué indica una señal de PREVENCIÓN (color amarillo)?",
+        a: ["Una orden que debe cumplirse.", "La proximidad de un peligro o situación eventual en la vía.", "La distancia a la próxima ciudad.", "Que el carril es de uso exclusivo."],
+        c: 1,
+        f: "Las señales preventivas advierten sobre condiciones físicas de la vía (curvas, resaltos, zonas escolares)."
+    },
+    {
+        q: "¿Qué significa una línea de centro AMARILLA CONTINUA?",
+        a: ["Se permite el adelantamiento.", "Prohibición de adelantar en ese tramo de la vía.", "Sentido único de circulación.", "Zona de estacionamiento permitida."],
+        c: 1,
+        f: "La línea continua es una barrera que indica riesgo de visibilidad o diseño que impide el rebase seguro."
+    },
+    {
+        q: "¿Qué separa una línea BLANCA (longitudinal) en la carretera?",
+        a: ["Sentidos opuestos de circulación.", "Carriles que viajan en el mismo sentido.", "La calzada del espaldón.", "Zonas de carga y descarga."],
+        c: 1,
+        f: "El color blanco siempre indica que el flujo vehicular se mueve en la misma dirección."
+    },
+    {
+        q: "Si la línea de centro es una combinación de una CONTINUA y una DISCONTINUA, ¿quién puede adelantar?",
+        a: ["Ambos lados pueden adelantar.", "Nadie puede adelantar.", "El conductor que tiene la línea discontinua de su lado.", "El conductor que tiene la línea continua de su lado."],
+        c: 2,
+        f: "La línea discontinua permite el rebase a quienes circulan por ese lado, siempre que tengan visibilidad."
+    },
+    {
+        q: "¿Qué significa el color NARANJA en las señales verticales?",
+        a: ["Zonas de recreación y parques.", "Señalamiento temporal por obras en la vía.", "Proximidad de hospitales.", "Zonas de alta montaña."],
+        c: 1,
+        f: "El naranja advierte sobre trabajos de construcción, maquinaria y personal en la vía."
+    },
+    {
+        q: "¿Qué indica una LUZ ROJA INTERMITENTE en un semáforo?",
+        a: ["Semáforo dañado, pase con cuidado.", "Equivalente a una señal de ALTO (parada total y continuar si está despejado).", "Aviso de que pronto cambiará a verde.", "Carril cerrado adelante."],
+        c: 1,
+        f: "El rojo intermitente obliga a detenerse por completo antes de reanudar la marcha tras verificar seguridad."
+    },
+    {
+        q: "Un oficial de tránsito de FRENTE o de ESPALDA significa:",
+        a: ["Siga.", "Precaución.", "Alto total.", "Giro permitido."],
+        c: 2,
+        f: "La posición frontal o posterior del oficial es el equivalente a la luz roja del semáforo."
+    },
+    {
+        q: "¿Qué significan DOS TOQUES de silbato del oficial de tránsito?",
+        a: ["Alto.", "Siga / Marcha.", "Acelerar.", "Revisión de papeles."],
+        c: 1,
+        f: "Un toque largo es para detenerse, dos cortos son para avanzar."
+    },
+    {
+        q: "¿Cuál es la jerarquía máxima del señalamiento vial?",
+        a: ["Las señales verticales.", "El semáforo.", "Las órdenes del Oficial de Tránsito.", "Las señales horizontales."],
+        c: 2,
+        f: "El oficial de tránsito prevalece sobre cualquier otra señal técnica o fija."
+    },
+    {
+        q: "¿Qué indica una línea de borde BLANCA CONTINUA?",
+        a: ["Prohibido adelantar.", "Delimita el borde de la calzada (separa el carril del espaldón).", "Carril de giro a la izquierda.", "Fin de la autopista."],
+        c: 1,
+        f: "Sirve de guía lateral para no salirse de la vía, especialmente de noche o con lluvia."
+    },
+    {
+        q: "¿Qué significa el símbolo de un DIAMANTE blanco pintado en el pavimento?",
+        a: ["Peligro de derrumbes.", "Carril exclusivo (Buses o Vehículos de alta ocupación).", "Zona de carga.", "Intersección peligrosa."],
+        c: 1,
+        f: "Indica un carril con uso restringido para mejorar la movilidad colectiva."
+    },
+    {
+        q: "Las señales de color AZUL o CAFÉ son del tipo:",
+        a: ["Reglamentación.", "Prevención.", "Información (Turismo o Servicios).", "Obras temporales."],
+        c: 2,
+        f: "El azul es para servicios y el café para sitios de interés cultural o recreativo."
+    },
+    {
+        q: "¿Qué debe hacer un conductor ante una LUZ AMARILLA fija del semáforo?",
+        a: ["Acelerar para pasar.", "Detenerse si puede hacerlo de forma segura; la luz cambiará a rojo pronto.", "Tocar el pito.", "Mantener la misma velocidad."],
+        c: 1,
+        f: "El amarillo es para avisar que se debe despejar la intersección, no para apresurarse."
+    },
+    {
+        q: "La 'Caja Amarilla' (cuadrícula) pintada en una intersección significa:",
+        a: ["Zona de parqueo para taxis.", "Prohibición de bloquear la intersección.", "Lugar para girar en U.", "Solo vehículos pesados."],
+        c: 1,
+        f: "Ningún vehículo debe quedar atrapado en la cuadrícula obstruyendo el flujo transversal."
+    },
+    {
+        q: "¿Qué indican los captaluces (ojos de gato) de color ROJO?",
+        a: ["Que se aproxima una curva.", "Que el conductor va en sentido contrario (contravía).", "Zona de hospital.", "Velocidad máxima superada."],
+        c: 1,
+        f: "Si ves el reflejo rojo en el suelo, significa que entraste en una calle de un solo sentido pero en dirección opuesta."
+    },
+    {
+        q: "En un semáforo con flecha verde a la derecha y luz roja circular, ¿qué está permitido?",
+        a: ["Seguir directo.", "Girar a la derecha con prioridad.", "Detenerse y esperar el verde circular.", "Girar a la izquierda."],
+        c: 1,
+        f: "La flecha otorga permiso de giro protegido para ese sentido específico."
+    },
+    {
+        q: "¿Cuál es la función de la línea de parada (transversal blanca)?",
+        a: ["Para que los peatones caminen sobre ella.", "Indicar el límite donde debe detenerse el vehículo antes de la intersección.", "Marcar el inicio de un carril.", "Dividir la carretera a la mitad."],
+        c: 1,
+        f: "No se debe sobrepasar esta línea para no invadir el cruce peatonal o la zona de conflicto."
+    },
+    {
+        q: "¿Qué indica una señal de REGLAMENTACIÓN con una flecha hacia la derecha y una diagonal roja?",
+        a: ["Giro obligatorio a la derecha.", "Prohibición de girar a la derecha.", "Giro permitido con precaución.", "Curva pronunciada a la derecha."],
+        c: 1,
+        f: "El círculo con borde rojo y diagonal siempre prohíbe la acción que muestra el símbolo."
+    },
+    {
+        q: "Las señales acústicas son aquellas que se perciben por el oído. El ejemplo más común es:",
+        a: ["La radio del auto.", "El silbato del oficial de tránsito y las sirenas de emergencia.", "El ruido del motor.", "El sonido de la lluvia."],
+        c: 1,
+        f: "Son señales complementarias para llamar la atención del conductor de inmediato."
+    },
+    {
+        q: "En el señalamiento horizontal, el color AZUL en bordes de acera identifica:",
+        a: ["Paradas de bus.", "Zonas de carga y descarga.", "Espacios para personas con discapacidad (Ley 7600).", "Hidrantes."],
+        c: 2,
+        f: "Es el color estándar de accesibilidad universal."
+    },
+    {
+        q: "¿Qué significa una línea AMARILLA DISCONTINUA?",
+        a: ["Sentido único y permitido adelantar.", "Doble sentido de circulación y permitido adelantar.", "Prohibición de estacionar.", "Camino de tierra."],
+        c: 1,
+        f: "Amarillo = Sentidos opuestos; Discontinuo = Rebase permitido con seguridad."
+    },
+    {
+        q: "Las señales informativas de DESTINO (ciudades o rutas) suelen ser de color:",
+        a: ["Amarillo.", "Verde.", "Rojo.", "Naranja."],
+        c: 1,
+        f: "El verde se usa para guiar al conductor hacia destinos específicos en rutas nacionales."
+    },
+    {
+        q: "Si un oficial de tránsito está de PERFIL con respecto a usted, equivale a:",
+        a: ["Luz Roja.", "Luz Verde.", "Luz Amarilla.", "Ceda el paso."],
+        c: 1,
+        f: "El perfil del oficial autoriza el movimiento vehicular."
+    },
+    {
+        q: "¿Para qué sirve el señalamiento manual del conductor (sacar el brazo)?",
+        a: ["Saludar a otros conductores.", "Indicar maniobras cuando las luces del vehículo fallan o para reforzar la intención.", "Para pedir campo a la fuerza.", "Para enfriar el interior del auto."],
+        c: 1,
+        f: "Es un recurso legal para comunicar giros o detención de forma manual."
+    },
+    {
+        q: "¿Qué indica la señal de PREVENCIÓN con un símbolo de dos flechas paralelas?",
+        a: ["Doble carril por sentido.", "Vía con doble sentido de circulación adelante.", "Permitido adelantar por la derecha.", "Zona de peaje."],
+        c: 1,
+        f: "Advierte que la calle dejará de ser de un solo sentido para ser de ida y vuelta."
+    },
+    {
+        q: "¿Qué significa el color ROJO en el caño (borde de acera)?",
+        a: ["Zona de parqueo libre.", "Prohibición de estacionar y detenerse.", "Espacio para camiones.", "Zona escolar."],
+        c: 1,
+        f: "El rojo en el borde de acera prohíbe cualquier tipo de estacionamiento."
+    },
+    {
+        q: "La señal vertical de 'UNA VÍA' se clasifica como:",
+        a: ["Reglamentación.", "Información.", "Prevención.", "Señal de Obra."],
+        c: 1,
+        f: "Es informativa porque orienta sobre el sentido de circulación de la calle."
+    },
+    {
+        q: "¿Cuál es la velocidad máxima permitida en una zona escolar cuando hay niños presentes?",
+        a: ["40 km/h.", "25 km/h.", "30 km/h.", "15 km/h."],
+        c: 1,
+        f: "La ley es estricta: 25 km/h en presencia de estudiantes."
+    },
+    {
+        q: "¿Qué indica la señal vertical de 'CEDA EL PASO'?",
+        a: ["Parar siempre 5 segundos.", "Dar prioridad a los vehículos que circulan por la vía preferencial, deteniéndose solo si es necesario.", "Aumentar la velocidad.", "Que la vía es de un solo carril."],
+        c: 1,
+        f: "Es una detención condicional: si no viene nadie, puede pasar sin parar totalmente."
+    },
+    {
+        q: "Las señales de prevención con fondo VERDE FLUORESCENTE indican:",
+        a: ["Zonas de bosques.", "Zonas de alta presencia de peatones o escolares.", "Ciclovías nocturnas.", "Peligro por neblina."],
+        c: 1,
+        f: "Este color se usa para resaltar la seguridad de los usuarios más vulnerables."
+    },
+    {
+        q: "¿Qué significa una línea de canalización (blanca continua) cerca de una intersección?",
+        a: ["Se puede cambiar de carril rápido.", "Prohibición de cambio de carril; debe mantenerse en el que eligió.", "Solo para emergencias.", "Zona de derrape."],
+        c: 1,
+        f: "Ordenan el tráfico antes de llegar al punto de giro."
+    },
+    {
+        q: "¿Qué indica un semáforo peatonal con la figura humana en VERDE?",
+        a: ["Que el peatón puede iniciar el cruce.", "Que los carros van a pasar.", "Que el semáforo está apagado.", "Que el peatón debe correr."],
+        c: 0,
+        f: "Es la autorización para que el peatón baje a la calzada con seguridad."
+    },
+    {
+        q: "Un conductor que irrespeta la señal de ALTO comete una infracción de categoría:",
+        a: ["Categoría E (la más baja).", "Categoría A (la más alta).", "No es infracción si no hay choque.", "Categoría C."],
+        c: 1,
+        f: "Irrespetar un ALTO es una de las faltas más graves y peligrosas."
+    },
+    {
+        q: "¿Qué indica el símbolo de un CIGARRILLO tachado en el transporte público?",
+        a: ["Venta de tabaco prohibida.", "Espacio 100% libre de humo de tabaco.", "Peligro de explosión.", "Solo para fumadores."],
+        c: 1,
+        f: "Es una señal informativa de prohibición basada en leyes de salud pública."
+    },
+    {
+        q: "¿Cuál es la función del 'Espaldón'?",
+        a: ["Carril adicional para correr.", "Zona de parada de emergencia y soporte de la calzada.", "Carril exclusivo para motos.", "Donde se colocan las señales de información."],
+        c: 1,
+        f: "No se debe circular por él; es para emergencias y protección de la vía."
+    },
+    {
+        q: "Si un semáforo está APAGADO por completo, ¿cómo se debe actuar?",
+        a: ["Pasar rápido para evitar presas.", "Tratar la intersección como si tuviera señales de ALTO en todas las direcciones.", "Esperar a que llegue un oficial.", "Pitar constantemente."],
+        c: 1,
+        f: "Ante un fallo del sistema, la prioridad se rige por la precaución extrema y el orden de llegada (o señales fijas)."
+    }
+];
+
+let currentIdx = 0;
+let score = 0;
+
+function loadQuestion() {
+    const q = questions[currentIdx];
+    document.getElementById('q-text').innerText = q.q;
+    document.getElementById('current-q').innerText = currentIdx + 1;
+    
+    const container = document.getElementById('options-container');
+    container.innerHTML = '';
+    
+    q.a.forEach((opt, i) => {
+        const div = document.createElement('div');
+        div.className = 'option';
+        div.innerText = opt;
+        div.onclick = () => checkAnswer(i);
+        container.appendChild(div);
+    });
+    
+    document.getElementById('feedback').style.display = 'none';
+    document.getElementById('next-btn').style.display = 'none';
+}
+
+function checkAnswer(idx) {
+    const q = questions[currentIdx];
+    const opts = document.getElementsByClassName('option');
+    
+    for(let opt of opts) opt.onclick = null;
+
+    if(idx === q.c) {
+        opts[idx].classList.add('correct');
+        score++;
+        document.getElementById('current-score').innerText = score;
+    } else {
+        opts[idx].classList.add('wrong');
+        opts[q.c].classList.add('correct');
+    }
+
+    const feedback = document.getElementById('feedback');
+    feedback.innerText = q.f;
+    feedback.style.display = 'block';
+    document.getElementById('next-btn').style.display = 'block';
+}
+
+function nextQuestion() {
+    currentIdx++;
+    if(currentIdx < questions.length) {
+        loadQuestion();
+    } else {
+        showResults();
+    }
+}
+
+function showResults() {
+    document.getElementById('quiz-section').style.display = 'none';
+    const res = document.getElementById('results-section');
+    res.style.display = 'block';
+    
+    const finalScore = Math.round((score / questions.length) * 100);
+    document.getElementById('final-score').innerText = finalScore + "/100";
+    
+    const badge = document.getElementById('badge-container');
+    const msg = document.getElementById('result-msg');
+    
+    if(finalScore >= 80) {
+        badge.innerHTML = '<span class="badge pass">¡CAPÍTULO SUPERADO!</span>';
+        msg.innerText = "Excelente dominio del señalamiento vial. Estás listo para el Capítulo 3.";
+    } else {
+        badge.innerHTML = '<span class="badge fail">REPASO NECESARIO</span>';
+        msg.innerText = "El Capítulo 2 es vital para el examen. Te recomendamos repasar los colores y tipos de líneas.";
+    }
+}
+
+loadQuestion();
+</script>
+
+</body>
+</html>
